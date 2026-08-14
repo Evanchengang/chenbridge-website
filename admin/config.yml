@@ -2,8 +2,8 @@ backend:
   name: github
   repo: Evanchengang/chenbridge-website
   branch: main
-  auth_endpoint: https://auth.decapcms.org
-  base_url: https://api.decapcms.org
+  auth_type: implicit
+  app_id: Ov23lijFIgU2FNvckvuV
 
 media_folder: "images"
 public_folder: "/images"
