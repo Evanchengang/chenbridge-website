@@ -1,19 +1,40 @@
-<!doctype html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>ChenBridge CMS</title>
-
-  <link rel="stylesheet" href="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.css">
-
-</head>
+backend:
+  name: github
+  repo: Evanchengang/chenbridge-website
+  branch: main
+  auth_type: implicit
+  app_id: Ov23lijFIgU2FNvckvuV
 
 
-<body>
+media_folder: "images"
+public_folder: "/images"
 
-<script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
 
-</body>
+site_url: https://chenbridge.com
+display_url: https://chenbridge.com
 
-</html>
+
+collections:
+
+  - name: "pages"
+    label: "Pages"
+
+    files:
+
+      - file: "content/homepage.md"
+        label: "Homepage"
+        name: "homepage"
+
+        fields:
+
+          - label: "Hero Title"
+            name: "hero_title"
+            widget: "string"
+
+          - label: "Hero Description"
+            name: "hero_desc"
+            widget: "text"
+
+          - label: "Contact Email"
+            name: "contact_email"
+            widget: "string"
