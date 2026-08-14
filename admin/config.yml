@@ -3,7 +3,7 @@ backend:
   repo: Evanchengang/chenbridge-website
   branch: main
   base_url: https://chenbridge-oauth.evan-chengang-736.workers.dev
-  auth_endpoint: auth
+  auth_endpoint: /auth
 
 
 site_url: https://chenbridge.com
