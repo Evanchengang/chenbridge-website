@@ -4,7 +4,7 @@ backend:
   branch: main
   auth_type: implicit
   app_id: Ov23lijFIgU2FNvckvuV
-  identity_url: https://identity.netlify.com
+  auth_endpoint: https://identity.netlify.com/auth
 
 media_folder: "images"
 public_folder: "/images"
