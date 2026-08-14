@@ -4,7 +4,7 @@ backend:
   branch: main
 
   base_url: https://chenbridge-oauth.evan-chengang-736.workers.dev
-  auth_endpoint: auth
+  auth_endpoint: /auth
 
 
 media_folder: "images"
