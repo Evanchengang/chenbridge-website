@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: Evanchengang/chenbridge-website
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "index.html"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {label: "Hero Title", name: "hero_title", widget: "string", default: "Your Trusted China Operations Partner"}
+          - {label: "Hero Description", name: "hero_desc", widget: "text", default: "Helping international companies reduce supply chain risks..."}
+          - {label: "Contact Email", name: "contact_email", widget: "string", default: "contact@chenbridge.com"}
