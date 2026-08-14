@@ -4,6 +4,7 @@ backend:
   branch: main
   auth_type: implicit
   app_id: Ov23lijFIgU2FNvckvuV
+  base_url: https://chenbridge.com
 
 media_folder: "images"
 public_folder: "/images"
