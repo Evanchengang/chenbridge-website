@@ -1,21 +1,19 @@
-backend:
-  name: github
-  repo: Evanchengang/chenbridge-website
-  branch: main
-  auth_type: implicit
-  app_id: Ov23lijFIgU2FNvckvuV
+<!doctype html>
+<html>
 
-media_folder: "images"
-public_folder: "/images"
+<head>
+  <meta charset="utf-8">
+  <title>ChenBridge CMS</title>
 
-collections:
-  - name: "pages"
-    label: "Pages"
-    files:
-      - file: "index.html"
-        label: "Home Page"
-        name: "home"
-        fields:
-          - {label: "Hero Title", name: "hero_title", widget: "string", default: "Your Trusted China Operations Partner"}
-          - {label: "Hero Description", name: "hero_desc", widget: "text", default: "Helping international companies reduce supply chain risks..."}
-          - {label: "Contact Email", name: "contact_email", widget: "string", default: "contact@chenbridge.com"}
+  <link rel="stylesheet" href="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.css">
+
+</head>
+
+
+<body>
+
+<script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
+
+</body>
+
+</html>
