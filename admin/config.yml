@@ -1,15 +1,40 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChenBridge CMS</title>
+backend:
+  name: github
+  repo: Evanchengang/chenbridge-website
+  branch: main
+  base_url: https://chenbridge-oauth.evan-chengang-736.workers.dev
+  auth_endpoint: auth
 
-  <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
 
-</head>
+media_folder: "images"
+public_folder: "/images"
 
-<body>
 
-</body>
-</html>
+media_library:
+  name: uploadcare
+
+
+collections:
+
+  - name: "pages"
+    label: "Pages"
+
+    files:
+
+      - file: "content/homepage.md"
+        label: "Homepage"
+        name: "homepage"
+
+        fields:
+
+          - label: "Hero Title"
+            name: "hero_title"
+            widget: "string"
+
+          - label: "Hero Description"
+            name: "hero_desc"
+            widget: "text"
+
+          - label: "Contact Email"
+            name: "contact_email"
+            widget: "string"
