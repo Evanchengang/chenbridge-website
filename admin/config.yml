@@ -13,6 +13,11 @@ public_folder: "/images"
 
 collections:
 
+
+  # =========================
+  # Packaging Solutions
+  # =========================
+
   - name: solutions
     label: Packaging Solutions
     folder: content/solutions
@@ -42,6 +47,44 @@ collections:
         widget: markdown
 
 
+
+  # =========================
+  # Services
+  # =========================
+
+  - name: services
+    label: Services
+    folder: content/services
+    create: true
+    slug: "{{slug}}"
+
+    fields:
+
+      - label: Title
+        name: title
+        widget: string
+
+
+      - label: Description
+        name: description
+        widget: text
+
+
+      - label: Main Image
+        name: image
+        widget: image
+        required: false
+
+
+      - label: Content
+        name: body
+        widget: markdown
+
+
+
+  # =========================
+  # Homepage
+  # =========================
 
   - name: pages
     label: Pages
