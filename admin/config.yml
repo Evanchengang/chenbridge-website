@@ -13,6 +13,36 @@ public_folder: "/images"
 
 collections:
 
+  - name: solutions
+    label: Packaging Solutions
+    folder: content/solutions
+    create: true
+    slug: "{{slug}}"
+
+    fields:
+
+      - label: Title
+        name: title
+        widget: string
+
+
+      - label: Description
+        name: description
+        widget: text
+
+
+      - label: Main Image
+        name: image
+        widget: image
+        required: false
+
+
+      - label: Content
+        name: body
+        widget: markdown
+
+
+
   - name: pages
     label: Pages
 
@@ -28,9 +58,11 @@ collections:
             name: hero_title
             widget: string
 
+
           - label: Hero Description
             name: hero_desc
             widget: text
+
 
           - label: Contact Email
             name: contact_email
