@@ -10,23 +10,16 @@ media_folder: "images"
 public_folder: "/images"
 
 
-media_library:
-  name: uploadcare
-
-
 collections:
-
   - name: "pages"
     label: "Pages"
 
     files:
-
       - file: "content/homepage.md"
         label: "Homepage"
         name: "homepage"
 
         fields:
-
           - label: "Hero Title"
             name: "hero_title"
             widget: "string"
