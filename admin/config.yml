@@ -3,28 +3,22 @@ backend:
   repo: Evanchengang/chenbridge-website
   branch: main
 
-
 media_folder: "images"
 public_folder: "/images"
-
 
 site_url: https://chenbridge.com
 display_url: https://chenbridge.com
 
-
 collections:
-
   - name: "pages"
     label: "Pages"
 
     files:
-
       - file: "content/homepage.md"
         label: "Homepage"
         name: "homepage"
 
         fields:
-
           - label: "Hero Title"
             name: "hero_title"
             widget: "string"
