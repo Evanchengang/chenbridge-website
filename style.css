@@ -408,3 +408,26 @@ nav{
     font-size: 17px;
     line-height: 1.6;
 }
+.footer-content {
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+
+.social-icons {
+
+display:flex;
+gap:15px;
+
+}
+
+
+.social-icons img {
+
+width:24px;
+height:24px;
+
+}
