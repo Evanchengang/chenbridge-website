@@ -310,14 +310,12 @@ a.card:hover h3 {
 
 }
 
-}
 
 
 
 
 
 /* Contact */
-
 
 .contact {
 
@@ -328,18 +326,19 @@ a.card:hover h3 {
 
 
 .contact h2,
-.contact p,
+.contact p {
+
+    text-align:center;
+
+}
+
+
 .contact a {
 
     text-align:center;
-    display:block;
+    display:inline-block;
 
 }
-
-}
-
-}
-
 
 .contact a {
 
