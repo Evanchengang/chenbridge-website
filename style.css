@@ -109,11 +109,11 @@ h1 {
 
 .visual {
 
-    background: #0F3D2E;
-    color: white;
-    padding: 50px;
-    border-radius: 12px;
-    text-align: center;
+   background: transparent;
+color: #111827;
+padding: 0;
+border-radius: 0;
+text-align: center;
 
 }
 
