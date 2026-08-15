@@ -459,7 +459,23 @@ body {
 body {
     top: 0 !important;
 }
+/* Hide Google Translate Toolbar */
 
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+
+body {
+    top: 0px !important;
+}
+
+
+.skiptranslate iframe {
+    display: none !important;
+}
 
 #google_translate_element {
     margin-left: 25px;
