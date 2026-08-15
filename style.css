@@ -439,3 +439,13 @@ margin:auto;
 
 
 }
+/* Hide Google Translate top banner */
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+
+body {
+    top: 0 !important;
+}
