@@ -301,10 +301,14 @@ a.card:hover h3 {
 
 .text {
 
-    font-size:20px;
-    max-width:850px;
-    margin-bottom:20px;
+    font-size:16px;
+    max-width:900px;
+    margin:0 auto 20px;
     color:#4b5563;
+    text-align:center;
+    line-height:1.8;
+
+}
 
 }
 
