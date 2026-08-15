@@ -382,3 +382,12 @@ nav{
 
 
 }
+.hero h1 {
+    font-size: 40px;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.6;
+}
