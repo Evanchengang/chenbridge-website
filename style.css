@@ -40,10 +40,16 @@ header {
 
 .nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
+.brand {
+    margin-right: auto;
+}
+
+#google_translate_element {
+    margin-left: 25px;
+}
 
 .logo-img {
     height: 65px;
