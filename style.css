@@ -107,33 +107,6 @@ h1 {
 
 /* Hero Visual */
 
-.visual {
-
-   background: transparent;
-color: #111827;
-padding: 0;
-border-radius: 0;
-text-align: center;
-
-}
-
-
-.arrow {
-
-    margin: 20px;
-    font-size: 24px;
-
-}
-
-
-.center {
-
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 2px;
-
-}
-
 
 
 
@@ -149,9 +122,9 @@ section {
 
 h2 {
 
-    font-size: 38px;
-    color: #0F3D2E;
-    margin-bottom: 40px;
+    font-size:36px;
+    color:#0F3D2E;
+    margin-bottom:35px;
 
 }
 
@@ -183,6 +156,7 @@ h2 {
     padding:30px;
     border-radius:10px;
     background:white;
+   
 
 }
 
@@ -201,7 +175,13 @@ h2 {
     color:#4b5563;
 
 }
+.card:hover {
 
+    transform: translateY(-5px);
+    transition:0.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+}
 
 /* Clickable Card */
 
@@ -436,8 +416,11 @@ height:24px;
 }
 .hero-image {
 
-width:90%;
+width:100%;
 max-width:500px;
 border-radius:12px;
+display:block;
+margin:auto;
+
 
 }
