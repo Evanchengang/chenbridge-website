@@ -433,3 +433,10 @@ width:24px;
 height:24px;
 
 }
+.hero-image {
+
+width:90%;
+max-width:500px;
+border-radius:12px;
+
+}
