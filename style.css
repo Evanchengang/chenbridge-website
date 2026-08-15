@@ -449,3 +449,19 @@ margin:auto;
 body {
     top: 0 !important;
 }
+/* Google Translate */
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+
+body {
+    top: 0 !important;
+}
+
+
+#google_translate_element {
+    margin-left: 25px;
+    font-size: 14px;
+}
