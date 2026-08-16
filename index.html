@@ -758,16 +758,21 @@ contact@chenbridge.com
 
 function changeLanguage(lang) {
 
-    var select = document.querySelector(".goog-te-combo");
+    var checkExist = setInterval(function () {
 
-    if (!select) {
-        console.log("Google translate not ready");
-        return;
-    }
+        var select = document.querySelector(".goog-te-combo");
 
-    select.value = lang;
+        if (select) {
 
-    select.dispatchEvent(new Event("change"));
+            clearInterval(checkExist);
+
+            select.value = lang;
+
+            select.dispatchEvent(new Event("change"));
+
+        }
+
+    }, 500);
 
 }
 
