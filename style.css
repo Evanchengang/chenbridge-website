@@ -100,7 +100,9 @@ h1 {
     line-height: 1.6;
     color: #4b5563;
 }
-
+.hero h1 {
+    margin-bottom: 20px;
+}
 
 /* Button */
 
