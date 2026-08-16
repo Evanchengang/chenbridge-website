@@ -27,7 +27,17 @@ function googleTranslateElementInit() {
     {
       pageLanguage: 'en',
       includedLanguages: 'en,zh-CN,ja,ko,de,fr,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      function googleTranslateElementInit() {
+
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: 'en',
+      includedLanguages: 'en,zh-CN,ja,ko,de,fr,es'
+    },
+    'google_translate_element'
+  );
+
+}
     },
     'google_translate_element'
   );
