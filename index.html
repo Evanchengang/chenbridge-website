@@ -760,13 +760,14 @@ function changeLanguage(lang) {
 
     var select = document.querySelector(".goog-te-combo");
 
-    if(select){
-
-        select.value = lang;
-
-        select.dispatchEvent(new Event('change'));
-
+    if (!select) {
+        console.log("Google translate not ready");
+        return;
     }
+
+    select.value = lang;
+
+    select.dispatchEvent(new Event("change"));
 
 }
 
