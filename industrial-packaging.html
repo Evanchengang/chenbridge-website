@@ -563,17 +563,23 @@ src="https://translate.google.com/translate_a/element.js?cb=googleTranslateEleme
 
 function changeLanguage(lang){
 
-var select=document.querySelector(".goog-te-combo");
+var checkExist = setInterval(function(){
+
+var select = document.querySelector(".goog-te-combo");
 
 if(select){
 
-select.value=lang;
+clearInterval(checkExist);
 
-select.dispatchEvent(new Event("change",{
+select.value = lang;
+
+select.dispatchEvent(new Event("change", {
 bubbles:true
 }));
 
 }
+
+},500);
 
 }
 
