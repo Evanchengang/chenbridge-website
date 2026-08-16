@@ -1182,3 +1182,8 @@ section[id] {
     scroll-margin-top:90px;
 
 }
+.hero-grid > div:first-child {
+
+    transform:translateY(-40px);
+
+}
