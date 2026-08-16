@@ -409,3 +409,63 @@
 
 
 }
+/* ================================
+Hero Text Slider
+================================ */
+
+
+.hero-slide{
+
+display:none;
+
+animation:fadeIn 1.5s ease;
+
+}
+
+
+.hero-slide.active{
+
+display:block;
+
+}
+
+
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(10px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+.about-hero-content p{
+
+font-size:20px;
+
+line-height:1.7;
+
+color:#ffffff;
+
+max-width:650px;
+
+background:rgba(0,0,0,0.35);
+
+padding:20px;
+
+border-radius:8px;
+
+}
