@@ -1187,3 +1187,21 @@ section[id] {
     transform:translateY(-40px);
 
 }
+/* ==========================================
+   Fix: 子页面顶部标题距离导航栏太近 / 被遮挡
+   ========================================== */
+
+/* 
+  原理：header + section 代表“紧跟在导航栏下面的第一个区块”（即子页面的 Hero）。
+  :not(.hero):not(.about-hero) 是为了保护首页和关于页的现有布局不受影响。
+*/
+header + section:not(.hero):not(.about-hero) {
+    padding-top: 140px !important; 
+}
+
+/* 移动端适配：手机屏幕下导航栏变窄，适当减小顶部间距 */
+@media (max-width: 900px) {
+    header + section:not(.hero):not(.about-hero) {
+        padding-top: 110px !important;
+    }
+}
