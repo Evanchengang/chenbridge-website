@@ -21,6 +21,62 @@ ChenBridge | China Supply Chain & Manufacturing Partner for Global Companies
 <link rel="stylesheet" href="style.css">
 
 <link rel="icon" type="image/png" href="favicon.png">
+
+<!-- 修复和隐藏 Google Translate 原生 UI 的样式 -->
+<style>
+    /* 1. 将原生下拉框移出可视区域，但保留在 DOM 中以便 JS 能够抓取 */
+    #google_translate_element {
+        position: absolute;
+        left: -9999px;
+        top: -9999px;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* 2. 隐藏网页顶部谷歌翻译自带的“蓝色/白色提示条” */
+    .skiptranslate {
+        display: none !important;
+    }
+    body {
+        top: 0 !important;
+    }
+
+    /* 3. 隐藏谷歌翻译自带的冗余文字和 Logo */
+    .goog-te-gadget {
+        font-size: 0 !important;
+    }
+    .goog-logo-link, .goog-te-gadget span {
+        display: none !important;
+    }
+    
+    /* 语言菜单基础样式（如果您在 style.css 中没写，这里做个兜底） */
+    .language-switcher {
+        position: relative;
+        display: inline-block;
+    }
+    .language-menu {
+        display: none;
+        position: absolute;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        min-width: 120px;
+        z-index: 1000;
+    }
+    .language-switcher:hover .language-menu {
+        display: block;
+    }
+    .language-menu a {
+        display: block;
+        padding: 8px 12px;
+        text-decoration: none;
+        color: #333;
+    }
+    .language-menu a:hover {
+        background: #f5f5f5;
+    }
+</style>
+
 <script type="text/javascript">
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
@@ -66,7 +122,6 @@ function googleTranslateElementInit() {
 <img src="logo.png" alt="ChenBridge Logo" class="logo-img">
 </a>
 
-
 </div>
 
 
@@ -79,6 +134,7 @@ function googleTranslateElementInit() {
 <a href="#contact">Contact</a>
 
 </nav>
+
 <div class="language-switcher">
 
 <button id="language-button">
@@ -86,38 +142,18 @@ function googleTranslateElementInit() {
 </button>
 
 <div class="language-menu">
-
-<a href="#" onclick="changeLanguage('en')">
-🇺🇸 English
-</a>
-
-<a href="#" onclick="changeLanguage('zh-CN')">
-🇨🇳 中文
-</a>
-
-<a href="#" onclick="changeLanguage('ja')">
-🇯🇵 日本語
-</a>
-
-<a href="#" onclick="changeLanguage('ko')">
-🇰🇷 한국어
-</a>
-
-<a href="#" onclick="changeLanguage('de')">
-🇩🇪 Deutsch
-</a>
-
-<a href="#" onclick="changeLanguage('fr')">
-🇫🇷 Français
-</a>
-
+<!-- 修复：使用 javascript:void(0); 防止点击时页面乱跳转或滚动到顶部 -->
+<a href="javascript:void(0);" onclick="changeLanguage('en')">🇺🇸 English</a>
+<a href="javascript:void(0);" onclick="changeLanguage('zh-CN')">🇨🇳 中文</a>
+<a href="javascript:void(0);" onclick="changeLanguage('ja')">🇯🇵 日本語</a>
+<a href="javascript:void(0);" onclick="changeLanguage('ko')">🇰🇷 한국어</a>
+<a href="javascript:void(0);" onclick="changeLanguage('de')">🇩🇪 Deutsch</a>
+<a href="javascript:void(0);" onclick="changeLanguage('fr')">🇫🇷 Français</a>
 </div>
 
 </div>
-
 
 <div id="google_translate_element"></div>
-
 
 </div>
 
@@ -127,51 +163,35 @@ function googleTranslateElementInit() {
 
 <!-- Hero -->
 
-
 <section class="hero">
-
 
 <div class="container hero-grid">
 
-
 <div>
-
 
 <h1>
 Your China Operations Representative
 </h1>
 
-
 <p>
 ChenBridge helps global companies access China's manufacturing capabilities without establishing their own local office.
 </p>
-
 
 <p>
 We represent international clients in China by connecting them with qualified manufacturing partners, coordinating supply chain activities, and supporting local execution.
 </p>
 
-
 <a class="btn" href="#contact">
 Contact Us
 </a>
 
-
 </div>
-
-
 
 <div class="visual">
-
-<img src="chenbridge-hero.jpg"
-alt="ChenBridge China Operations Representative"
-class="hero-image">
-
+<img src="chenbridge-hero.jpg" alt="ChenBridge China Operations Representative" class="hero-image">
 </div>
 
-
 </div>
-
 
 </section>
 
@@ -180,201 +200,78 @@ class="hero-image">
 
 <!-- Industries -->
 
-
-<!-- Industries -->
-
-
 <section id="industries">
 
-
 <div class="container">
-
 
 <h2>
 Industries
 </h2>
 
-
 <div class="cards">
 
+<div class="card">
+<h3>Industrial & MFG Support</h3>
+<p>Supporting global companies with China-based sourcing and manufacturing coordination for industrial products, equipment, and engineered solutions.</p>
+<a href="industrial-packaging.html">Learn More →</a>
+</div>
 
 <div class="card">
-
-
-<h3>
-Industrial & MFG Support
-</h3>
-
-
-<p>
-Supporting global companies with China-based sourcing and manufacturing coordination for industrial products, equipment, and engineered solutions.
-</p>
-
-
-<a href="industrial-packaging.html">
-Learn More →
-</a>
-
-
+<h3>Technology Infrastructure Support</h3>
+<p>Supporting technology companies with sourcing coordination and project execution for data centers, IT infrastructure, electronics, and high-value equipment.</p>
+<a href="data-center-packaging.html">Learn More →</a>
 </div>
-
-
-
 
 <div class="card">
-
-
-<h3>
-Technology Infrastructure Support
-</h3>
-
-
-<p>
-Supporting technology companies with sourcing coordination and project execution for data centers, IT infrastructure, electronics, and high-value equipment.
-</p>
-
-
-<a href="data-center-packaging.html">
-Learn More →
-</a>
-
-
+<h3>Defense & Specialized Logistics Support</h3>
+<p>Supporting specialized logistics requirements through supplier coordination, project management, and China-based execution support.</p>
+<a href="defense-packaging.html">Learn More →</a>
 </div>
-
-
-
 
 <div class="card">
-
-
-<h3>
-Defense & Specialized Logistics Support
-</h3>
-
-
-<p>
-Supporting specialized logistics requirements through supplier coordination, project management, and China-based execution support.
-</p>
-
-
-<a href="defense-packaging.html">
-Learn More →
-</a>
-
+<h3>Consumer Product Support</h3>
+<p>Helping consumer brands develop China sourcing channels and coordinate customized manufacturing activities.</p>
+<a href="consumer-packaging.html">Learn More →</a>
+</div>
 
 </div>
 
-
-
-
-<div class="card">
-
-
-<h3>
-Consumer Product Support
-</h3>
-
-
-<p>
-Helping consumer brands develop China sourcing channels and coordinate customized manufacturing activities.
-</p>
-
-
-<a href="consumer-packaging.html">
-Learn More →
-</a>
-
-
 </div>
-
-
-</div>
-
-
-</div>
-
 
 </section>
 
 
 
-
-
 <!-- Services -->
-
 
 <section id="services" class="dark">
 
-
 <div class="container">
-
 
 <h2>
 How We Support Clients
 </h2>
 
-
-
 <div class="cards three-col">
 
+<div class="card dark-card">
+<h3>Supplier Development</h3>
+<p>Identify, evaluate, and develop reliable manufacturing partners in China.</p>
+</div>
 
 <div class="card dark-card">
-
-
-<h3>
-Supplier Development
-</h3>
-
-
-<p>
-Identify, evaluate, and develop reliable manufacturing partners in China.
-</p>
-
-
+<h3>Procurement Management</h3>
+<p>Manage RFQ, supplier communication, quotation evaluation, and purchasing execution.</p>
 </div>
-
-
-
 
 <div class="card dark-card">
-
-
-<h3>
-Procurement Management
-</h3>
-
-
-<p>
-Manage RFQ, supplier communication, quotation evaluation, and purchasing execution.
-</p>
-
+<h3>Manufacturing Coordination</h3>
+<p>Monitor production progress and coordinate execution between customers and suppliers.</p>
+</div>
 
 </div>
 
-
-
-
-<div class="card dark-card">
-
-
-<h3>
-Manufacturing Coordination
-</h3>
-
-
-<p>
-Monitor production progress and coordinate execution between customers and suppliers.
-</p>
-
-
 </div>
-
-
-</div>
-
-
-</div>
-
 
 </section>
 
@@ -384,198 +281,83 @@ Monitor production progress and coordinate execution between customers and suppl
 
 <!-- Process -->
 
-
 <section id="process">
 
-
 <div class="container">
-
 
 <h2>
 Our Process
 </h2>
 
-
-
 <div class="cards three-col">
 
-
+<div class="card">
+<h3>01 Requirement Analysis</h3>
+<p>Understand customer requirements, product specifications, and project objectives.</p>
+</div>
 
 <div class="card">
-
-<h3>
-01 Requirement Analysis
-</h3>
-
-<p>
-Understand customer requirements, product specifications, and project objectives.
-</p>
-
+<h3>02 Supplier Selection</h3>
+<p>Identify and evaluate suitable manufacturing partners in China.</p>
 </div>
-
-
-
 
 <div class="card">
-
-<h3>
-02 Supplier Selection
-</h3>
-
-<p>
-Identify and evaluate suitable manufacturing partners in China.
-</p>
-
+<h3>03 RFQ & Quotation</h3>
+<p>Analyze supplier quotations and provide transparent cost recommendations.</p>
 </div>
-
-
-
 
 <div class="card">
-
-<h3>
-03 RFQ & Quotation
-</h3>
-
-<p>
-Analyze supplier quotations and provide transparent cost recommendations.
-</p>
-
+<h3>04 Manufacturing Coordination</h3>
+<p>Coordinate production progress and communication between customers and suppliers.</p>
 </div>
-
-
-
 
 <div class="card">
-
-<h3>
-04 Manufacturing Coordination
-</h3>
-
-<p>
-Coordinate production progress and communication between customers and suppliers.
-</p>
-
+<h3>05 Quality Verification</h3>
+<p>Support inspection and quality confirmation before shipment.</p>
 </div>
-
-
-
 
 <div class="card">
-
-<h3>
-05 Quality Verification
-</h3>
-
-<p>
-Support inspection and quality confirmation before shipment.
-</p>
+<h3>06 Shipment Support</h3>
+<p>Coordinate export preparation and delivery execution.</p>
+</div>
 
 </div>
 
-
-
-
-<div class="card">
-
-<h3>
-06 Shipment Support
-</h3>
-
-<p>
-Coordinate export preparation and delivery execution.
-</p>
-
 </div>
-
-
-
-</div>
-
-
-</div>
-
 
 </section>
-<!-- Why Choose ChenBridge -->
 
+
+<!-- Why Choose ChenBridge -->
 
 <section id="about">
 
-
 <div class="container">
-
 
 <h2>
 Why Choose ChenBridge
 </h2>
 
-
-
 <div class="cards three-col">
 
-
+<div class="card">
+<h3>Your China Representative Without a China Office</h3>
+<p>Access China's manufacturing capabilities without the cost and complexity of establishing your own local operation.</p>
+</div>
 
 <div class="card">
-
-
-<h3>
-Your China Representative Without a China Office
-</h3>
-
-
-<p>
-Access China's manufacturing capabilities without the cost and complexity of establishing your own local operation.
-</p>
-
-
+<h3>Access to Qualified Manufacturing Partners</h3>
+<p>Connect with suitable manufacturing partners through local experience and supplier networks in China.</p>
 </div>
-
-
-
-
 
 <div class="card">
-
-
-<h3>
-Access to Qualified Manufacturing Partners
-</h3>
-
-
-<p>
-Connect with suitable manufacturing partners through local experience and supplier networks in China.
-</p>
-
+<h3>Local Execution Without Fixed China Operation Costs</h3>
+<p>ChenBridge provides China-based support for supplier communication, production coordination, quality follow-up, and shipment execution without the long-term investment required to build and manage a local team.</p>
+</div>
 
 </div>
 
-
-
-
-
-<div class="card">
-
-
-<h3>
-Local Execution Without Fixed China Operation Costs
-</h3>
-
-
-<p>
-ChenBridge provides China-based support for supplier communication, production coordination, quality follow-up, and shipment execution without the long-term investment required to build and manage a local team.
-</p>
-
-
 </div>
-
-
-
-</div>
-
-
-</div>
-
 
 </section>
 
@@ -585,98 +367,37 @@ ChenBridge provides China-based support for supplier communication, production c
 
 <!-- Insights -->
 
-
 <section id="insights">
 
-
 <div class="container">
-
 
 <h2>
 Insights
 </h2>
 
-
-
 <div class="cards three-col">
 
-
+<div class="card">
+<h3>China Manufacturing Insights</h3>
+<p>Practical observations and industry perspectives on China's manufacturing environment, supplier development, and production management.</p>
+<a href="#">Read More →</a>
+</div>
 
 <div class="card">
-
-
-<h3>
-China Manufacturing Insights
-</h3>
-
-
-<p>
-Practical observations and industry perspectives on China's manufacturing environment, supplier development, and production management.
-</p>
-
-
-<a href="#">
-Read More →
-</a>
-
-
+<h3>Supply Chain Perspectives</h3>
+<p>Insights into sourcing strategies, supplier relationships, and building reliable international supply chains.</p>
+<a href="#">Read More →</a>
 </div>
-
-
-
-
 
 <div class="card">
-
-
-<h3>
-Supply Chain Perspectives
-</h3>
-
-
-<p>
-Insights into sourcing strategies, supplier relationships, and building reliable international supply chains.
-</p>
-
-
-<a href="#">
-Read More →
-</a>
-
+<h3>China Operations Guide</h3>
+<p>Practical guidance for companies looking to establish and manage manufacturing activities in China.</p>
+<a href="#">Read More →</a>
+</div>
 
 </div>
 
-
-
-
-
-<div class="card">
-
-
-<h3>
-China Operations Guide
-</h3>
-
-
-<p>
-Practical guidance for companies looking to establish and manage manufacturing activities in China.
-</p>
-
-
-<a href="#">
-Read More →
-</a>
-
-
 </div>
-
-
-
-</div>
-
-
-</div>
-
 
 </section>
 
@@ -686,57 +407,34 @@ Read More →
 
 <!-- Contact -->
 
-
 <section id="contact" class="contact">
 
-
 <div class="container">
-
 
 <h2>
 Discuss Your China Supply Chain Requirements
 </h2>
 
-
-
 <p class="text">
-
 Whether you need supplier sourcing, packaging solutions, manufacturing support, or China supply chain management, ChenBridge can help you build reliable operations in China.
-
 </p>
-
-
 
 <p>
 Contact us:
 </p>
 
-
-
 <a href="mailto:contact@chenbridge.com">
 contact@chenbridge.com
 </a>
 
-
-
-
 <div class="social-icons">
-
-
 <img src="linkedin.png" alt="LinkedIn">
-
 <img src="youtube.png" alt="YouTube">
-
 <img src="whatsapp.png" alt="WhatsApp">
-
 <img src="line.png" alt="LINE">
-
-
 </div>
 
-
 </div>
-
 
 </section>
 
@@ -746,37 +444,43 @@ contact@chenbridge.com
 
 <!-- Footer -->
 
-
 <footer>
-
 © 2026 ChenBridge Global Advisory. All rights reserved.
-
 </footer>
 
 
+<!-- 修复后的 JS：增加事件冒泡 (bubbles: true) 和防内存泄漏超时 -->
 <script>
-
 function changeLanguage(lang) {
-
     var checkExist = setInterval(function () {
-
         var select = document.querySelector(".goog-te-combo");
-
         if (select) {
-
             clearInterval(checkExist);
+            
+            // 检查该语言是否真实存在于谷歌翻译的下拉选项中
+            var hasLang = false;
+            for (var i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === lang) {
+                    hasLang = true;
+                    break;
+                }
+            }
 
-            select.value = lang;
-
-            select.dispatchEvent(new Event("change"));
-
+            if (hasLang) {
+                select.value = lang;
+                // 关键修复：必须添加 bubbles: true，否则谷歌的 JS 无法捕获 change 事件
+                select.dispatchEvent(new Event('change', { bubbles: true }));
+            }
         }
+    }, 100); 
 
-    }, 500);
-
+    // 防内存泄漏保护：如果 5 秒后谷歌翻译还没加载出来，强制停止检测
+    setTimeout(function() { 
+        clearInterval(checkExist); 
+    }, 5000);
 }
-
 </script>
+
 </body>
 
 </html>
