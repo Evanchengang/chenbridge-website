@@ -686,7 +686,7 @@ body {
 
     width:100%;
 
-    padding:25px 20px;
+    padding:12px 15px;
 
     background:rgba(0,0,0,0.45);
 
@@ -704,7 +704,7 @@ body {
 
     color:white;
 
-    font-size:22px;
+    font-size:12px;
 
     font-weight:700;
 
@@ -716,9 +716,9 @@ body {
 
     display:block;
 
-    margin-top:5px;
+    margin-top:3px;
 
-    font-size:15px;
+    font-size:9px;
 
     color:#f3f4f6;
 
