@@ -85,7 +85,7 @@ header {
 
 .logo-img {
 
-    height:60px;
+    height:55px;
 
     width:auto;
 
@@ -888,7 +888,7 @@ nav {
 @media(max-width:900px){
 
 header {
-    padding:12px 0;
+    padding:10px 0;
 }
 
 
