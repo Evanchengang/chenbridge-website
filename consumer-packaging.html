@@ -875,8 +875,8 @@ document.querySelectorAll(".image-slider").forEach(slider => {
                 }
 
 
-                img.src =
-                `images/packaging/${folder}/${images[index]}`;
+             img.src =
+`images/packaging/${folder}/${images[index]}?v=${Date.now()}`;
 
 
             },1000);
@@ -895,8 +895,8 @@ document.querySelectorAll(".image-slider").forEach(slider => {
             index = 0;
 
 
-            img.src =
-            `images/packaging/${folder}/${images[0]}`;
+     img.src =
+`images/packaging/${folder}/${images[0]}?v=${Date.now()}`;
 
 
         });
