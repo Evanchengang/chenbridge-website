@@ -599,3 +599,16 @@ body {
 .hero p {
     margin: 15px 0;
 }
+.hero-text {
+    max-width: 500px;
+}
+
+
+.hero-text h1 {
+    margin-bottom:20px;
+}
+
+
+.hero-text p {
+    margin:15px 0;
+}
