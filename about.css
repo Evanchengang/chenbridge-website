@@ -102,3 +102,18 @@
 
 
 }
+.challenge-text {
+
+    max-width:900px;
+
+    margin:0 auto 35px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
