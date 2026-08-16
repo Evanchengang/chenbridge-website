@@ -1169,3 +1169,15 @@ section > .container > p {
     border-radius:12px;
 
 }
+/* Smooth anchor positioning */
+
+html {
+    scroll-behavior:smooth;
+}
+
+
+section[id] {
+
+    scroll-margin-top:90px;
+
+}
