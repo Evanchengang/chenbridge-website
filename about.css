@@ -219,3 +219,50 @@
 
 
 }
+.approach-flow {
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+}
+
+
+.approach-card {
+
+    min-height:300px;
+
+}
+
+
+.approach-card span {
+
+    display:block;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    color:#F28C28;
+
+    margin-bottom:15px;
+
+}
+
+
+.approach-card h3 {
+
+    color:#0F3D2E;
+
+    margin-bottom:15px;
+
+}
+
+
+.approach-card p {
+
+    line-height:1.8;
+
+}
