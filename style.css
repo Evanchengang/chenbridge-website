@@ -947,3 +947,196 @@ header {
 }
 
 }
+/* =====================================
+   Mobile Optimization - All Pages
+   ===================================== */
+
+
+@media(max-width:900px){
+
+
+/* ---------- Header ---------- */
+
+
+header {
+
+    padding:12px 0;
+
+}
+
+
+.logo-img {
+
+    height:50px;
+
+}
+
+
+.language-switcher {
+
+    margin-left:auto;
+
+}
+
+
+#language-button {
+
+    font-size:14px;
+
+}
+
+
+
+/* ---------- Hero Section ---------- */
+
+
+.hero {
+
+    padding:40px 0;
+
+}
+
+
+
+.hero h1 {
+
+    font-size:34px;
+    line-height:1.15;
+
+}
+
+
+
+.hero p {
+
+    font-size:16px;
+    line-height:1.6;
+
+}
+
+
+
+.hero-image {
+
+    margin-top:25px;
+
+}
+
+
+
+
+/* ---------- Section Titles ---------- */
+
+
+h2 {
+
+    font-size:30px;
+    line-height:1.25;
+    text-align:center;
+
+}
+
+
+
+/* ---------- Cards ---------- */
+
+
+.card {
+
+    padding:22px;
+
+}
+
+
+
+.card h3 {
+
+    font-size:20px;
+    line-height:1.3;
+
+}
+
+
+
+.card p {
+
+    font-size:16px;
+    line-height:1.6;
+
+}
+
+
+
+/* ---------- Industry / Packaging Intro Text ---------- */
+
+
+section > .container > p {
+
+    text-align:center;
+
+}
+
+
+
+/* ---------- Dark Sections ---------- */
+
+
+.dark h2 {
+
+    font-size:30px;
+
+}
+
+
+
+/* ---------- Packaging Showcase ---------- */
+
+
+.showcase-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.image-slider {
+
+    height:220px;
+
+}
+
+
+
+
+/* ---------- Contact CTA ---------- */
+
+
+.contact h2 {
+
+    font-size:30px;
+    line-height:1.25;
+
+}
+
+
+
+.contact .text {
+
+    font-size:16px;
+    line-height:1.7;
+    padding:0 10px;
+
+}
+
+
+
+.contact a {
+
+    font-size:22px;
+
+}
+
+
+
+}
