@@ -90,27 +90,27 @@ function googleTranslateElementInit() {
 
 <div class="language-menu">
 
-<a href="#" onclick="changeLanguage('en')">
+<a href="#" onclick="changeLanguage('en'); return false;">
 🇺🇸 English
 </a>
 
-<a href="#" onclick="changeLanguage('zh-CN')">
+<a href="#" onclick="changeLanguage('zh-CN'); return false;">
 🇨🇳 中文
 </a>
 
-<a href="#" onclick="changeLanguage('ja')">
+<a href="#" onclick="changeLanguage('ja'); return false;">
 🇯🇵 日本語
 </a>
 
-<a href="#" onclick="changeLanguage('ko')">
+<a href="#" onclick="changeLanguage('ko'); return false;">
 🇰🇷 한국어
 </a>
 
-<a href="#" onclick="changeLanguage('de')">
+<a href="#" onclick="changeLanguage('de'); return false;">
 🇩🇪 Deutsch
 </a>
 
-<a href="#" onclick="changeLanguage('fr')">
+<a href="#" onclick="changeLanguage('fr'); return false;">
 🇫🇷 Français
 </a>
 
@@ -759,23 +759,19 @@ contact@chenbridge.com
 
 <script>
 
-function changeLanguage(lang) {
+function changeLanguage(lang){
 
-    var checkExist = setInterval(function () {
+    var select = document.querySelector(".goog-te-combo");
 
-        var select = document.querySelector(".goog-te-combo");
+    if(select){
 
-        if (select) {
+        select.value = lang;
 
-            clearInterval(checkExist);
+        select.dispatchEvent(new Event("change", {
+            bubbles: true
+        }));
 
-            select.value = lang;
-
-            select.dispatchEvent(new Event("change"));
-
-        }
-
-    }, 500);
+    }
 
 }
 
