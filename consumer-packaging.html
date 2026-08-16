@@ -859,8 +859,12 @@ document.querySelectorAll(".image-slider").forEach(slider => {
 
     const folder = slider.dataset.folder;
 
+    const img = slider.querySelector("img");
+
     let images = [];
     let index = 0;
+    let timer = null;
+
 
     fetch(`images/packaging/${folder}/images.json`)
     .then(response => response.json())
@@ -868,22 +872,57 @@ document.querySelectorAll(".image-slider").forEach(slider => {
 
         images = data;
 
-        setInterval(() => {
 
-            index++;
+        slider.addEventListener("mouseenter", function(){
 
-            if(index >= images.length){
-                index = 0;
-            }
 
-            slider.querySelector("img").src =
-            `images/packaging/${folder}/${images[index]}`;
+            index = 0;
 
-        },2000);
+
+            timer = setInterval(()=>{
+
+
+                index++;
+
+
+                if(index >= images.length){
+                    index = 0;
+                }
+
+
+                img.src =
+                `images/packaging/${folder}/${images[index]}`;
+
+
+            },2000);
+
+
+        });
+
+
+
+        slider.addEventListener("mouseleave", function(){
+
+
+            clearInterval(timer);
+
+
+            index = 0;
+
+
+            img.src =
+            `images/packaging/${folder}/${images[0]}`;
+
+
+        });
+
+
 
     });
 
+
 });
+
 
 </script>
 
