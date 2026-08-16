@@ -1140,3 +1140,31 @@ section > .container > p {
 
 
 }
+
+/* ==========================================
+   About Page
+   ========================================== */
+
+
+.leadership-grid {
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+
+.leadership-image {
+
+    width:100%;
+
+    max-width:400px;
+
+    border-radius:12px;
+
+}
