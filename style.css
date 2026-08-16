@@ -481,3 +481,19 @@ body {
     margin-left: 25px;
     font-size: 14px;
 }
+
+/* Google Translate */
+
+#google_translate_element {
+    margin-left: 25px;
+}
+
+
+.goog-te-gadget {
+    font-size: 0 !important;
+}
+
+
+.goog-te-gadget .goog-te-combo {
+    font-size: 14px !important;
+}
