@@ -522,7 +522,10 @@ body {
 /* Hide Google Translate Original Box */
 
 #google_translate_element {
-    display:none;
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
 }
 /* Language Switcher */
 
