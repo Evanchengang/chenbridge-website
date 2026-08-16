@@ -1,0 +1,372 @@
+/* ==========================================
+   ChenBridge About Page
+   ========================================== */
+
+
+/* ==========================================
+   About Hero
+   ========================================== */
+
+
+.about-hero {
+
+    background:#F8F6F1;
+
+    padding:90px 0;
+
+}
+
+
+
+.about-hero-grid {
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:70px;
+
+    align-items:center;
+
+}
+
+
+
+.about-hero-content h1 {
+
+    font-size:44px;
+
+    line-height:1.2;
+
+    color:#0F3D2E;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.about-hero-content p {
+
+    font-size:17px;
+
+    color:#4b5563;
+
+    margin-bottom:15px;
+
+    line-height:1.7;
+
+}
+
+
+
+.about-hero-image img {
+
+    width:100%;
+
+    max-width:520px;
+
+    border-radius:14px;
+
+    display:block;
+
+}
+
+
+
+
+
+
+/* ==========================================
+   Our Role
+   ========================================== */
+
+
+.role-grid {
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:60px;
+
+    align-items:center;
+
+}
+
+
+
+.role-text p {
+
+    font-size:17px;
+
+    color:#4b5563;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.role-cards {
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+
+.role-cards div {
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:10px;
+
+    padding:25px;
+
+}
+
+
+
+.role-cards h3 {
+
+    color:#0F3D2E;
+
+    margin-bottom:10px;
+
+    font-size:22px;
+
+}
+
+
+
+.role-cards p {
+
+    color:#4b5563;
+
+}
+
+
+
+
+
+
+/* ==========================================
+   Challenge Section
+   ========================================== */
+
+
+.challenge-section {
+
+    padding:80px 0;
+
+}
+
+
+
+.challenge-section .text {
+
+    color:#e5e7eb;
+
+}
+
+
+
+.challenge-section .card {
+
+    min-height:230px;
+
+}
+
+
+
+
+/* ==========================================
+   Approach Flow
+   ========================================== */
+
+
+.approach-flow {
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    position:relative;
+
+}
+
+
+
+.approach-flow div {
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    padding:30px;
+
+    border-radius:10px;
+
+}
+
+
+
+.approach-flow span {
+
+    display:block;
+
+    color:#F28C28;
+
+    font-size:30px;
+
+    font-weight:bold;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.approach-flow h3 {
+
+    color:#0F3D2E;
+
+    margin-bottom:10px;
+
+}
+
+
+
+.approach-flow p {
+
+    color:#4b5563;
+
+}
+
+
+
+
+
+/* ==========================================
+   Expertise
+   ========================================== */
+
+
+.four-col {
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+
+
+
+
+
+/* ==========================================
+   Mission Banner
+   ========================================== */
+
+
+.mission-banner {
+
+    padding:80px 0;
+
+    text-align:center;
+
+}
+
+
+
+.mission-banner h2 {
+
+    color:white;
+
+    font-size:38px;
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+
+
+
+
+/* ==========================================
+   Mobile
+   ========================================== */
+
+
+@media(max-width:900px){
+
+
+
+.about-hero {
+
+    padding:50px 0;
+
+}
+
+
+
+.about-hero-grid {
+
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.about-hero-content h1 {
+
+    font-size:34px;
+
+}
+
+
+
+.role-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.approach-flow {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.four-col {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+.mission-banner h2 {
+
+    font-size:30px;
+
+}
+
+
+
+}
