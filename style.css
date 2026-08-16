@@ -622,3 +622,150 @@ body {
     font-size:17px;
     line-height:1.5;
 }
+
+/* ================================
+   Packaging Capability Showcase
+================================ */
+
+
+.capability-showcase {
+    background:#F8F6F1;
+}
+
+
+.showcase-grid {
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+
+}
+
+
+
+.showcase-card {
+
+    overflow:hidden;
+    border-radius:12px;
+}
+
+
+
+.image-slider {
+
+    position:relative;
+    width:100%;
+    height:280px;
+    overflow:hidden;
+    border-radius:12px;
+    background:#ffffff;
+
+}
+
+
+
+.image-slider img {
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+
+}
+
+
+
+
+/* Dark transparent overlay */
+
+.overlay {
+
+    position:absolute;
+    left:0;
+    bottom:0;
+
+    width:100%;
+
+    padding:25px 20px;
+
+    background:rgba(0,0,0,0.45);
+
+    color:white;
+
+    text-align:center;
+
+}
+
+
+
+.overlay h3 {
+
+    margin:0;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+
+
+.overlay span {
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:15px;
+
+    color:#f3f4f6;
+
+}
+
+
+
+
+/* Hover Effect */
+
+
+.image-slider:hover img {
+
+    transform:scale(1.05);
+
+    transition:0.5s;
+
+}
+
+
+
+.image-slider img {
+
+    transition:0.5s;
+
+}
+
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+
+.showcase-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+.image-slider {
+
+    height:260px;
+
+}
+
+
+}
