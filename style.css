@@ -588,3 +588,11 @@ body {
     display: block;
 
 }
+.hero h1 {
+    margin-bottom: 20px;
+}
+
+
+.hero p {
+    margin: 15px 0;
+}
