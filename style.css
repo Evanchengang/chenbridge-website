@@ -1,6 +1,6 @@
 /* ==========================================
    ChenBridge Global Website
-   Main Stylesheet
+   Main Stylesheet - Clean Version
    ========================================== */
 
 
@@ -22,8 +22,19 @@
 body {
 
     color:#374151;
+
     line-height:1.7;
+
     background:#F8F6F1;
+
+    top:0 !important;
+
+}
+
+
+html {
+
+    scroll-behavior:smooth;
 
 }
 
@@ -31,8 +42,18 @@ body {
 .container {
 
     width:90%;
+
     max-width:1200px;
+
     margin:auto;
+
+}
+
+
+
+section[id] {
+
+    scroll-margin-top:90px;
 
 }
 
@@ -93,6 +114,16 @@ header {
 
 
 
+nav {
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
 nav a {
 
     margin-left:18px;
@@ -102,7 +133,8 @@ nav a {
     color:#374151;
 
     font-weight:600;
-   font-size:15px;
+
+    font-size:15px;
 
 }
 
@@ -116,6 +148,8 @@ nav a:hover {
 
 
 
+
+
 /* ==========================================
    Hero Section
    ========================================== */
@@ -125,7 +159,7 @@ nav a:hover {
 
     background:#F8F6F1;
 
-      padding:90px 0 70px;
+    padding:90px 0 70px;
 
 }
 
@@ -141,6 +175,13 @@ nav a:hover {
 
     align-items:start;
 
+}
+
+
+
+.hero-grid > div:first-child {
+
+    transform:translateY(-40px);
 
 }
 
@@ -174,9 +215,6 @@ h1 {
 
 
 
-/* Hero Image */
-
-
 .hero-image {
 
     width:100%;
@@ -193,8 +231,10 @@ h1 {
 
 
 
+
+
 /* ==========================================
-   Button
+   Buttons
    ========================================== */
 
 
@@ -225,6 +265,11 @@ h1 {
     background:#D96F16;
 
 }
+
+
+
+
+
 /* ==========================================
    Sections
    ========================================== */
@@ -251,7 +296,6 @@ section h2 {
 }
 
 
-/* Section Introduction Text */
 
 .text {
 
@@ -268,10 +312,6 @@ section h2 {
     line-height:1.8;
 
 }
-
-
-
-
 /* ==========================================
    Cards
    ========================================== */
@@ -294,7 +334,6 @@ section h2 {
     grid-template-columns:repeat(3,1fr);
 
 }
-
 
 
 
@@ -344,9 +383,6 @@ section h2 {
 
 
 
-/* Clickable Card */
-
-
 .card a {
 
     color:#0F3D2E;
@@ -364,6 +400,7 @@ section h2 {
     color:#F28C28;
 
 }
+
 
 
 
@@ -414,6 +451,7 @@ section h2 {
 
 
 
+
 /* ==========================================
    Tags
    ========================================== */
@@ -446,6 +484,7 @@ section h2 {
     border:1px solid #e5e7eb;
 
 }
+
 
 
 
@@ -563,27 +602,22 @@ footer {
 
 }
 
+
+
+
+
 /* ==========================================
    Google Translate
    ========================================== */
 
 
-/* Hide Google Translate Toolbar */
-
 .goog-te-banner-frame,
+
 .goog-te-banner-frame.skiptranslate {
 
     display:none !important;
 
     visibility:hidden !important;
-
-}
-
-
-
-body {
-
-    top:0 !important;
 
 }
 
@@ -606,6 +640,8 @@ body {
     top:-9999px;
 
 }
+
+
 
 
 
@@ -693,11 +729,6 @@ body {
     display:block;
 
 }
-
-
-
-
-
 /* ==========================================
    Packaging Capability Showcase
    ========================================== */
@@ -833,318 +864,7 @@ body {
 
 
 /* ==========================================
-   Mobile Responsive
-   ========================================== */
-
-
-@media(max-width:900px){
-
-
-.hero-grid {
-
-    grid-template-columns:1fr;
-
-}
-
-
-
-.cards,
-
-.three-col,
-
-.showcase-grid {
-
-    grid-template-columns:1fr;
-
-}
-
-
-
-h1 {
-
-    font-size:38px;
-
-}
-
-
-
-nav {
-
-    display:none;
-
-}
-
-
-
-.image-slider {
-
-    height:260px;
-
-}
-
-
-}
-
-@media(max-width:900px){
-
-header {
-    padding:12px 0;
-}
-
-
-.logo-img {
-    height:50px;
-}
-
-
-.language-switcher {
-    margin-left:auto;
-}
-
-
-#language-button {
-    font-size:14px;
-}
-
-}
-@media(max-width:900px){
-
-.hero h1 {
-
-    font-size:34px;
-    line-height:1.15;
-
-}
-
-}
-/* Mobile Hero Spacing */
-
-@media(max-width:900px){
-
-.hero {
-
-    padding:40px 0;
-
-}
-
-}
-/* Mobile Contact Section */
-
-@media(max-width:900px){
-
-.contact h2 {
-
-    font-size:30px;
-    line-height:1.25;
-
-}
-
-
-.contact .text {
-
-    font-size:16px;
-    line-height:1.7;
-    padding:0 10px;
-
-}
-
-}
-/* =====================================
-   Mobile Optimization - All Pages
-   ===================================== */
-
-
-@media(max-width:900px){
-
-
-/* ---------- Header ---------- */
-
-
-header {
-
-    padding:12px 0;
-
-}
-
-
-.logo-img {
-
-    height:50px;
-
-}
-
-
-.language-switcher {
-
-    margin-left:auto;
-
-}
-
-
-#language-button {
-
-    font-size:14px;
-
-}
-
-
-
-/* ---------- Hero Section ---------- */
-
-
-.hero {
-
-    padding:40px 0;
-
-}
-
-
-
-.hero h1 {
-
-    font-size:34px;
-    line-height:1.15;
-
-}
-
-
-
-.hero p {
-
-    font-size:16px;
-    line-height:1.6;
-
-}
-
-
-
-.hero-image {
-
-    margin-top:25px;
-
-}
-
-
-
-
-/* ---------- Section Titles ---------- */
-
-
-h2 {
-
-    font-size:30px;
-    line-height:1.25;
-    text-align:center;
-
-}
-
-
-
-/* ---------- Cards ---------- */
-
-
-.card {
-
-    padding:22px;
-
-}
-
-
-
-.card h3 {
-
-    font-size:20px;
-    line-height:1.3;
-
-}
-
-
-
-.card p {
-
-    font-size:16px;
-    line-height:1.6;
-
-}
-
-
-
-/* ---------- Industry / Packaging Intro Text ---------- */
-
-
-section > .container > p {
-
-    text-align:center;
-
-}
-
-
-
-/* ---------- Dark Sections ---------- */
-
-
-.dark h2 {
-
-    font-size:30px;
-
-}
-
-
-
-/* ---------- Packaging Showcase ---------- */
-
-
-.showcase-grid {
-
-    grid-template-columns:1fr;
-
-}
-
-
-
-.image-slider {
-
-    height:220px;
-
-}
-
-
-
-
-/* ---------- Contact CTA ---------- */
-
-
-.contact h2 {
-
-    font-size:30px;
-    line-height:1.25;
-
-}
-
-
-
-.contact .text {
-
-    font-size:16px;
-    line-height:1.7;
-    padding:0 10px;
-
-}
-
-
-
-.contact a {
-
-    font-size:22px;
-
-}
-
-
-
-}
-
-/* ==========================================
-   About Page
+   About Page Compatibility
    ========================================== */
 
 
@@ -1161,6 +881,7 @@ section > .container > p {
 }
 
 
+
 .leadership-image {
 
     width:100%;
@@ -1170,20 +891,245 @@ section > .container > p {
     border-radius:12px;
 
 }
-/* Smooth anchor positioning */
 
-html {
-    scroll-behavior:smooth;
+
+
+
+
+/* ==========================================
+   Mobile Responsive
+   ========================================== */
+
+
+@media(max-width:900px){
+
+
+header {
+
+    padding:12px 0;
+
 }
 
 
-section[id] {
 
-    scroll-margin-top:90px;
+.logo-img {
+
+    height:50px;
 
 }
+
+
+
+.nav {
+
+    align-items:center;
+
+}
+
+
+
+nav {
+
+    display:none;
+
+}
+
+
+
+.language-switcher {
+
+    margin-left:auto;
+
+}
+
+
+
+#language-button {
+
+    font-size:14px;
+
+}
+
+
+
+
+
+.hero {
+
+    padding:40px 0;
+
+}
+
+
+
+.hero-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
 .hero-grid > div:first-child {
 
-    transform:translateY(-40px);
+    transform:none;
+
+}
+
+
+
+.hero h1 {
+
+    font-size:34px;
+
+    line-height:1.15;
+
+}
+
+
+
+.hero p {
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+
+
+.hero-image {
+
+    margin-top:25px;
+
+}
+
+
+
+
+
+h1 {
+
+    font-size:38px;
+
+}
+
+
+
+h2 {
+
+    font-size:30px;
+
+    line-height:1.25;
+
+}
+
+
+
+
+
+.cards,
+
+.three-col,
+
+.showcase-grid {
+
+    grid-template-columns:1fr;
+
+}
+
+
+
+
+
+.card {
+
+    padding:22px;
+
+}
+
+
+
+.card h3 {
+
+    font-size:20px;
+
+    line-height:1.3;
+
+}
+
+
+
+.card p {
+
+    font-size:16px;
+
+    line-height:1.6;
+
+}
+
+
+
+
+
+section > .container > p {
+
+    text-align:center;
+
+}
+
+
+
+
+
+.dark h2 {
+
+    font-size:30px;
+
+}
+
+
+
+
+
+.image-slider {
+
+    height:220px;
+
+}
+
+
+
+
+
+.contact h2 {
+
+    font-size:30px;
+
+    line-height:1.25;
+
+}
+
+
+
+.contact .text {
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    padding:0 10px;
+
+}
+
+
+
+.contact a {
+
+    font-size:22px;
+
+}
+
+
 
 }
