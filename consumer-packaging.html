@@ -853,7 +853,39 @@ bubbles:true
 
 </script>
 
+<script>
 
+document.querySelectorAll(".image-slider").forEach(slider => {
+
+    const folder = slider.dataset.folder;
+
+    let images = [];
+    let index = 0;
+
+    fetch(`images/packaging/${folder}/images.json`)
+    .then(response => response.json())
+    .then(data => {
+
+        images = data;
+
+        setInterval(() => {
+
+            index++;
+
+            if(index >= images.length){
+                index = 0;
+            }
+
+            slider.querySelector("img").src =
+            `images/packaging/${folder}/${images[index]}`;
+
+        },2000);
+
+    });
+
+});
+
+</script>
 
 
 
