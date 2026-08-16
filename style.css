@@ -519,3 +519,8 @@ body {
 .goog-te-gadget .goog-te-combo {
     font-size: 14px !important;
 }
+/* Hide Google Translate Original Box */
+
+#google_translate_element {
+    display:none;
+}
