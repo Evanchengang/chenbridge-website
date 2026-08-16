@@ -117,3 +117,41 @@
     line-height:1.8;
 
 }
+/* ==========================================
+   Challenge Section
+========================================== */
+
+
+.challenge-section {
+
+    text-align:center;
+
+}
+
+
+
+.challenge-section h2 {
+
+    margin-bottom:25px;
+
+}
+
+
+
+.challenge-text {
+
+
+    max-width:850px;
+
+    margin:0 auto 45px;
+
+    text-align:center;
+
+    color:white;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+
+}
