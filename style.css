@@ -614,7 +614,7 @@ footer {
     display: grid;
     grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
     gap: 45px;
-    padding: 65px 0 50px;
+    padding: 44px 0 34px;
 }
 
 .footer-brand img {
@@ -693,7 +693,7 @@ footer {
 
 .footer-bottom {
     border-top: 1px solid #315747;
-    padding: 22px 0;
+    padding: 18px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
