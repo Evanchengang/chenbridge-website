@@ -614,7 +614,7 @@ footer {
     display: grid;
     grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
     gap: 45px;
-    padding: 65px 0 50px;
+    padding: 44px 0 34px;
 }
 
 .footer-brand img {
@@ -693,7 +693,7 @@ footer {
 
 .footer-bottom {
     border-top: 1px solid #315747;
-    padding: 22px 0;
+    padding: 18px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1384,4 +1384,152 @@ section > .container.outcome-strip {
 
 .cta .btn {
     margin-top: 28px;
+}
+
+
+/* ==========================================
+   Section Visual Image (wide scene photo)
+   ========================================== */
+
+.why-visual {
+    margin: 10px auto 45px;
+    max-width: 1080px;
+}
+
+.why-visual img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(15, 61, 46, 0.18);
+    display: block;
+}
+
+.split-row {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 55px;
+    align-items: center;
+}
+
+.split-row .split-img img {
+    width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(15, 61, 46, 0.18);
+    display: block;
+}
+
+.split-row .section-sub {
+    text-align: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.split-row h2 {
+    text-align: left;
+}
+
+
+/* ==========================================
+   Horizontal Process Flow
+   ========================================== */
+
+.process-flow {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.flow-step {
+    background: white;
+    border: 1px solid #e7e2d8;
+    border-top: 4px solid #F28C28;
+    border-radius: 12px;
+    padding: 24px 16px 20px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.flow-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(15, 61, 46, 0.12);
+}
+
+.flow-step h3 {
+    font-size: 17px;
+    color: #0F3D2E;
+    margin: 10px 0 8px;
+}
+
+.flow-step p {
+    font-size: 13px;
+    color: #5f6b75;
+    line-height: 1.55;
+    margin: 0;
+}
+
+.flow-num {
+    display: inline-block;
+    background: #0F3D2E;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+}
+
+/* connecting arrow between steps */
+.flow-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -16px;
+    top: 42px;
+    color: #F28C28;
+    font-size: 18px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+
+@media (max-width: 1100px) {
+    .process-flow {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 34px;
+    }
+    .flow-step:nth-child(3n)::after {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .split-row {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .split-row h2,
+    .split-row .section-sub {
+        text-align: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .process-flow {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 30px;
+    }
+    .flow-step:nth-child(3n)::after {
+        content: "→";
+        display: block;
+    }
+    .flow-step:nth-child(2n)::after {
+        display: none;
+    }
+    .flow-step:last-child::after {
+        display: none !important;
+    }
 }
