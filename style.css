@@ -1001,30 +1001,31 @@ footer {
         line-height: 1.6;
     }
 
-     .dropdown-menu {
- position: static;
- display: none;
- border: none;
- box-shadow: none;
- padding: 0 0 8px 16px;
- min-width: 0;
- opacity: 1;
- visibility: visible;
- transform: none;
- transition: none;
- }
+    .dropdown-menu {
+        position: static;
+        display: none !important;
+        border: none;
+        box-shadow: none;
+        padding: 4px 0 10px 20px;
+        min-width: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+    }
 
- .dropdown.open .dropdown-menu {
- display: block;
- }
+    .dropdown.open > .dropdown-menu {
+        display: block !important;
+    }
 
- .dropdown > a::after {
- transition: transform 0.2s ease;
- }
+    .dropdown > a::after {
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
 
- .dropdown.open > a::after {
- transform: rotate(180deg);
- }
+    .dropdown.open > a::after {
+        transform: rotate(180deg);
+    }
 
     .dropdown-menu a {
         padding: 6px 0;
