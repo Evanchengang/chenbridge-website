@@ -611,10 +611,10 @@ footer {
 }
 
 .footer-main {
- display: grid;
- grid-template-columns: 1.6fr 1fr 1fr 1fr 1.2fr;
- gap: 40px;
- padding: 44px 0 34px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.2fr;
+    gap: 45px;
+    padding: 44px 0 34px;
 }
 
 .footer-brand img {
@@ -1003,28 +1003,11 @@ footer {
 
     .dropdown-menu {
         position: static;
-        display: none !important;
+        display: block;
         border: none;
         box-shadow: none;
-        padding: 4px 0 10px 20px;
+        padding: 0 0 8px 16px;
         min-width: 0;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        transition: none;
-    }
-
-    .dropdown.open > .dropdown-menu {
-        display: block !important;
-    }
-
-    .dropdown > a::after {
-        display: inline-block;
-        transition: transform 0.2s ease;
-    }
-
-    .dropdown.open > a::after {
-        transform: rotate(180deg);
     }
 
     .dropdown-menu a {
@@ -1549,63 +1532,4 @@ section > .container.outcome-strip {
     .flow-step:last-child::after {
         display: none !important;
     }
-}
-
-/* ==========================================
- Resources Page
- ========================================== */
-
-.resources-list {
- max-width: 880px;
- margin: 0 auto;
-}
-
-.resource-item {
- background: white;
- border: 1px solid #e5e7eb;
- border-radius: 12px;
- padding: 48px;
- margin-bottom: 32px;
- transition: 0.3s;
-}
-
-.resource-item:hover {
- box-shadow: 0 12px 30px rgba(0,0,0,0.08);
- transform: translateY(-4px);
-}
-
-.resource-num {
- display: inline-block;
- color: #F28C28;
- font-size: 36px;
- font-weight: 800;
- margin-bottom: 16px;
- line-height: 1;
-}
-
-.resource-item h2 {
- color: #0F3D2E;
- font-size: 26px;
- margin-bottom: 14px;
- text-align: left;
-}
-
-.resource-item p {
- color: #4b5563;
- font-size: 16px;
- line-height: 1.7;
- margin-bottom: 24px;
-}
-
-@media (max-width: 900px) {
- .resource-item {
- padding: 28px;
- margin-bottom: 20px;
- }
- .resource-num {
- font-size: 30px;
- }
- .resource-item h2 {
- font-size: 22px;
- }
 }
