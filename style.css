@@ -1619,3 +1619,20 @@ section > .container.outcome-strip {
     margin-bottom: 25px;
     font-weight: bold;
 }
+
+/* ==========================================
+   Article Image Size Adjustment
+   Only modifies article visual image
+========================================== */
+
+.why-visual {
+    max-width: 850px;
+    margin: 28px auto 36px;
+}
+
+.why-visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
