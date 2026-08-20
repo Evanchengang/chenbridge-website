@@ -1,4 +1,16 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# Disallow admin or system paths if any appear in future
+Disallow: /resources_README.txt
+
 Sitemap: https://chenbridge.com/sitemap.xml

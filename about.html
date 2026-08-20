@@ -28,7 +28,6 @@
 
 <link rel="icon" type="image/png" href="favicon.png">
 
-
 <!-- Google Translate -->
 
 <script type="text/javascript">
@@ -45,11 +44,40 @@ includedLanguages:'en,zh-CN,ja,ko,de,fr,es'
 
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="About ChenBridge">
+<meta name="twitter:description" content="ChenBridge is your China packaging sourcing partner — helping global companies source packaging materials and solutions from China through local support and reliable supplier coordination.">
+<meta name="twitter:image" content="https://chenbridge.com/og-image.png">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="googlebot" content="index, follow">
+<meta name="bingbot" content="index, follow">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ChenBridge",
+  "alternateName": "ChenBridge Global Advisory",
+  "url": "https://chenbridge.com/",
+  "logo": "https://chenbridge.com/logo.png",
+  "image": "https://chenbridge.com/og-image.png",
+  "description": "Independent packaging sourcing representative in China helping global companies source packaging materials, products, and complete packaging solutions from qualified manufacturers.",
+  "email": "contact@chenbridge.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Suzhou",
+    "addressCountry": "CN"
+  },
+  "areaServed": "Worldwide",
+  "sameAs": []
+}
+</script>
+
+<meta name="theme-color" content="#0F3D2E">
 </head>
 
-
 <body>
-
 
 <!-- ================= HEADER ================= -->
 
@@ -88,12 +116,11 @@ includedLanguages:'en,zh-CN,ja,ko,de,fr,es'
 
 <a href="about.html">About</a>
 
-<a href="insights.html">Insights</a>
+<a href="resources.html">Resources</a>
 
 <a href="contact.html">Contact</a>
 
 </nav>
-
 
 <div class="language-switcher">
 
@@ -120,7 +147,6 @@ includedLanguages:'en,zh-CN,ja,ko,de,fr,es'
 
 </header>
 
-
 <!-- ================= HERO (original slider preserved) ================= -->
 
 <section class="about-hero">
@@ -139,13 +165,13 @@ includedLanguages:'en,zh-CN,ja,ko,de,fr,es'
 
 <div class="hero-slide">
 <span class="hero-label">Local Presence, Clear Responsibility</span>
-<h1>Work With China Packaging Suppliers Without Building a Local Team</h1>
+<p class="hero-slide-heading">Work With China Packaging Suppliers Without Building a Local Team</p>
 <p>Direct communication, production follow-up, and practical coordination — so requirements stay aligned and issues surface early.</p>
 </div>
 
 <div class="hero-slide">
 <span class="hero-label">Focused on Packaging</span>
-<h1>Materials. Products. Complete Packaging Solutions.</h1>
+<p class="hero-slide-heading">Materials. Products. Complete Packaging Solutions.</p>
 <p>From corrugated and protective packaging to custom and multi-component programs — support built around real packaging projects.</p>
 </div>
 
@@ -156,7 +182,6 @@ includedLanguages:'en,zh-CN,ja,ko,de,fr,es'
 </div>
 
 </section>
-
 
 <!-- ================= WHO WE ARE ================= -->
 
@@ -203,7 +228,6 @@ includedLanguages:'en,zh-CN,ja,ko,de,fr,es'
 
 </section>
 
-
 <!-- ================= CHALLENGE ================= -->
 
 <section class="dark challenge-section">
@@ -242,7 +266,6 @@ When details are lost between buyer and factory, or when problems appear only af
 </div>
 
 </section>
-
 
 <!-- ================= APPROACH ================= -->
 
@@ -288,7 +311,6 @@ When details are lost between buyer and factory, or when problems appear only af
 
 </section>
 
-
 <!-- ================= EXPERTISE ================= -->
 
 <section class="light-section">
@@ -325,7 +347,6 @@ When details are lost between buyer and factory, or when problems appear only af
 
 </section>
 
-
 <!-- ================= PHILOSOPHY ================= -->
 
 <section>
@@ -357,7 +378,6 @@ When details are lost between buyer and factory, or when problems appear only af
 
 </section>
 
-
 <!-- ================= MISSION ================= -->
 
 <section class="dark mission-banner">
@@ -369,7 +389,6 @@ When details are lost between buyer and factory, or when problems appear only af
 </div>
 
 </section>
-
 
 <!-- ================= CONTACT ================= -->
 
@@ -388,7 +407,6 @@ Whether you need packaging materials, custom solutions, or supplier support in C
 </div>
 
 </section>
-
 
 <!-- ================= FOOTER ================= -->
 
@@ -441,7 +459,6 @@ Whether you need packaging materials, custom solutions, or supplier support in C
 
 </footer>
 
-
 <script>
 
 // Hero Slider — original effect preserved
@@ -458,7 +475,6 @@ if (heroSlides.length > 1) {
     }, 5000);
 }
 
-
 // Google Translate
 
 function changeLanguage(lang){
@@ -472,11 +488,24 @@ function changeLanguage(lang){
     }, 500);
 }
 
-
 // Mobile menu toggle
-
 document.getElementById("menu-toggle").addEventListener("click", function(){
     document.getElementById("main-nav").classList.toggle("open");
+});
+
+// Mobile dropdown: click to expand/collapse (touch-friendly, no hover)
+document.querySelectorAll("#main-nav .dropdown > a").forEach(function(link){
+    link.addEventListener("click", function(e){
+        if (window.innerWidth <= 900) {
+            e.preventDefault();
+            var parent = this.parentElement;
+            var isOpen = parent.classList.contains("active");
+            document.querySelectorAll("#main-nav .dropdown").forEach(function(d){
+                d.classList.remove("active");
+            });
+            if (!isOpen) parent.classList.add("active");
+        }
+    });
 });
 
 </script>
