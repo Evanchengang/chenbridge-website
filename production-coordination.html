@@ -29,14 +29,94 @@
 <link rel="icon" type="image/png" href="favicon.png">
 
 <script type="text/javascript">
+/* Google Translate: load only when user picks a language (no request on page load) */
+var __gtLoading = false;
+var __gtReady = false;
+var __gtPendingLang = null;
 function googleTranslateElementInit() {
   new google.translate.TranslateElement(
     { pageLanguage: 'en', includedLanguages: 'en,zh-CN,ja,ko,de,fr,es' },
     'google_translate_element'
   );
+  __gtReady = true;
+  if (__gtPendingLang) {
+    var lang = __gtPendingLang;
+    __gtPendingLang = null;
+    applyGoogleLanguage(lang);
+  }
+}
+function loadGoogleTranslate(cb) {
+  if (__gtReady) { if (cb) cb(true); return; }
+  if (__gtLoading) return;
+  __gtLoading = true;
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  s.async = true;
+  var done = false;
+  var timer = setTimeout(function() {
+    if (done) return;
+    done = true;
+    __gtLoading = false;
+    if (cb) cb(false);
+  }, 3000);
+  s.onload = function() {
+    /* callback is via googleTranslateElementInit; allow extra time for widget */
+    setTimeout(function() {
+      if (done) return;
+      if (__gtReady) {
+        done = true;
+        clearTimeout(timer);
+        if (cb) cb(true);
+      }
+    }, 800);
+  };
+  s.onerror = function() {
+    if (done) return;
+    done = true;
+    clearTimeout(timer);
+    __gtLoading = false;
+    if (cb) cb(false);
+  };
+  document.head.appendChild(s);
+}
+function applyGoogleLanguage(lang) {
+  var tries = 0;
+  var checkExist = setInterval(function() {
+    var select = document.querySelector('.goog-te-combo');
+    if (select) {
+      clearInterval(checkExist);
+      select.value = lang;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    } else if (++tries > 20) {
+      clearInterval(checkExist);
+    }
+  }, 250);
+}
+function changeLanguage(lang) {
+  if (lang === 'en') {
+    /* Prefer native page; if widget already active, reset */
+    var select = document.querySelector('.goog-te-combo');
+    if (select) {
+      select.value = 'en';
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    return;
+  }
+  if (__gtReady) {
+    applyGoogleLanguage(lang);
+    return;
+  }
+  __gtPendingLang = lang;
+  loadGoogleTranslate(function(ok) {
+    if (!ok) {
+      __gtPendingLang = null;
+      /* Fail silently so page is never blocked (e.g. mainland China) */
+    }
+  });
 }
 </script>
-<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 <meta property="og:locale" content="en_US">
 <meta name="twitter:title" content="Packaging Production Coordination in China">
@@ -378,16 +458,8 @@ Have an order in production or about to start? We can coordinate follow-up, qual
 </footer>
 
 <script>
-function changeLanguage(lang){
-    var checkExist = setInterval(function(){
-        var select = document.querySelector(".goog-te-combo");
-        if(select){
-            clearInterval(checkExist);
-            select.value = lang;
-            select.dispatchEvent(new Event("change", { bubbles:true }));
-        }
-    }, 500);
-}
+/* changeLanguage defined in head (on-demand Google Translate) */
+
 
 // Mobile menu toggle
 document.getElementById("menu-toggle").addEventListener("click", function(){
