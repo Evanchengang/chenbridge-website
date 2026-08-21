@@ -1622,17 +1622,36 @@ section > .container.outcome-strip {
 
 /* ==========================================
    Article Image Size Adjustment
-   Only modifies article visual image
+   Fixed display size for Insights article images
+   (independent of uploaded pixel dimensions; no stretch)
 ========================================== */
 
-.why-visual {
-    max-width: 850px;
+.article-body .why-visual {
+    max-width: 720px;
+    width: 100%;
     margin: 28px auto 36px;
 }
 
-.why-visual img {
+.article-body .why-visual img {
     width: 100%;
+    max-width: 100%;
     height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
     display: block;
     border-radius: 8px;
+    box-shadow: 0 12px 28px rgba(15, 61, 46, 0.12);
+}
+
+/* Mobile: slightly shorter frame, still fixed ratio */
+@media (max-width: 700px) {
+    .article-body .why-visual {
+        max-width: 100%;
+        margin: 20px auto 28px;
+    }
+    .article-body .why-visual img {
+        aspect-ratio: 16 / 9;
+        border-radius: 6px;
+    }
 }
