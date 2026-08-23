@@ -1,0 +1,28 @@
+{
+  "articles": [
+    {
+      "title": "Why Data Server Crate Packaging Matters for Hyperscale & AI",
+      "url": "article-data-server-crate-packaging.html",
+      "date": "2026-08-20",
+      "excerpt": "How engineered crates protect high-value servers and racks — and why local coordination in China matters for data center projects."
+    },
+    {
+      "title": "How to Evaluate a Packaging Sourcing Supplier in China",
+      "url": "article-evaluate-packaging-supplier.html",
+      "date": "2026-08-15",
+      "excerpt": "Key criteria for assessing packaging manufacturers before you commit to production."
+    },
+    {
+      "title": "Common Export Packaging Challenges",
+      "url": "article-export-packaging-challenges.html",
+      "date": "2026-08-10",
+      "excerpt": "Practical issues global buyers face with export packaging — and how to avoid them."
+    },
+    {
+      "title": "How to Improve China Packaging Supply Chain Visibility",
+      "url": "article-packaging-supply-chain-visibility.html",
+      "date": "2026-08-05",
+      "excerpt": "Why visibility into Chinese packaging manufacturing matters and how to improve it."
+    }
+  ]
+}
