@@ -1,28 +1,39 @@
 {
   "articles": [
     {
-      "title": "Why Data Server Crate Packaging Matters for Hyperscale & AI",
+      "category": "Company News",
+      "title": "Why We Built a Chinese Version of ChenBridge",
+      "url": "article-why-chinese-version-chenbridge.html",
+      "date": "2026",
+      "excerpt": "Building a stronger connection between international companies looking for reliable manufacturing partners and Chinese manufacturers who want to be understood by global customers."
+    },
+    {
+      "category": "Industrial Packaging",
+      "title": "Why Data Server Crate Packaging Matters More Than Ever in the Age of Hyperscale Data Centers and AI Infrastructure",
       "url": "article-data-server-crate-packaging.html",
-      "date": "2026-08-20",
-      "excerpt": "How engineered crates protect high-value servers and racks — and why local coordination in China matters for data center projects."
+      "date": "2026",
+      "excerpt": "How purpose-engineered crates and protective packaging safeguard high-value servers and racks — and why sourcing from China with local coordination matters for hyperscale and AI infrastructure projects."
     },
     {
-      "title": "How to Evaluate a Packaging Sourcing Supplier in China",
+      "category": "Supplier Evaluation",
+      "title": "How to Evaluate a Packaging Supplier in China",
       "url": "article-evaluate-packaging-supplier.html",
-      "date": "2026-08-15",
-      "excerpt": "Key criteria for assessing packaging manufacturers before you commit to production."
+      "date": "2026",
+      "excerpt": "A low quotation tells you very little. Real evaluation looks at production capability, quality systems, export experience, and communication reliability — before you place an order."
     },
     {
+      "category": "Export Packaging",
       "title": "Common Export Packaging Challenges",
       "url": "article-export-packaging-challenges.html",
-      "date": "2026-08-10",
-      "excerpt": "Practical issues global buyers face with export packaging — and how to avoid them."
+      "date": "2026",
+      "excerpt": "Moisture damage, collapsed cartons, non-compliant wood packaging, and unclear specifications — most export packaging problems are preventable with the right preparation."
     },
     {
+      "category": "Supply Chain",
       "title": "How to Improve China Packaging Supply Chain Visibility",
       "url": "article-packaging-supply-chain-visibility.html",
-      "date": "2026-08-05",
-      "excerpt": "Why visibility into Chinese packaging manufacturing matters and how to improve it."
+      "date": "2026",
+      "excerpt": "Visibility does not come from software alone. It comes from agreed reporting routines, defined quality checkpoints, and local verification at the factory."
     }
   ]
 }
