@@ -236,64 +236,32 @@ function changeLanguage(lang) {
 <!-- ================= ARTICLE LISTING ================= -->
 
 <section class="light-section">
-
-<div class="container" style="max-width:900px;">
-
-<article class="article-list-item">
-<div class="article-list-meta">
-<span class="article-category">Company News</span>
-<span class="article-date">2026</span>
-</div>
-<h2 class="article-list-title"><a href="article-why-chinese-version-chenbridge.html">Why We Built a Chinese Version of ChenBridge</a></h2>
-<p class="article-list-desc">Building a stronger connection between international companies looking for reliable manufacturing partners and Chinese manufacturers who want to be understood by global customers.</p>
-<a href="article-why-chinese-version-chenbridge.html" class="article-list-link">Read More →</a>
-</article>
-
-
-<article class="article-list-item">
-<div class="article-list-meta">
-<span class="article-category">Industrial Packaging</span>
-<span class="article-date">2026</span>
-</div>
-<h2 class="article-list-title"><a href="article-data-server-crate-packaging.html">Why Data Server Crate Packaging Matters More Than Ever in the Age of Hyperscale Data Centers and AI Infrastructure</a></h2>
-<p class="article-list-desc">How purpose-engineered crates and protective packaging safeguard high-value servers and racks — and why sourcing from China with local coordination matters for hyperscale and AI infrastructure projects.</p>
-<a href="article-data-server-crate-packaging.html" class="article-list-link">Read More →</a>
-</article>
-
-
-<article class="article-list-item">
-<div class="article-list-meta">
-<span class="article-category">Supplier Evaluation</span>
-<span class="article-date">2026</span>
-</div>
-<h2 class="article-list-title"><a href="article-evaluate-packaging-supplier.html">How to Evaluate a Packaging Supplier in China</a></h2>
-<p class="article-list-desc">A low quotation tells you very little. Real evaluation looks at production capability, quality systems, export experience, and communication reliability — before you place an order.</p>
-<a href="article-evaluate-packaging-supplier.html" class="article-list-link">Read More →</a>
-</article>
-
-<article class="article-list-item">
-<div class="article-list-meta">
-<span class="article-category">Export Packaging</span>
-<span class="article-date">2026</span>
-</div>
-<h2 class="article-list-title"><a href="article-export-packaging-challenges.html">Common Export Packaging Challenges</a></h2>
-<p class="article-list-desc">Moisture damage, collapsed cartons, non-compliant wood packaging, and unclear specifications — most export packaging problems are preventable with the right preparation.</p>
-<a href="article-export-packaging-challenges.html" class="article-list-link">Read More →</a>
-</article>
-
-<article class="article-list-item">
-<div class="article-list-meta">
-<span class="article-category">Supply Chain</span>
-<span class="article-date">2026</span>
-</div>
-<h2 class="article-list-title"><a href="article-packaging-supply-chain-visibility.html">How to Improve China Packaging Supply Chain Visibility</a></h2>
-<p class="article-list-desc">Visibility does not come from software alone. It comes from agreed reporting routines, defined quality checkpoints, and local verification at the factory.</p>
-<a href="article-packaging-supply-chain-visibility.html" class="article-list-link">Read More →</a>
-</article>
-
-</div>
-
+  <div class="container" style="max-width:900px;" id="articles-container">
+    <!-- Articles loaded dynamically -->
+  </div>
 </section>
+
+<script>
+fetch('articles.json')
+  .then(r => r.json())
+  .then(data => {
+    const container = document.getElementById('articles-container');
+    container.innerHTML = data.articles.map(a => `
+      <article class="article-list-item">
+        <div class="article-list-meta">
+          <span class="article-category">${a.category}</span>
+          <span class="article-date">${a.date}</span>
+        </div>
+        <h2 class="article-list-title"><a href="${a.url}">${a.title}</a></h2>
+        <p class="article-list-desc">${a.excerpt}</p>
+        <a href="${a.url}" class="article-list-link">Read More →</a>
+      </article>
+    `).join('');
+  })
+  .catch(() => {
+    document.getElementById('articles-container').innerHTML = '<p style="text-align:center;">Failed to load articles. Please refresh.</p>';
+  });
+</script>
 
 <!-- ================= CTA ================= -->
 
