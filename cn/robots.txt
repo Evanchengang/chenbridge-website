@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://chenbridge.com/sitemap.xml
+Sitemap: https://chenbridge.com/cn/sitemap.xml
