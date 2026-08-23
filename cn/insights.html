@@ -73,50 +73,34 @@
 </section>
 
 <section class="section">
-  <div class="insights-grid">
-    <div class="insight-card reveal reveal-delay-1">
-      <div class="insight-tag">市场策略</div>
-      <h3>海外客户如何选择中国供应商？</h3>
-      <p>了解海外采购商的决策流程和关注点，帮助您在他们搜索时脱颖而出，建立初步信任。本文深入分析B2B采购的5个关键阶段。</p>
-      <div class="insight-date">2026年8月</div>
-      <a href="#" class="read-more" style="opacity:0.5;cursor:not-allowed;">即将发布</a>
-    </div>
-    <div class="insight-card reveal reveal-delay-2">
-      <div class="insight-tag">品牌建设</div>
-      <h3>为什么制造企业需要专业英文网站？</h3>
-      <p>一个专业的英文官网不仅是展示窗口，更是建立国际信任的基础。本文分析官网对B2B采购决策的影响，以及制造业官网的必备要素。</p>
-      <div class="insight-date">2026年8月</div>
-      <a href="#" class="read-more" style="opacity:0.5;cursor:not-allowed;">即将发布</a>
-    </div>
-    <div class="insight-card reveal reveal-delay-3">
-      <div class="insight-tag">渠道运营</div>
-      <h3>LinkedIn如何帮助企业开发海外市场？</h3>
-      <p>LinkedIn是B2B出海最有效的社交平台之一。本文分享制造业LinkedIn运营的核心策略、内容规划方法和客户开发技巧。</p>
-      <div class="insight-date">2026年8月</div>
-      <a href="#" class="read-more" style="opacity:0.5;cursor:not-allowed;">即将发布</a>
-    </div>
-    <div class="insight-card reveal reveal-delay-1">
-      <div class="insight-tag">内容营销</div>
-      <h3>工厂视频如何提升采购信任？</h3>
-      <p>实拍工厂视频是最有效的信任建立工具。本文分享拍摄要点、内容结构、发布策略和效果衡量方法。</p>
-      <div class="insight-date">2026年8月</div>
-      <a href="#" class="read-more" style="opacity:0.5;cursor:not-allowed;">即将发布</a>
-    </div>
-    <div class="insight-card reveal reveal-delay-2">
-      <div class="insight-tag">SEO优化</div>
-      <h3>制造企业SEO：从0到1的搜索优化指南</h3>
-      <p>让海外客户在Google搜索时找到您。本文详解制造业SEO的关键词策略、技术优化和内容规划。</p>
-      <div class="insight-date">2026年8月</div>
-      <a href="#" class="read-more" style="opacity:0.5;cursor:not-allowed;">即将发布</a>
-    </div>
-    <div class="insight-card reveal reveal-delay-3">
-      <div class="insight-tag">案例分析</div>
-      <h3>中小制造企业出海：常见误区与避坑指南</h3>
-      <p>总结我们服务过的50+制造企业的出海经验，提炼最常见的5个误区和对应的解决方案。</p>
-      <div class="insight-date">2026年8月</div>
-      <a href="#" class="read-more" style="opacity:0.5;cursor:not-allowed;">即将发布</a>
-    </div>
+  <div class="insights-grid" id="insights-grid">
+    <!-- 文章由 JS 自动渲染 -->
   </div>
+</section>
+
+<script>
+fetch('articles.json')
+  .then(r => r.json())
+  .then(data => {
+    const container = document.getElementById('insights-grid');
+    container.innerHTML = data.articles.map((a, i) => {
+      const delayClass = i % 3 === 0 ? 'reveal-delay-1' : (i % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3');
+      const linkStyle = a.published ? '' : ' style="opacity:0.5;cursor:not-allowed;"';
+      const linkText = a.published ? '阅读全文' : '即将发布';
+      return `
+      <div class="insight-card reveal ${delayClass}">
+        <div class="insight-tag">${a.tag}</div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+        <div class="insight-date">${a.date}</div>
+        <a href="${a.url}" class="read-more"${linkStyle}>${linkText}</a>
+      </div>`;
+    }).join('');
+  })
+  .catch(() => {
+    document.getElementById('insights-grid').innerHTML = '<p style="text-align:center;color:var(--text-muted);">加载文章列表失败，请刷新页面重试。</p>';
+  });
+</script>
 </section>
 
 <footer class="footer">
