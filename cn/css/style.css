@@ -281,7 +281,9 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
   .footer-inner{grid-template-columns:1fr;}
   .footer-bottom{flex-direction:column;gap:10px;text-align:center;}
   .hero-stats{flex-direction:column;gap:20px;text-align:center;}
-  .splash-logo{width:min(80vw,320px);}
+   .splash-screen{justify-content:flex-start;padding-top:30vh;min-height:100dvh;}
+  .splash-logo{width:min(80vw,320px);margin-bottom:20px;}
+  .splash-text{font-size:16px;letter-spacing:2px;}
   .splash-text{font-size:16px;}
   .logo img{width:102px;max-height:41px;}
 .header.scrolled .logo img{width:88px;max-height:36px;}
