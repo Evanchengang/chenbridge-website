@@ -23,9 +23,9 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 /* ===== SPLASH SCREEN - 高级灰白色 ===== */
 .splash-screen{position:fixed;inset:0;z-index:99999;background:linear-gradient(160deg,#F8F6F1 0%,#F1EEE7 55%,#E7E2D8 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
 .splash-screen.hide{opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.8s ease,visibility 0.8s ease;}
-.splash-logo{width:min(72vw,420px);max-width:420px;margin:0 auto 28px;opacity:0;animation:splashLogoIn 1.2s ease forwards;display:flex;justify-content:center;align-items:center;}
+.splash-logo{width:min(72vw,420px);max-width:420px;margin-bottom:28px;opacity:0;animation:splashLogoIn 1.2s ease forwards;display:flex;justify-content:center;align-items:center;}
 .splash-logo img{width:100%;height:auto;display:block;margin:0 auto;}
-.splash-text{font-size:22px;color:var(--primary);letter-spacing:4px;font-weight:300;opacity:0;animation:splashTextIn 0.8s ease 1.5s forwards;text-align:center;padding:0 24px;margin:0 auto;width:100%;max-width:560px;}
+.splash-text{font-size:22px;color:var(--primary);letter-spacing:4px;font-weight:300;opacity:0;animation:splashTextIn 0.8s ease 1.5s forwards;text-align:center;padding:0 24px;margin:0;width:100%;max-width:560px;}
 @keyframes splashLogoIn{0%{opacity:0;transform:scale(0.9);}100%{opacity:1;transform:scale(1);}}
 @keyframes splashTextIn{to{opacity:1;}}
 
