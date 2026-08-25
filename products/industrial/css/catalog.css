@@ -1,7 +1,7 @@
 :root {
   --cr-primary: #0F3D2E;
   --cr-primary-soft: #1a5240;
-  --cr-accent: #C4A574;
+  --cr-accent: #8B9A8E;
   --cr-bg: #F7F5F0;
   --cr-card: #fff;
   --cr-text: #2D3436;
@@ -59,7 +59,7 @@ a { color: inherit; }
 
 /* Hero: text left + 3 images right */
 .hero {
-  background: linear-gradient(135deg, #0c3328 0%, #0F3D2E 50%, #1a5240 100%);
+  background: linear-gradient(135deg, #0a241c 0%, #0F3D2E 45%, #163d32 100%);
   color: #fff; padding: 48px 0 44px;
 }
 .hero-grid {
@@ -152,19 +152,30 @@ a { color: inherit; }
   transition: transform .22s, box-shadow .22s, border-color .22s;
 }
 .card:hover {
-  transform: translateY(-3px); box-shadow: var(--cr-shadow);
+  transform: translateY(-4px); box-shadow: var(--cr-shadow);
   border-color: rgba(15,61,46,.22);
 }
 .card.is-slot { cursor: default; opacity: .92; }
 .card.is-slot:hover { transform: none; box-shadow: none; }
+.card.is-slot:hover .ph,
+.card.is-slot:hover .media img { transform: none; }
 .media {
   position: relative; aspect-ratio: 1; background: #EEF0EC; overflow: hidden;
 }
+.media img,
 .ph {
   width: 100%; height: 100%;
+  transition: transform .45s cubic-bezier(.25,.1,.25,1);
+}
+.card:hover .media img,
+.card:hover .ph {
+  transform: scale(1.06);
+}
+.ph {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 8px; padding: 16px; text-align: center;
   background: linear-gradient(160deg, #F3F1EC, #E5EAE4);
+  object-fit: cover;
 }
 .ph i { font-style: normal; font-size: 28px; opacity: .42; line-height: 1; }
 .ph b {
@@ -302,4 +313,49 @@ a { color: inherit; }
   .logo img { height: 40px; }
   .drawer { width: 100%; }
   .fbtn { font-size: 12px; padding: 7px 11px; }
+}
+
+
+/* Want more CTA */
+.more-cta {
+  margin-top: 40px;
+  padding: 28px 24px;
+  text-align: center;
+  background: #fff;
+  border: 1px dashed rgba(15,61,46,.25);
+  border-radius: var(--cr-radius);
+}
+.more-cta h3 {
+  font-size: 18px;
+  color: var(--cr-primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.more-cta p {
+  font-size: 14px;
+  color: var(--cr-muted);
+  max-width: 420px;
+  margin: 0 auto 16px;
+  line-height: 1.55;
+}
+.more-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cr-primary);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--cr-radius);
+  transition: background .2s, transform .2s;
+}
+.more-cta a:hover {
+  background: var(--cr-primary-soft);
+  transform: translateY(-1px);
+}
+@media (max-width: 560px) {
+  .more-cta { margin-top: 28px; padding: 22px 16px; }
+  .more-cta h3 { font-size: 16px; }
 }
