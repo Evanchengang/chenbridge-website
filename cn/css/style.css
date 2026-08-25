@@ -212,6 +212,12 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 .footer-col h4{color:var(--white);font-size:13px;font-weight:600;margin-bottom:10px;letter-spacing:1px;}
 .footer-col a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;padding:3px 0;transition:all 0.3s;}
 .footer-col a:hover{color:var(--accent);padding-left:4px;}
+.footer-qr{margin-top:10px;}
+.footer-qr span{display:block;color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:6px;}
+.footer-qr img{width:100px;height:100px;border-radius:var(--radius);display:block;background:var(--white);padding:4px;}
+@media(max-width:640px){
+  .footer-qr img{width:80px;height:80px;}
+}
 .footer-bottom{max-width:1280px;margin:24px auto 0;padding:14px 40px 0;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.4);box-sizing:border-box;}
 
 /* ===== RESOURCES ===== */
