@@ -212,15 +212,16 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
   padding:0 40px 28px;
   display:flex;
   align-items:flex-start;
-  justify-content:space-between;
-  gap:40px 48px;
+  justify-content:flex-start;
+  gap:32px 40px;
   flex-wrap:wrap;
 }
 
-/* Brand */
+/* Brand - stays left, pushes the rest to the right */
 .footer-brand{
   flex:0 0 auto;
   max-width:260px;
+  margin-right:auto;
 }
 .footer-brand img{
   height:40px;
@@ -263,7 +264,7 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 /* Columns */
 .footer-col{
   flex:0 0 auto;
-  min-width:120px;
+  min-width:110px;
 }
 .footer-col h4{
   color:#fff;
@@ -288,7 +289,7 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 .footer-qr{
   flex:0 0 auto;
   text-align:center;
-  margin-left:auto;
+  margin-left:8px;
 }
 .footer-qr img{
   width:80px;
@@ -325,7 +326,11 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 /* Responsive */
 @media(max-width:1024px){
   .footer-inner{
-    gap:32px 28px;
+    gap:28px 24px;
+  }
+  .footer-brand{
+    margin-right:0;
+    max-width:220px;
   }
   .footer-qr{
     margin-left:0;
