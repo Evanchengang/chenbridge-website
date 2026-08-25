@@ -34,7 +34,7 @@
 
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
+    <div class="hero-copy">
       <div class="bc">
         <a href="../../index.html">Home</a> ·
         <a href="../../packaging-custom.html">Custom &amp; Retail</a> ·
@@ -42,37 +42,41 @@
       </div>
       <div class="hero-label">Capability Showcase</div>
       <h1>Custom &amp; Retail Packaging Examples</h1>
-      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization.</p>
+      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization for your project.</p>
       <div class="hero-meta">
         <span><strong>Not a webshop</strong> — sourcing support</span>
         <span><strong>Print · structure · material</strong> to brief</span>
       </div>
     </div>
-    <div class="hero-photos" aria-hidden="true">
-      <div class="hp"><span>▣</span>Featured 1<br>Replace photo</div>
-      <div class="hp"><span>▣</span>Featured 2</div>
-      <div class="hp"><span>▣</span>Featured 3</div>
+    <div class="hero-stage" id="hero-stage" aria-label="Featured packaging examples">
+      <div class="hero-slide is-active" data-i="0">
+        <div class="hs-ph"><span>▣</span>Image 1 — replace<br>images/hero-1.webp</div>
+      </div>
+      <div class="hero-slide" data-i="1">
+        <div class="hs-ph"><span>▣</span>Image 2 — replace<br>images/hero-2.webp</div>
+      </div>
+      <div class="hero-slide" data-i="2">
+        <div class="hs-ph"><span>▣</span>Image 3 — replace<br>images/hero-3.webp</div>
+      </div>
+      <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero slides">
+        <button type="button" class="is-on" data-i="0" aria-label="Slide 1"></button>
+        <button type="button" data-i="1" aria-label="Slide 2"></button>
+        <button type="button" data-i="2" aria-label="Slide 3"></button>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="ind">
-  <div class="wrap ind-in">
-    <span class="ind-label">Product catalogs</span>
-    <a href="../custom-retail/" class="cur">Custom &amp; Retail</a>
-    <a href="../industrial/">Industrial &amp; Protective</a>
-    <a href="../paper/" title="Catalog coming soon">Paper &amp; Corrugated</a>
-    <a href="../../packaging-solutions.html" title="Overview page until catalog is ready">Complete Solutions</a>
-  </div>
-</div>
-
 <main class="main">
   <div class="wrap">
     <div class="bar">
-      <h2>Browse by category</h2>
+      <h2>Browse catalog</h2>
       <p class="count" id="count">…</p>
     </div>
-    <div class="filters" id="filters" role="tablist" aria-label="Categories"></div>
+
+    <div class="filters fgap" id="filters-group" role="tablist" aria-label="Main categories"></div>
+    <div class="filters sub" id="filters-sub" role="tablist" aria-label="Subcategories"></div>
+
     <div class="grid" id="grid" aria-live="polite"></div>
     <nav class="pager" id="pager" aria-label="Pagination" hidden></nav>
 
@@ -117,10 +121,38 @@
   var MIN_SLOTS = 9;
   var NOTE = 'Deep customization available: size, structure, material grade, barrier coating, window and print (logo or full-bleed) can be developed to project requirements. Typical projects support artwork review, sampling and production coordination through ChenBridge.';
 
-  /* ===== EDIT PRODUCTS HERE ONLY =====
-     Add/remove objects. Fields: id, cat, catLabel, title, blurb, use, materials, performance, structure, print, icon, keywords
-     Optional: placeholder:true for empty image slots
-  */
+  /* group -> sub cat ids */
+  var GROUPS = [
+    { id: 'all', label: 'All' },
+    { id: 'beverage', label: 'Beverage' },
+    { id: 'food', label: 'Food containers' },
+    { id: 'tableware', label: 'Tableware & accessories' },
+    { id: 'gift', label: 'Gift & other' }
+  ];
+  var SUBS = {
+    beverage: [
+      { id: 'hot-cups', label: 'Hot cups' },
+      { id: 'cold-cups', label: 'Cold / milk-tea' },
+      { id: 'lids-sleeves', label: 'Lids & sleeves' },
+      { id: 'soup-bowls', label: 'Soup & noodle' }
+    ],
+    food: [
+      { id: 'clamshells', label: 'Clamshells' },
+      { id: 'bento', label: 'Bento' },
+      { id: 'takeout-boxes', label: 'Takeout boxes' },
+      { id: 'salad-bowls', label: 'Salad bowls' },
+      { id: 'seafood', label: 'Seafood / wet-food' }
+    ],
+    tableware: [
+      { id: 'plates-trays', label: 'Plates & trays' },
+      { id: 'portion-cups', label: 'Portion cups' }
+    ],
+    gift: [
+      { id: 'gift-boxes', label: 'Gift boxes' },
+      { id: 'other', label: 'Other / custom' }
+    ]
+  };
+
   var PRODUCTS = [
     {id:'h1',cat:'hot-cups',catLabel:'Hot paper cups',title:'Double-wall hot paper cups',blurb:'Insulated wall for coffee and tea; strong print surface for branding.',use:'Cafés, QSR, office beverage',materials:'Food-grade paperboard; PE or PLA lining options',performance:'Hot-fill oriented; comfortable hold',structure:'Double wall; common 8–16 oz range',print:'Flexo / offset custom print',icon:'☕',keywords:'custom double wall paper coffee cup China OEM'},
     {id:'h2',cat:'hot-cups',catLabel:'Hot paper cups',title:'Single-wall hot cups',blurb:'Efficient hot cup for high-volume programs.',use:'Takeaway coffee',materials:'Paperboard with lining',performance:'Pair with sleeve for insulation',structure:'Single wall size ladder',print:'Brand print ready',icon:'☕',keywords:'single wall paper coffee cup China'},
@@ -163,70 +195,77 @@
     {id:'o3',cat:'other',catLabel:'Other / custom',title:'Specialty display packaging',blurb:'Counter and display-oriented structures for campaigns.',use:'Promotions, launches',materials:'Per brief',performance:'Display stability',structure:'Custom display forms',print:'Campaign print',icon:'✦',keywords:'custom display packaging China retail'}
   ];
 
-  var CATS = [
-    {id:'all',label:'All'},
-    {id:'hot-cups',label:'Hot cups'},
-    {id:'cold-cups',label:'Cold / milk-tea'},
-    {id:'lids-sleeves',label:'Lids & sleeves'},
-    {id:'soup-bowls',label:'Soup & noodle'},
-    {id:'clamshells',label:'Clamshells'},
-    {id:'bento',label:'Bento'},
-    {id:'takeout-boxes',label:'Takeout boxes'},
-    {id:'salad-bowls',label:'Salad bowls'},
-    {id:'seafood',label:'Seafood / wet-food'},
-    {id:'plates-trays',label:'Plates & trays'},
-    {id:'portion-cups',label:'Portion cups'},
-    {id:'gift-boxes',label:'Gift boxes'},
-    {id:'other',label:'Other / custom'}
-  ];
-
-  var state = { cat: 'all', page: 1 };
+  var state = { group: 'all', sub: 'all', page: 1 };
   var grid = document.getElementById('grid');
-  var filters = document.getElementById('filters');
+  var fg = document.getElementById('filters-group');
+  var fs = document.getElementById('filters-sub');
   var pager = document.getElementById('pager');
-  var count = document.getElementById('count');
+  var countEl = document.getElementById('count');
   var drawer = document.getElementById('drawer');
   var bd = document.getElementById('bd');
   var db = document.getElementById('db');
   var dt = document.getElementById('dt');
 
-  function baseList() {
-    if (state.cat === 'all') return PRODUCTS.slice();
-    return PRODUCTS.filter(function (p) { return p.cat === state.cat; });
+  function catsInGroup(gid) {
+    if (gid === 'all') return null;
+    return (SUBS[gid] || []).map(function (s) { return s.id; });
   }
 
-  /* Pad each category view to at least MIN_SLOTS image positions */
-  function listForView() {
-    var list = baseList();
-    if (state.cat === 'all') return list;
-    var catMeta = CATS.filter(function (c) { return c.id === state.cat; })[0];
-    var label = catMeta ? catMeta.label : 'Category';
-    var i = list.length;
-    while (i < MIN_SLOTS) {
-      list.push({
-        id: 'slot-' + state.cat + '-' + i,
-        cat: state.cat,
-        catLabel: label,
-        title: 'More examples available',
-        blurb: 'Additional structures and finishes can be developed for this category. Share your brief for sourcing support.',
-        use: 'Project-based',
-        materials: 'To brief',
-        performance: 'To brief',
-        structure: 'To brief',
-        print: 'To brief',
-        icon: '＋',
-        keywords: label + ' custom packaging China',
-        placeholder: true
-      });
-      i++;
+  function baseList() {
+    var list = PRODUCTS.slice();
+    if (state.group !== 'all') {
+      var allowed = catsInGroup(state.group) || [];
+      list = list.filter(function (p) { return allowed.indexOf(p.cat) !== -1; });
+    }
+    if (state.sub !== 'all') {
+      list = list.filter(function (p) { return p.cat === state.sub; });
     }
     return list;
   }
 
-  function renderFilters() {
-    filters.innerHTML = CATS.map(function (c) {
-      return '<button type="button" class="fbtn' + (c.id === state.cat ? ' on' : '') + '" data-cat="' + c.id + '">' + c.label + '</button>';
+  function listForView() {
+    var list = baseList();
+    /* pad to MIN_SLOTS only when a single sub is selected */
+    if (state.sub === 'all') return list;
+    var label = state.sub;
+    var subs = SUBS[state.group] || [];
+    for (var i = 0; i < subs.length; i++) if (subs[i].id === state.sub) label = subs[i].label;
+    var n = list.length;
+    while (n < MIN_SLOTS) {
+      list.push({
+        id: 'slot-' + state.sub + '-' + n,
+        cat: state.sub,
+        catLabel: label,
+        title: 'More examples available',
+        blurb: 'Additional structures and finishes can be developed for this category. Share your brief for sourcing support.',
+        use: 'Project-based', materials: 'To brief', performance: 'To brief', structure: 'To brief', print: 'To brief',
+        icon: '＋', keywords: label + ' custom packaging China', placeholder: true
+      });
+      n++;
+    }
+    return list;
+  }
+
+  function renderGroups() {
+    fg.innerHTML = GROUPS.map(function (g) {
+      return '<button type="button" class="fbtn' + (g.id === state.group ? ' on' : '') + '" data-group="' + g.id + '">' + g.label + '</button>';
     }).join('');
+  }
+
+  function renderSubs() {
+    if (state.group === 'all') {
+      fs.innerHTML = '';
+      fs.hidden = true;
+      return;
+    }
+    fs.hidden = false;
+    var subs = SUBS[state.group] || [];
+    var html = '<span class="fsub-label">Subcategory</span>';
+    html += '<button type="button" class="fbtn' + (state.sub === 'all' ? ' on' : '') + '" data-sub="all">All in group</button>';
+    html += subs.map(function (s) {
+      return '<button type="button" class="fbtn' + (s.id === state.sub ? ' on' : '') + '" data-sub="' + s.id + '">' + s.label + '</button>';
+    }).join('');
+    fs.innerHTML = html;
   }
 
   function card(p) {
@@ -256,13 +295,10 @@
     var start = (state.page - 1) * PER_PAGE;
     var slice = list.slice(start, start + PER_PAGE);
 
-    if (state.cat === 'all') {
-      count.textContent = real + ' examples across categories';
-    } else {
-      count.textContent = real + ' listed · ' + MIN_SLOTS + ' image slots in this view';
-    }
+    countEl.textContent = real + ' example' + (real === 1 ? '' : 's') +
+      (state.sub !== 'all' ? ' · ' + MIN_SLOTS + ' image slots' : '');
 
-    grid.innerHTML = slice.map(card).join('');
+    grid.innerHTML = slice.length ? slice.map(card).join('') : '<p class="cr-empty" style="grid-column:1/-1;text-align:center;color:#6B7280;padding:40px 0;">No examples in this filter.</p>';
 
     if (pages <= 1) {
       pager.hidden = true;
@@ -281,10 +317,7 @@
 
   function openDrawer(id) {
     var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
-    if (!p) {
-      /* placeholder slot */
-      p = listForView().filter(function (x) { return x.id === id; })[0];
-    }
+    if (!p) p = listForView().filter(function (x) { return x.id === id; })[0];
     if (!p) return;
     dt.textContent = p.title;
     db.innerHTML =
@@ -318,12 +351,29 @@
     setTimeout(function () { bd.hidden = true; }, 250);
   }
 
-  filters.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-cat]');
+  fg.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-group]');
     if (!b) return;
-    state.cat = b.getAttribute('data-cat');
+    var g = b.getAttribute('data-group');
+    /* click active group again → collapse back to All */
+    if (g === state.group && g !== 'all') {
+      state.group = 'all';
+      state.sub = 'all';
+    } else {
+      state.group = g;
+      state.sub = 'all';
+    }
     state.page = 1;
-    renderFilters();
+    renderGroups();
+    renderSubs();
+    render();
+  });
+  fs.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-sub]');
+    if (!b) return;
+    state.sub = b.getAttribute('data-sub');
+    state.page = 1;
+    renderSubs();
     render();
   });
   pager.addEventListener('click', function (e) {
@@ -353,7 +403,44 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  renderFilters();
+
+  /* Hero auto-rotate (3 images) */
+  (function () {
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots = document.querySelectorAll('#hero-dots button');
+    if (!slides.length) return;
+    var i = 0;
+    var timer;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+    }
+    function next() { show(i + 1); }
+    function start() {
+      stop();
+      timer = setInterval(next, 4500);
+    }
+    function stop() {
+      if (timer) clearInterval(timer);
+    }
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        show(parseInt(d.getAttribute('data-i'), 10));
+        start();
+      });
+    });
+    var stage = document.getElementById('hero-stage');
+    if (stage) {
+      stage.addEventListener('mouseenter', stop);
+      stage.addEventListener('mouseleave', start);
+      stage.addEventListener('touchstart', function () { stop(); }, { passive: true });
+    }
+    start();
+  })();
+
+  renderGroups();
+  renderSubs();
   render();
 })();
 </script>
