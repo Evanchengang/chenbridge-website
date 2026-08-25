@@ -73,34 +73,77 @@
 
 <section class="section">
   <div class="insights-grid" id="insights-grid">
-    <!-- 文章由 JS 自动渲染 -->
+    <p style="text-align:center;color:var(--text-muted);padding:32px 0;grid-column:1/-1;">正在加载文章...</p>
   </div>
 </section>
 
 <script>
-fetch('articles.json')
-  .then(r => r.json())
-  .then(data => {
-    const container = document.getElementById('insights-grid');
-    container.innerHTML = data.articles.map((a, i) => {
-      const delayClass = i % 3 === 0 ? 'reveal-delay-1' : (i % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3');
-      const linkStyle = a.published ? '' : ' style="opacity:0.5;cursor:not-allowed;"';
-      const linkText = a.published ? '阅读全文' : '即将发布';
-      return `
-      <div class="insight-card reveal ${delayClass}">
-        <div class="insight-tag">${a.tag}</div>
-        <h3>${a.title}</h3>
-        <p>${a.excerpt}</p>
-        <div class="insight-date">${a.date}</div>
-        <a href="${a.url}" class="read-more"${linkStyle}>${linkText}</a>
-      </div>`;
-    }).join('');
-  })
-  .catch(() => {
-    document.getElementById('insights-grid').innerHTML = '<p style="text-align:center;color:var(--text-muted);">加载文章列表失败，请刷新页面重试。</p>';
-  });
+(function () {
+  var container = document.getElementById('insights-grid');
+  if (!container) return;
+
+  var jsonUrl = 'articles.json';
+
+  function activateReveal(root) {
+    var els = root.querySelectorAll('.reveal');
+    if (!els.length) return;
+    if (window.IntersectionObserver) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      els.forEach(function (el) { obs.observe(el); });
+      // 若已在视口内，延迟一帧再检查，避免首屏不触发
+      requestAnimationFrame(function () {
+        els.forEach(function (el) {
+          var rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            el.classList.add('active');
+          }
+        });
+      });
+    } else {
+      els.forEach(function (el) { el.classList.add('active'); });
+    }
+  }
+
+  fetch(jsonUrl, { cache: 'no-store' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      if (!data || !data.articles || !data.articles.length) {
+        container.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">暂无文章</p>';
+        return;
+      }
+      container.innerHTML = data.articles.map(function (a, i) {
+        var delayClass = i % 3 === 0 ? 'reveal-delay-1' : (i % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3');
+        var linkStyle = a.published ? '' : ' style="opacity:0.5;cursor:not-allowed;"';
+        var linkText = a.published ? '阅读全文' : '即将发布';
+        var href = a.published && a.url && a.url !== '#' ? a.url : 'javascript:void(0)';
+        return (
+          '<div class="insight-card reveal ' + delayClass + '">' +
+            '<div class="insight-tag">' + (a.tag || '') + '</div>' +
+            '<h3>' + (a.title || '') + '</h3>' +
+            '<p>' + (a.excerpt || '') + '</p>' +
+            '<div class="insight-date">' + (a.date || '') + '</div>' +
+            '<a href="' + href + '" class="read-more"' + linkStyle + '>' + linkText + '</a>' +
+          '</div>'
+        );
+      }).join('');
+      activateReveal(container);
+    })
+    .catch(function (err) {
+      console.error('[insights]', err);
+      container.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">加载文章列表失败，请刷新页面重试。</p>';
+    });
+})();
 </script>
-</section>
 
 <footer class="footer">
   <div class="footer-inner">
