@@ -80,20 +80,31 @@
 
     <div class="grid" id="grid" aria-live="polite"></div>
     <nav class="pager" id="pager" aria-label="Pagination" hidden></nav>
-
-    <div class="more-cta" id="more-cta">
-      <h3>Need something not listed here?</h3>
-      <p>More grades, sizes and systems can be sourced to your technical brief. Tell us what you need — we will follow up with sourcing support.</p>
-      <a href="../../contact.html">Contact ChenBridge →</a>
-    </div>
+    <p class="more-hint" id="more-hint"></p>
   </div>
 </main>
 
 <section class="cta">
-  <div class="wrap">
-    <h2>Need industrial packaging or protective materials from China?</h2>
-    <p>Share grades, dimensions, compliance needs and volume range. We help align qualified suppliers, samples and production coordination.</p>
-    <a href="../../contact.html">Contact ChenBridge</a>
+  <div class="wrap cta-grid">
+    <div class="cta-main">
+      <h2>Need industrial packaging sourced from China?</h2>
+      <p>Share your technical requirements — grades, dimensions, compliance and volume. We align qualified suppliers and manage sampling through production.</p>
+      <a href="../../contact.html">Contact ChenBridge</a>
+    </div>
+    <div class="cta-points">
+      <div class="cp">
+        <strong>Supplier qualification</strong>
+        <span>Matched to spec, grade and compliance needs</span>
+      </div>
+      <div class="cp">
+        <strong>Sampling &amp; validation</strong>
+        <span>Pre-production checks and sign-off</span>
+      </div>
+      <div class="cp">
+        <strong>Production follow-up</strong>
+        <span>Quality checks and delivery coordination</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -217,6 +228,7 @@
   var fs = document.getElementById('filters-sub');
   var pager = document.getElementById('pager');
   var countEl = document.getElementById('count');
+  var moreHint = document.getElementById('more-hint');
   var drawer = document.getElementById('drawer');
   var bd = document.getElementById('bd');
   var db = document.getElementById('db');
@@ -330,6 +342,8 @@
       h += '<div class="pager-meta">Page ' + state.page + ' of ' + pages + '</div>';
       pager.innerHTML = h;
     }
+
+    moreHint.innerHTML = 'Looking for something else? <a href="../../contact.html">Contact us for custom sourcing →</a>';
   }
 
   function openDrawer(id) {
