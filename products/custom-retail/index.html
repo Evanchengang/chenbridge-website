@@ -80,20 +80,31 @@
 
     <div class="grid" id="grid" aria-live="polite"></div>
     <nav class="pager" id="pager" aria-label="Pagination" hidden></nav>
-
-    <div class="more-cta" id="more-cta">
-      <h3>Need something not listed here?</h3>
-      <p>More structures, grades and finishes can be sourced to your brief. Tell us what you need — we will follow up with sourcing support.</p>
-      <a href="../../contact.html">Contact ChenBridge →</a>
-    </div>
+    <p class="more-hint" id="more-hint"></p>
   </div>
 </main>
 
 <section class="cta">
-  <div class="wrap">
-    <h2>Building a branded packaging project?</h2>
-    <p>Share structure, volume range and market needs. We help align suppliers, samples and production follow-up in China.</p>
-    <a href="../../contact.html">Contact ChenBridge</a>
+  <div class="wrap cta-grid">
+    <div class="cta-main">
+      <h2>Ready to start your custom packaging project?</h2>
+      <p>Share your brief — structure, volume and market needs. We coordinate suppliers, sampling and production follow-up in China.</p>
+      <a href="../../contact.html">Contact ChenBridge</a>
+    </div>
+    <div class="cta-points">
+      <div class="cp">
+        <strong>Supplier alignment</strong>
+        <span>Matched to your spec, grade and volume</span>
+      </div>
+      <div class="cp">
+        <strong>Sampling &amp; artwork</strong>
+        <span>Pre-production review and sign-off</span>
+      </div>
+      <div class="cp">
+        <strong>Production follow-up</strong>
+        <span>Quality checks and delivery coordination</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -201,6 +212,7 @@
   var fs = document.getElementById('filters-sub');
   var pager = document.getElementById('pager');
   var countEl = document.getElementById('count');
+  var moreHint = document.getElementById('more-hint');
   var drawer = document.getElementById('drawer');
   var bd = document.getElementById('bd');
   var db = document.getElementById('db');
@@ -314,6 +326,8 @@
       h += '<div class="pager-meta">Page ' + state.page + ' of ' + pages + '</div>';
       pager.innerHTML = h;
     }
+
+    moreHint.innerHTML = 'Looking for something else? <a href="../../contact.html">Contact us for custom sourcing →</a>';
   }
 
   function openDrawer(id) {
