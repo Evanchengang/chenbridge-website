@@ -3,13 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom &amp; Retail Packaging Catalog | ChenBridge</title>
-<meta name="description" content="Browse custom and retail packaging examples from China: coffee cups, milk-tea cups, PE-coated seafood boxes, gift boxes, bento, clamshells. Deep customization with sourcing support.">
+<title>Custom & Retail Packaging Catalog — Sourced in China | ChenBridge</title>
+<meta name="description" content="Browse custom and retail packaging examples from China. Coffee cups, milk-tea cups, PE-coated seafood boxes, gift boxes, bento and clamshells. Deep customization with sourcing support and production follow-up.">
 <meta name="keywords" content="custom retail packaging China, PE coated seafood paper box, custom coffee cups OEM, gift packaging China, bento box packaging">
 <link rel="canonical" href="https://chenbridge.com/products/custom-retail/">
-<meta property="og:title" content="Custom &amp; Retail Packaging Catalog | ChenBridge">
+<meta property="og:title" content="Custom & Retail Packaging Catalog — Sourced in China | ChenBridge">
 <meta property="og:description" content="Capability showcase for custom and retail packaging. Request sourcing support.">
 <meta property="og:url" content="https://chenbridge.com/products/custom-retail/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://chenbridge.com/products/custom-retail/images/hero-1.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Custom & Retail Packaging Catalog — Sourced in China | ChenBridge">
+<meta name="twitter:description" content="Browse custom and retail packaging examples from China with deep customization and sourcing support.">
+<meta name="twitter:image" content="https://chenbridge.com/products/custom-retail/images/hero-1.webp">
 <link rel="stylesheet" href="css/catalog.css">
 </head>
 <body>
@@ -17,7 +23,7 @@
 <header class="hdr">
   <div class="wrap hdr-in">
     <a class="logo" href="../../index.html">
-      <img src="../../logo.png" alt="ChenBridge — China Packaging Sourcing Representative">
+      <img src="../../logo.png" alt="ChenBridge — China Packaging Sourcing Representative" width="180" height="46">
     </a>
     <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -35,14 +41,9 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="bc">
-        <a href="../../index.html">Home</a> ·
-        <a href="../../packaging-custom.html">Custom &amp; Retail</a> ·
-        Catalog
-      </div>
       <div class="hero-label">Capability Showcase</div>
-      <h1>Custom &amp; Retail Packaging Examples</h1>
-      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization for your project.</p>
+      <h1>Custom &amp; Retail Packaging Catalog</h1>
+      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization, sampling and production follow-up for your project.</p>
       <div class="hero-meta">
         <span><strong>Not a webshop</strong> — sourcing support</span>
         <span><strong>Print · structure · material</strong> to brief</span>
@@ -50,13 +51,13 @@
     </div>
     <div class="hero-stage" id="hero-stage" aria-label="Featured packaging examples">
       <div class="hero-slide is-active" data-i="0">
-        <div class="hs-ph"><span>▣</span>Image 1 — replace<br>images/hero-1.webp</div>
+        <img src="images/hero-1.webp" alt="Custom retail packaging examples from China — beverage cups and food containers" width="800" height="500" loading="eager" fetchpriority="high">
       </div>
       <div class="hero-slide" data-i="1">
-        <div class="hs-ph"><span>▣</span>Image 2 — replace<br>images/hero-2.webp</div>
+        <img src="images/hero-2.webp" alt="Food container packaging and gift boxes manufactured in China" width="800" height="500" loading="lazy">
       </div>
       <div class="hero-slide" data-i="2">
-        <div class="hs-ph"><span>▣</span>Image 3 — replace<br>images/hero-3.webp</div>
+        <img src="images/hero-3.webp" alt="Waterproof seafood boxes and custom retail packaging from China" width="800" height="500" loading="lazy">
       </div>
       <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero slides">
         <button type="button" class="is-on" data-i="0" aria-label="Slide 1"></button>
@@ -121,7 +122,6 @@
   var MIN_SLOTS = 9;
   var NOTE = 'Deep customization available: size, structure, material grade, barrier coating, window and print (logo or full-bleed) can be developed to project requirements. Typical projects support artwork review, sampling and production coordination through ChenBridge.';
 
-  /* group -> sub cat ids */
   var GROUPS = [
     { id: 'all', label: 'All' },
     { id: 'beverage', label: 'Beverage' },
@@ -225,7 +225,6 @@
 
   function listForView() {
     var list = baseList();
-    /* pad to MIN_SLOTS only when a single sub is selected */
     if (state.sub === 'all') return list;
     var label = state.sub;
     var subs = SUBS[state.group] || [];
@@ -270,10 +269,12 @@
 
   function card(p) {
     var slot = p.placeholder ? ' is-slot' : '';
+    var imgAlt = p.title + ' — ' + p.catLabel + ' sourced in China';
     return (
       '<article class="card' + slot + '" data-id="' + p.id + '" tabindex="0" role="button">' +
         '<div class="media">' +
-          '<div class="ph" role="img" aria-label="' + (p.keywords || p.title) + '"><i>' + p.icon + '</i><b>' + (p.placeholder ? 'Image slot' : 'Photo placeholder') + '</b></div>' +
+          '<img src="images/' + p.id + '.webp" alt="' + imgAlt + '" width="400" height="400" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">' +
+          '<div class="ph" aria-label="' + imgAlt + '"><i>' + p.icon + '</i><b>' + (p.placeholder ? 'Image slot' : 'Photo: ' + p.id + '.webp') + '</b></div>' +
           (p.placeholder ? '' : '<span class="badge">Customizable</span>') +
         '</div>' +
         '<div class="body">' +
@@ -319,9 +320,11 @@
     var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
     if (!p) p = listForView().filter(function (x) { return x.id === id; })[0];
     if (!p) return;
+    var imgAlt = p.title + ' — ' + p.catLabel + ' sourced in China';
     dt.textContent = p.title;
     db.innerHTML =
-      '<div class="dm" role="img" aria-label="' + (p.keywords || p.title) + '">Replace with product photo<br><small>' + p.icon + ' ' + p.catLabel + '</small></div>' +
+      '<img src="images/' + p.id + '-lg.webp" alt="' + imgAlt + '" width="400" height="400" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--cr-radius);margin-bottom:16px;display:block;" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';">' +
+      '<div class="dm" role="img" aria-label="' + imgAlt + '" style="display:none;"><span>▣</span>Product photo<br><small>' + p.id + '-lg.webp</small></div>' +
       '<div class="cl">' + p.catLabel + '</div>' +
       '<p class="ds">' + p.blurb + '</p>' +
       '<ul class="specs">' +
@@ -355,7 +358,6 @@
     var b = e.target.closest('[data-group]');
     if (!b) return;
     var g = b.getAttribute('data-group');
-    /* click active group again → collapse back to All */
     if (g === state.group && g !== 'all') {
       state.group = 'all';
       state.sub = 'all';
@@ -402,7 +404,6 @@
     var open = nav.classList.toggle('open');
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-
 
   /* Hero auto-rotate (3 images) */
   (function () {
