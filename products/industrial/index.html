@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Industrial &amp; Protective Packaging Catalog | ChenBridge</title>
 <meta name="description" content="Industrial and protective packaging examples from China: plywood and MDF panels, hinges and latches, ESD and VCI bags, foam, dunnage and strapping. Deep customization with sourcing support.">
-<meta name="keywords" content="industrial packaging China, plywood panels export, ESD bags China, VCI anti-corrosion packaging, foam protection, dunnage blocking bracing, packaging hinges latches">
+<meta name="keywords" content="industrial packaging China, plywood panels export, ESD bags China, VCI anti-corrosion packaging, foam protection, dunnage blocking bracing">
 <link rel="canonical" href="https://chenbridge.com/products/industrial/">
 <meta property="og:title" content="Industrial &amp; Protective Packaging Catalog | ChenBridge">
-<meta property="og:description" content="Capability showcase for engineered wood, packaging hardware, protective materials and load securing. Request sourcing support.">
+<meta property="og:description" content="Capability showcase for engineered wood, packaging hardware, protective materials and load securing.">
 <meta property="og:url" content="https://chenbridge.com/products/industrial/">
 <link rel="stylesheet" href="css/catalog.css">
 </head>
@@ -34,7 +34,7 @@
 
 <section class="hero">
   <div class="wrap hero-grid">
-    <div>
+    <div class="hero-copy">
       <div class="bc">
         <a href="../../index.html">Home</a> ·
         <a href="../../packaging-industrial.html">Industrial &amp; Protective</a> ·
@@ -48,37 +48,41 @@
         <span><strong>Spec · grade · finish</strong> to project brief</span>
       </div>
     </div>
-    <div class="hero-photos" aria-hidden="true">
-      <div class="hp"><span>▣</span>Featured 1<br>Replace photo</div>
-      <div class="hp"><span>▣</span>Featured 2</div>
-      <div class="hp"><span>▣</span>Featured 3</div>
+    <div class="hero-stage" id="hero-stage" aria-label="Featured industrial examples">
+      <div class="hero-slide is-active" data-i="0">
+        <div class="hs-ph"><span>▣</span>Image 1 — replace<br>images/hero-1.webp</div>
+      </div>
+      <div class="hero-slide" data-i="1">
+        <div class="hs-ph"><span>▣</span>Image 2 — replace<br>images/hero-2.webp</div>
+      </div>
+      <div class="hero-slide" data-i="2">
+        <div class="hs-ph"><span>▣</span>Image 3 — replace<br>images/hero-3.webp</div>
+      </div>
+      <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero slides">
+        <button type="button" class="is-on" data-i="0" aria-label="Slide 1"></button>
+        <button type="button" data-i="1" aria-label="Slide 2"></button>
+        <button type="button" data-i="2" aria-label="Slide 3"></button>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="ind">
-  <div class="wrap ind-in">
-    <span class="ind-label">Product catalogs</span>
-    <a href="../custom-retail/">Custom &amp; Retail</a>
-    <a href="../industrial/" class="cur">Industrial &amp; Protective</a>
-    <a href="../paper/" title="Catalog coming soon">Paper &amp; Corrugated</a>
-    <a href="../../packaging-solutions.html" title="Overview page until catalog is ready">Complete Solutions</a>
-  </div>
-</div>
-
 <main class="main">
   <div class="wrap">
     <div class="bar">
-      <h2>Browse by category</h2>
+      <h2>Browse catalog</h2>
       <p class="count" id="count">…</p>
     </div>
-    <div class="filters" id="filters" role="tablist" aria-label="Categories"></div>
+
+    <div class="filters fgap" id="filters-group" role="tablist" aria-label="Main categories"></div>
+    <div class="filters sub" id="filters-sub" role="tablist" aria-label="Subcategories"></div>
+
     <div class="grid" id="grid" aria-live="polite"></div>
     <nav class="pager" id="pager" aria-label="Pagination" hidden></nav>
 
     <div class="more-cta" id="more-cta">
       <h3>Need something not listed here?</h3>
-      <p>More structures, grades and finishes can be sourced to your brief. Tell us what you need — we will follow up with sourcing support.</p>
+      <p>More grades, sizes and systems can be sourced to your technical brief. Tell us what you need — we will follow up with sourcing support.</p>
       <a href="../../contact.html">Contact ChenBridge →</a>
     </div>
   </div>
@@ -117,7 +121,41 @@
   var MIN_SLOTS = 9;
   var NOTE = 'Deep customization available: dimensions, grade, finish, coating, print and packaging format can be developed to project requirements. Typical projects support specification alignment, sampling and production coordination through ChenBridge.';
 
-  /* ===== EDIT PRODUCTS HERE ONLY ===== */
+  var GROUPS = [
+    { id: 'all', label: 'All' },
+    { id: 'wood', label: 'Engineered wood' },
+    { id: 'hardware', label: 'Packaging hardware' },
+    { id: 'protective', label: 'Protective materials' },
+    { id: 'load', label: 'Load securing' }
+  ];
+  var SUBS = {
+    wood: [
+      { id: 'plywood', label: 'Plywood panels' },
+      { id: 'mdf', label: 'MDF panels' },
+      { id: 'osb', label: 'OSB panels' },
+      { id: 'hardwood', label: 'Hardwood components' }
+    ],
+    hardware: [
+      { id: 'hinges', label: 'Hinges' },
+      { id: 'latches', label: 'Latches' },
+      { id: 'handles', label: 'Handles' },
+      { id: 'fasteners', label: 'Fasteners' },
+      { id: 'corners', label: 'Corner protectors' }
+    ],
+    protective: [
+      { id: 'esd', label: 'ESD bags' },
+      { id: 'aluminum-bags', label: 'Aluminum barrier bags' },
+      { id: 'vci', label: 'VCI anti-corrosion' },
+      { id: 'foam', label: 'Foam protection' }
+    ],
+    load: [
+      { id: 'blocking', label: 'Blocking & bracing' },
+      { id: 'dunnage', label: 'Dunnage' },
+      { id: 'strapping', label: 'Strapping systems' },
+      { id: 'container-sec', label: 'Container securing' }
+    ]
+  };
+
   var PRODUCTS = [
     /* Engineered Wood */
     {id:'pw1',cat:'plywood',catLabel:'Plywood panels',group:'Engineered Wood',title:'Export-grade plywood panels',blurb:'Multi-ply panels for industrial packing cases, crates and structural packaging applications.',use:'Crates, cases, export packing structures',materials:'Hardwood / softwood plies by grade',performance:'Strength and dimensional stability by construction',structure:'Sheet panels; thickness and size to brief',print:'Stencil / mark options',icon:'▦',keywords:'export plywood panels China industrial packaging'},
@@ -179,30 +217,11 @@
     {id:'cs3',cat:'container-sec',catLabel:'Container securing',group:'Load Securing',title:'Anti-slip & friction mats',blurb:'Mats to increase friction between cargo and container floor.',use:'Pallet and case stability',materials:'Rubber / composite mats',performance:'Slip reduction',structure:'Sheets / rolls',print:'N/A',icon:'⚓',keywords:'anti-slip container cargo mats China'}
   ];
 
-  var CATS = [
-    {id:'all',label:'All'},
-    {id:'plywood',label:'Plywood panels'},
-    {id:'mdf',label:'MDF panels'},
-    {id:'osb',label:'OSB panels'},
-    {id:'hardwood',label:'Hardwood components'},
-    {id:'hinges',label:'Hinges'},
-    {id:'latches',label:'Latches'},
-    {id:'handles',label:'Handles'},
-    {id:'fasteners',label:'Fasteners'},
-    {id:'corners',label:'Corner protectors'},
-    {id:'esd',label:'ESD bags'},
-    {id:'aluminum-bags',label:'Aluminum barrier bags'},
-    {id:'vci',label:'VCI anti-corrosion'},
-    {id:'foam',label:'Foam protection'},
-    {id:'blocking',label:'Blocking & bracing'},
-    {id:'dunnage',label:'Dunnage'},
-    {id:'strapping',label:'Strapping systems'},
-    {id:'container-sec',label:'Container securing'}
-  ];
 
-  var state = { cat: 'all', page: 1 };
+  var state = { group: 'all', sub: 'all', page: 1 };
   var grid = document.getElementById('grid');
-  var filtersEl = document.getElementById('filters');
+  var fg = document.getElementById('filters-group');
+  var fs = document.getElementById('filters-sub');
   var pager = document.getElementById('pager');
   var countEl = document.getElementById('count');
   var drawer = document.getElementById('drawer');
@@ -210,42 +229,65 @@
   var db = document.getElementById('db');
   var dt = document.getElementById('dt');
 
-  function baseList() {
-    if (state.cat === 'all') return PRODUCTS.slice();
-    return PRODUCTS.filter(function (p) { return p.cat === state.cat; });
+  function catsInGroup(gid) {
+    if (gid === 'all') return null;
+    return (SUBS[gid] || []).map(function (s) { return s.id; });
   }
 
-  function listForView() {
-    var list = baseList();
-    if (state.cat === 'all') return list;
-    var catMeta = CATS.filter(function (c) { return c.id === state.cat; })[0];
-    var label = catMeta ? catMeta.label : 'Category';
-    var i = list.length;
-    while (i < MIN_SLOTS) {
-      list.push({
-        id: 'slot-' + state.cat + '-' + i,
-        cat: state.cat,
-        catLabel: label,
-        title: 'More specifications available',
-        blurb: 'Additional grades, sizes and finishes can be sourced for this category. Share your technical brief for support.',
-        use: 'Project-based',
-        materials: 'To brief',
-        performance: 'To brief',
-        structure: 'To brief',
-        print: 'To brief',
-        icon: '＋',
-        keywords: label + ' industrial packaging China sourcing',
-        placeholder: true
-      });
-      i++;
+  function baseList() {
+    var list = PRODUCTS.slice();
+    if (state.group !== 'all') {
+      var allowed = catsInGroup(state.group) || [];
+      list = list.filter(function (p) { return allowed.indexOf(p.cat) !== -1; });
+    }
+    if (state.sub !== 'all') {
+      list = list.filter(function (p) { return p.cat === state.sub; });
     }
     return list;
   }
 
-  function renderFilters() {
-    filtersEl.innerHTML = CATS.map(function (c) {
-      return '<button type="button" class="fbtn' + (c.id === state.cat ? ' on' : '') + '" data-cat="' + c.id + '">' + c.label + '</button>';
+  function listForView() {
+    var list = baseList();
+    if (state.sub === 'all') return list;
+    var label = state.sub;
+    var subs = SUBS[state.group] || [];
+    for (var i = 0; i < subs.length; i++) if (subs[i].id === state.sub) label = subs[i].label;
+    var n = list.length;
+    while (n < MIN_SLOTS) {
+      list.push({
+        id: 'slot-' + state.sub + '-' + n,
+        cat: state.sub,
+        catLabel: label,
+        title: 'More specifications available',
+        blurb: 'Additional grades, sizes and finishes can be sourced for this category. Share your technical brief for support.',
+        use: 'Project-based', materials: 'To brief', performance: 'To brief', structure: 'To brief', print: 'To brief',
+        icon: '＋', keywords: label + ' industrial packaging China sourcing', placeholder: true
+      });
+      n++;
+    }
+    return list;
+  }
+
+  function renderGroups() {
+    fg.innerHTML = GROUPS.map(function (g) {
+      return '<button type="button" class="fbtn' + (g.id === state.group ? ' on' : '') + '" data-group="' + g.id + '">' + g.label + '</button>';
     }).join('');
+  }
+
+  function renderSubs() {
+    if (state.group === 'all') {
+      fs.innerHTML = '';
+      fs.hidden = true;
+      return;
+    }
+    fs.hidden = false;
+    var subs = SUBS[state.group] || [];
+    var html = '<span class="fsub-label">Subcategory</span>';
+    html += '<button type="button" class="fbtn' + (state.sub === 'all' ? ' on' : '') + '" data-sub="all">All in group</button>';
+    html += subs.map(function (s) {
+      return '<button type="button" class="fbtn' + (s.id === state.sub ? ' on' : '') + '" data-sub="' + s.id + '">' + s.label + '</button>';
+    }).join('');
+    fs.innerHTML = html;
   }
 
   function card(p) {
@@ -275,13 +317,10 @@
     var start = (state.page - 1) * PER_PAGE;
     var slice = list.slice(start, start + PER_PAGE);
 
-    if (state.cat === 'all') {
-      countEl.textContent = real + ' examples across categories';
-    } else {
-      countEl.textContent = real + ' listed · ' + MIN_SLOTS + ' image slots in this view';
-    }
+    countEl.textContent = real + ' example' + (real === 1 ? '' : 's') +
+      (state.sub !== 'all' ? ' · ' + MIN_SLOTS + ' image slots' : '');
 
-    grid.innerHTML = slice.map(card).join('');
+    grid.innerHTML = slice.length ? slice.map(card).join('') : '<p style="grid-column:1/-1;text-align:center;color:#6B7280;padding:40px 0;">No examples in this filter.</p>';
 
     if (pages <= 1) {
       pager.hidden = true;
@@ -334,12 +373,29 @@
     setTimeout(function () { bd.hidden = true; }, 250);
   }
 
-  filtersEl.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-cat]');
+  fg.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-group]');
     if (!b) return;
-    state.cat = b.getAttribute('data-cat');
+    var g = b.getAttribute('data-group');
+    /* click active group again → collapse back to All */
+    if (g === state.group && g !== 'all') {
+      state.group = 'all';
+      state.sub = 'all';
+    } else {
+      state.group = g;
+      state.sub = 'all';
+    }
     state.page = 1;
-    renderFilters();
+    renderGroups();
+    renderSubs();
+    render();
+  });
+  fs.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-sub]');
+    if (!b) return;
+    state.sub = b.getAttribute('data-sub');
+    state.page = 1;
+    renderSubs();
     render();
   });
   pager.addEventListener('click', function (e) {
@@ -369,7 +425,44 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  renderFilters();
+
+  /* Hero auto-rotate (3 images) */
+  (function () {
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots = document.querySelectorAll('#hero-dots button');
+    if (!slides.length) return;
+    var i = 0;
+    var timer;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+    }
+    function next() { show(i + 1); }
+    function start() {
+      stop();
+      timer = setInterval(next, 4500);
+    }
+    function stop() {
+      if (timer) clearInterval(timer);
+    }
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        show(parseInt(d.getAttribute('data-i'), 10));
+        start();
+      });
+    });
+    var stage = document.getElementById('hero-stage');
+    if (stage) {
+      stage.addEventListener('mouseenter', stop);
+      stage.addEventListener('mouseleave', start);
+      stage.addEventListener('touchstart', function () { stop(); }, { passive: true });
+    }
+    start();
+  })();
+
+  renderGroups();
+  renderSubs();
   render();
 })();
 </script>
