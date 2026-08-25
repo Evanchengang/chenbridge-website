@@ -155,10 +155,8 @@ a { color: inherit; }
   transform: translateY(-4px); box-shadow: var(--cr-shadow);
   border-color: rgba(15,61,46,.22);
 }
-.card.is-slot { cursor: default; opacity: .92; }
-.card.is-slot:hover { transform: none; box-shadow: none; }
-.card.is-slot:hover .ph,
-.card.is-slot:hover .media img { transform: none; }
+/* Placeholder slots stay clickable-looking but slightly muted */
+.card.is-slot { opacity: .95; }
 .media {
   position: relative; aspect-ratio: 1; background: #EEF0EC; overflow: hidden;
 }
@@ -166,7 +164,9 @@ a { color: inherit; }
 .ph {
   width: 100%; height: 100%;
   transition: transform .45s cubic-bezier(.25,.1,.25,1);
+  will-change: transform;
 }
+/* Image zoom on every card (real + slot) */
 .card:hover .media img,
 .card:hover .ph {
   transform: scale(1.06);
