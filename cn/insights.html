@@ -75,14 +75,18 @@
   <div class="insights-grid" id="insights-grid">
     <p style="text-align:center;color:var(--text-muted);padding:32px 0;grid-column:1/-1;">正在加载文章...</p>
   </div>
+  <nav class="insights-pagination" id="insights-pagination" aria-label="文章分页" hidden></nav>
 </section>
 
 <script>
 (function () {
   var container = document.getElementById('insights-grid');
+  var pager = document.getElementById('insights-pagination');
   if (!container) return;
 
-  var jsonUrl = 'articles.json';
+  var PER_PAGE = 9; // 每页 9 篇（桌面 3×3）
+  var articles = [];
+  var currentPage = 1;
 
   function activateReveal(root) {
     var els = root.querySelectorAll('.reveal');
@@ -97,7 +101,6 @@
         });
       }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
       els.forEach(function (el) { obs.observe(el); });
-      // 若已在视口内，延迟一帧再检查，避免首屏不触发
       requestAnimationFrame(function () {
         els.forEach(function (el) {
           var rect = el.getBoundingClientRect();
@@ -111,7 +114,98 @@
     }
   }
 
-  fetch(jsonUrl, { cache: 'no-store' })
+  function totalPages() {
+    return Math.max(1, Math.ceil(articles.length / PER_PAGE));
+  }
+
+  function cardHtml(a, i) {
+    var delayClass = i % 3 === 0 ? 'reveal-delay-1' : (i % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3');
+    var linkStyle = a.published ? '' : ' style="opacity:0.5;cursor:not-allowed;"';
+    var linkText = a.published ? '阅读全文' : '即将发布';
+    var href = a.published && a.url && a.url !== '#' ? a.url : 'javascript:void(0)';
+    return (
+      '<div class="insight-card reveal ' + delayClass + '">' +
+        '<div class="insight-tag">' + (a.tag || '') + '</div>' +
+        '<h3>' + (a.title || '') + '</h3>' +
+        '<p>' + (a.excerpt || '') + '</p>' +
+        '<div class="insight-date">' + (a.date || '') + '</div>' +
+        '<a href="' + href + '" class="read-more"' + linkStyle + '>' + linkText + '</a>' +
+      '</div>'
+    );
+  }
+
+  function renderPage(page) {
+    var tp = totalPages();
+    currentPage = Math.min(Math.max(1, page), tp);
+    var start = (currentPage - 1) * PER_PAGE;
+    var slice = articles.slice(start, start + PER_PAGE);
+
+    container.innerHTML = slice.map(function (a, i) {
+      return cardHtml(a, i);
+    }).join('');
+    activateReveal(container);
+
+    // 分页条：仅多于 1 页时显示
+    if (!pager) return;
+    if (tp <= 1) {
+      pager.hidden = true;
+      pager.innerHTML = '';
+      return;
+    }
+    pager.hidden = false;
+
+    var html = '';
+    html += '<button type="button" class="page-btn page-prev"' + (currentPage === 1 ? ' disabled' : '') + ' data-page="' + (currentPage - 1) + '" aria-label="上一页">上一页</button>';
+    html += '<div class="page-numbers">';
+
+    // 页码窗口：当前页附近，避免 100 页全列出来
+    var windowSize = 5;
+    var from = Math.max(1, currentPage - Math.floor(windowSize / 2));
+    var to = Math.min(tp, from + windowSize - 1);
+    from = Math.max(1, to - windowSize + 1);
+
+    if (from > 1) {
+      html += '<button type="button" class="page-btn" data-page="1">1</button>';
+      if (from > 2) html += '<span class="page-ellipsis">…</span>';
+    }
+    for (var p = from; p <= to; p++) {
+      html += '<button type="button" class="page-btn' + (p === currentPage ? ' is-active' : '') + '" data-page="' + p + '"' + (p === currentPage ? ' aria-current="page"' : '') + '>' + p + '</button>';
+    }
+    if (to < tp) {
+      if (to < tp - 1) html += '<span class="page-ellipsis">…</span>';
+      html += '<button type="button" class="page-btn" data-page="' + tp + '">' + tp + '</button>';
+    }
+
+    html += '</div>';
+    html += '<button type="button" class="page-btn page-next"' + (currentPage === tp ? ' disabled' : '') + ' data-page="' + (currentPage + 1) + '" aria-label="下一页">下一页</button>';
+    html += '<span class="page-meta">第 ' + currentPage + ' / ' + tp + ' 页 · 共 ' + articles.length + ' 篇</span>';
+
+    pager.innerHTML = html;
+
+    // 同步 URL ?page= 方便分享/刷新
+    try {
+      var url = new URL(window.location.href);
+      if (currentPage === 1) url.searchParams.delete('page');
+      else url.searchParams.set('page', String(currentPage));
+      history.replaceState(null, '', url.pathname + url.search + url.hash);
+    } catch (e) {}
+
+    // 切页后滚到列表顶部
+    var section = container.closest('.section') || container;
+    var top = section.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
+  if (pager) {
+    pager.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-page]');
+      if (!btn || btn.disabled) return;
+      var p = parseInt(btn.getAttribute('data-page'), 10);
+      if (!isNaN(p)) renderPage(p);
+    });
+  }
+
+  fetch('articles.json', { cache: 'no-store' })
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
@@ -119,28 +213,25 @@
     .then(function (data) {
       if (!data || !data.articles || !data.articles.length) {
         container.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">暂无文章</p>';
+        if (pager) pager.hidden = true;
         return;
       }
-      container.innerHTML = data.articles.map(function (a, i) {
-        var delayClass = i % 3 === 0 ? 'reveal-delay-1' : (i % 3 === 1 ? 'reveal-delay-2' : 'reveal-delay-3');
-        var linkStyle = a.published ? '' : ' style="opacity:0.5;cursor:not-allowed;"';
-        var linkText = a.published ? '阅读全文' : '即将发布';
-        var href = a.published && a.url && a.url !== '#' ? a.url : 'javascript:void(0)';
-        return (
-          '<div class="insight-card reveal ' + delayClass + '">' +
-            '<div class="insight-tag">' + (a.tag || '') + '</div>' +
-            '<h3>' + (a.title || '') + '</h3>' +
-            '<p>' + (a.excerpt || '') + '</p>' +
-            '<div class="insight-date">' + (a.date || '') + '</div>' +
-            '<a href="' + href + '" class="read-more"' + linkStyle + '>' + linkText + '</a>' +
-          '</div>'
-        );
-      }).join('');
-      activateReveal(container);
+      articles = data.articles;
+      var initial = 1;
+      try {
+        var q = new URLSearchParams(window.location.search).get('page');
+        if (q) initial = parseInt(q, 10) || 1;
+      } catch (e) {}
+      // 首次进入不强制 smooth 滚动
+      var _scroll = window.scrollTo;
+      window.scrollTo = function () {};
+      renderPage(initial);
+      window.scrollTo = _scroll;
     })
     .catch(function (err) {
       console.error('[insights]', err);
       container.innerHTML = '<p style="text-align:center;color:var(--text-muted);grid-column:1/-1;">加载文章列表失败，请刷新页面重试。</p>';
+      if (pager) pager.hidden = true;
     });
 })();
 </script>

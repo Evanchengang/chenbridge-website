@@ -193,6 +193,69 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 .insight-card .read-more{color:var(--accent);text-decoration:none;font-size:14px;font-weight:500;transition:color 0.3s;}
 .insight-card .read-more:hover{color:var(--primary);}
 
+/* Insights pagination */
+.insights-pagination{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px 12px;
+  margin-top:48px;
+  padding-top:8px;
+}
+.insights-pagination[hidden]{display:none!important;}
+.insights-pagination .page-numbers{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+}
+.insights-pagination .page-btn{
+  min-width:36px;
+  height:36px;
+  padding:0 12px;
+  border:1px solid rgba(15,61,46,0.15);
+  border-radius:var(--radius);
+  background:var(--white);
+  color:var(--text);
+  font-size:13px;
+  font-family:inherit;
+  cursor:pointer;
+  transition:all 0.25s;
+}
+.insights-pagination .page-btn:hover:not(:disabled):not(.is-active){
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.insights-pagination .page-btn.is-active{
+  background:var(--primary);
+  border-color:var(--primary);
+  color:#fff;
+  cursor:default;
+}
+.insights-pagination .page-btn:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+.insights-pagination .page-ellipsis{
+  color:var(--text-muted);
+  font-size:13px;
+  padding:0 4px;
+  user-select:none;
+}
+.insights-pagination .page-meta{
+  width:100%;
+  text-align:center;
+  font-size:12px;
+  color:var(--text-muted);
+  margin-top:4px;
+}
+@media(max-width:640px){
+  .insights-pagination{gap:8px;margin-top:36px;}
+  .insights-pagination .page-btn{min-width:32px;height:32px;padding:0 10px;font-size:12px;}
+}
+
+
 /* ===== CTA ===== */
 .cta-section{background:var(--primary);padding:120px 40px;text-align:center;position:relative;overflow:hidden;}
 .cta-section::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
