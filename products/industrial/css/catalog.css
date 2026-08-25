@@ -87,13 +87,14 @@ a { color: inherit; }
 }
 .hero-meta strong { color: #fff; }
 
+/* Hero stage — zero image, CSS gradient slides */
 .hero-stage {
   position: relative;
   border-radius: 10px;
   overflow: hidden;
   width: 100%;
   height: clamp(200px, 22vw, 260px);
-  background: rgba(255,255,255,.08);
+  background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.12);
 }
 .hero-slide {
@@ -104,14 +105,42 @@ a { color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+  overflow: hidden;
 }
+/* Cooler, steel-grey gradients for industrial */
+.hero-slide:nth-child(1) { background: linear-gradient(145deg, #1a3d2e, #0a1f16); }
+.hero-slide:nth-child(2) { background: linear-gradient(145deg, #2a4a3a, #0f2a1e); }
+.hero-slide:nth-child(3) { background: linear-gradient(145deg, #3a5a4a, #1a3a2a); }
 .hero-slide.is-active { opacity: 1; z-index: 1; }
-.hero-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+
+.hero-slide-bg {
+  position: absolute;
+  font-size: clamp(80px, 10vw, 130px);
+  opacity: 0.09;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-slide-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 20px;
+}
+.hero-slide-content h3 {
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.hero-slide-content p {
+  font-size: 13px;
+  color: rgba(255,255,255,.72);
+  max-width: 26ch;
+  margin: 0 auto;
+  line-height: 1.55;
 }
 .hero-dots {
   position: absolute;
