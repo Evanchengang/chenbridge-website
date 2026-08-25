@@ -11,11 +11,11 @@
 <meta property="og:description" content="Capability showcase for engineered wood, packaging hardware, protective materials and load securing.">
 <meta property="og:url" content="https://chenbridge.com/products/industrial/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://chenbridge.com/products/industrial/images/hero-1.webp">
+<meta property="og:image" content="https://chenbridge.com/logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Industrial & Protective Packaging Catalog — Engineered in China | ChenBridge">
 <meta name="twitter:description" content="Browse industrial and protective packaging examples from China with deep customization and sourcing support.">
-<meta name="twitter:image" content="https://chenbridge.com/products/industrial/images/hero-1.webp">
+<meta name="twitter:image" content="https://chenbridge.com/logo.png">
 <link rel="stylesheet" href="css/catalog.css">
 </head>
 <body>
@@ -49,15 +49,27 @@
         <span><strong>Spec · grade · finish</strong> to project brief</span>
       </div>
     </div>
-    <div class="hero-stage" id="hero-stage" aria-label="Featured industrial examples">
+    <div class="hero-stage" id="hero-stage" aria-label="Featured industrial categories">
       <div class="hero-slide is-active" data-i="0">
-        <img src="images/hero-1.webp" alt="Industrial packaging examples from China — plywood panels and engineered wood" width="800" height="500" loading="eager" fetchpriority="high">
+        <div class="hero-slide-bg" aria-hidden="true">▦</div>
+        <div class="hero-slide-content">
+          <h3>Engineered Wood</h3>
+          <p>Plywood, MDF, OSB and hardwood components</p>
+        </div>
       </div>
       <div class="hero-slide" data-i="1">
-        <img src="images/hero-2.webp" alt="Protective packaging materials and ESD bags manufactured in China" width="800" height="500" loading="lazy">
+        <div class="hero-slide-bg" aria-hidden="true">🛡</div>
+        <div class="hero-slide-content">
+          <h3>Protective Materials</h3>
+          <p>ESD bags, VCI films, foam and barrier liners</p>
+        </div>
       </div>
       <div class="hero-slide" data-i="2">
-        <img src="images/hero-3.webp" alt="Load securing systems and industrial hardware from China" width="800" height="500" loading="lazy">
+        <div class="hero-slide-bg" aria-hidden="true">⚓</div>
+        <div class="hero-slide-content">
+          <h3>Load Securing</h3>
+          <p>Blocking, dunnage, strapping and container lashing</p>
+        </div>
       </div>
       <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero slides">
         <button type="button" class="is-on" data-i="0" aria-label="Slide 1"></button>
@@ -435,7 +447,7 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  /* Hero auto-rotate (3 images) */
+  /* Hero auto-rotate (3 slides) */
   (function () {
     var slides = document.querySelectorAll('.hero-slide');
     var dots = document.querySelectorAll('#hero-dots button');
