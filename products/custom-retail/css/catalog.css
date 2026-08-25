@@ -1,469 +1,427 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom & Retail Packaging Catalog — Sourced in China | ChenBridge</title>
-<meta name="description" content="Browse custom and retail packaging examples from China. Coffee cups, milk-tea cups, PE-coated seafood boxes, gift boxes, bento and clamshells. Deep customization with sourcing support and production follow-up.">
-<meta name="keywords" content="custom retail packaging China, PE coated seafood paper box, custom coffee cups OEM, gift packaging China, bento box packaging">
-<link rel="canonical" href="https://chenbridge.com/products/custom-retail/">
-<meta property="og:title" content="Custom & Retail Packaging Catalog — Sourced in China | ChenBridge">
-<meta property="og:description" content="Capability showcase for custom and retail packaging. Request sourcing support.">
-<meta property="og:url" content="https://chenbridge.com/products/custom-retail/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://chenbridge.com/logo.png">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Custom & Retail Packaging Catalog — Sourced in China | ChenBridge">
-<meta name="twitter:description" content="Browse custom and retail packaging examples from China with deep customization and sourcing support.">
-<meta name="twitter:image" content="https://chenbridge.com/logo.png">
-<link rel="stylesheet" href="css/catalog.css">
-<base target="_blank">
-</head>
-<body>
+/* ===== Custom & Retail Catalog CSS ===== */
+:root {
+  --cr-primary: #0F3D2E;
+  --cr-primary-soft: #1a5240;
+  --cr-accent: #C4A574;
+  --cr-bg: #F7F5F0;
+  --cr-card: #fff;
+  --cr-text: #2D3436;
+  --cr-muted: #6B7280;
+  --cr-line: #E8E4DC;
+  --cr-radius: 6px;
+  --cr-shadow: 0 8px 28px rgba(15, 61, 46, 0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, Helvetica, sans-serif;
+  color: var(--cr-text);
+  background: var(--cr-bg);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; height: auto; }
+a { color: inherit; }
+.wrap { width: min(1180px, 92%); margin: 0 auto; }
 
-<header class="hdr">
-  <div class="wrap hdr-in">
-    <a class="logo" href="../../index.html">
-      <img src="../../logo.png" alt="ChenBridge — China Packaging Sourcing Representative" width="180" height="46">
-    </a>
-    <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav" id="nav">
-      <a href="../../index.html">Home</a>
-      <a href="../custom-retail/" class="on">Custom &amp; Retail</a>
-      <a href="../industrial/">Industrial &amp; Protective</a>
-      <a href="../paper/">Paper &amp; Corrugated</a>
-      <a href="../../contact.html" class="cta">Request Sourcing Support</a>
-    </nav>
-  </div>
-</header>
+/* ===== Header ===== */
+.hdr {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(255,255,255,.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cr-line);
+}
+.hdr-in {
+  display: flex; align-items: center; gap: 12px;
+  min-height: 64px; padding: 8px 0;
+}
+.logo img { height: 42px; width: auto; }
+.nav {
+  display: flex; align-items: center; gap: 4px 16px;
+  margin-left: auto; flex-wrap: wrap;
+}
+.nav a {
+  text-decoration: none; font-size: 14px; font-weight: 600;
+  color: #374151; padding: 6px 0;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover, .nav a.on { color: var(--cr-primary); border-bottom-color: var(--cr-accent); }
+.nav .cta {
+  margin-left: 6px; background: var(--cr-primary); color: #fff !important;
+  padding: 10px 16px; border-radius: var(--cr-radius); border-bottom: none !important;
+  font-size: 13px;
+}
+.nav .cta:hover { background: var(--cr-primary-soft); }
+.burger {
+  display: none; width: 44px; height: 44px; border: 0; background: 0;
+  margin-left: auto; flex-direction: column; justify-content: center; align-items: center; gap: 5px; cursor: pointer;
+}
+.burger span { width: 22px; height: 2px; background: var(--cr-primary); display: block; }
 
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="hero-label">Capability Showcase</div>
-      <h1>Custom &amp; Retail Packaging Catalog</h1>
-      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization, sampling and production follow-up for your project.</p>
-      <div class="hero-meta">
-        <span><strong>Not a webshop</strong> — sourcing support</span>
-        <span><strong>Print · structure · material</strong> to brief</span>
-      </div>
-    </div>
-    <div class="hero-stage" id="hero-stage" aria-label="Featured packaging categories">
-      <div class="hero-card-stack">
-        <div class="h-card is-active" data-i="0">
-          <div class="h-card-tag">Beverage &amp; Food</div>
-          <div class="h-card-line"></div>
-          <p>Hot cups, cold cups, containers and takeout boxes</p>
-        </div>
-        <div class="h-card" data-i="1">
-          <div class="h-card-tag">Gift &amp; Premium</div>
-          <div class="h-card-line"></div>
-          <p>Rigid boxes, sleeves and custom retail structures</p>
-        </div>
-        <div class="h-card" data-i="2">
-          <div class="h-card-tag">Wet-Food Packaging</div>
-          <div class="h-card-line"></div>
-          <p>PE-coated waterproof boxes for seafood and greasy foods</p>
-        </div>
-      </div>
-      <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero slides">
-        <button type="button" class="is-on" data-i="0" aria-label="Slide 1"></button>
-        <button type="button" data-i="1" aria-label="Slide 2"></button>
-        <button type="button" data-i="2" aria-label="Slide 3"></button>
-      </div>
-    </div>
-  </div>
-</section>
+/* ===== Hero ===== */
+.hero {
+  background: var(--cr-primary);
+  color: #fff; padding: 48px 0 44px;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+  max-width: none;
+}
+.hero-copy { max-width: 520px; }
+.hero-label {
+  font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--cr-accent); font-weight: 600; margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: clamp(26px, 3.6vw, 38px); font-weight: 700;
+  line-height: 1.2; margin-bottom: 12px; max-width: 18ch;
+}
+.hero .lead {
+  color: rgba(255,255,255,.78); font-size: 15px; max-width: 50ch; margin-bottom: 18px;
+}
+.hero-meta {
+  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  font-size: 13px; color: rgba(255,255,255,.62);
+}
+.hero-meta strong { color: #fff; }
 
-<main class="main">
-  <div class="wrap">
-    <div class="bar">
-      <h2>Browse catalog</h2>
-      <p class="count" id="count">…</p>
-    </div>
+/* ===== Hero Card Stack ===== */
+.hero-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 24vw, 280px);
+  perspective: 900px;
+}
+.hero-card-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.h-card {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.18),
+    0 0 0 1px rgba(255,255,255,.06) inset;
+  opacity: 0;
+  transform: translateX(40px) rotateY(-12deg) scale(.92);
+  transition: all .6s cubic-bezier(.25,.1,.25,1);
+  pointer-events: none;
+}
+.h-card.is-active {
+  opacity: 1;
+  transform: translateX(0) rotateY(-4deg) scale(1);
+  z-index: 3;
+  pointer-events: auto;
+}
+.h-card.is-next {
+  opacity: .55;
+  transform: translateX(28px) translateY(14px) rotateY(-2deg) scale(.94);
+  z-index: 2;
+}
+.h-card.is-prev {
+  opacity: .3;
+  transform: translateX(52px) translateY(28px) rotateY(0deg) scale(.88);
+  z-index: 1;
+}
 
-    <div class="filters fgap" id="filters-group" role="tablist" aria-label="Main categories"></div>
-    <div class="filters sub" id="filters-sub" role="tablist" aria-label="Subcategories"></div>
+.h-card-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--cr-accent);
+  margin-bottom: 14px;
+}
+.h-card-line {
+  width: 36px;
+  height: 2px;
+  background: rgba(196,165,116,.5);
+  margin-bottom: 14px;
+  border-radius: 2px;
+}
+.h-card h3 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+.h-card p {
+  font-size: 13px;
+  color: rgba(255,255,255,.65);
+  line-height: 1.55;
+  max-width: 32ch;
+}
 
-    <div class="grid" id="grid" aria-live="polite"></div>
-    <nav class="pager" id="pager" aria-label="Pagination" hidden></nav>
-    <p class="more-hint" id="more-hint"></p>
-  </div>
-</main>
+.hero-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+}
+.hero-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(255,255,255,.3);
+  cursor: pointer;
+  transition: background .25s;
+}
+.hero-dots button.is-on { background: #fff; }
 
-<section class="cta">
-  <div class="wrap cta-grid">
-    <div class="cta-main">
-      <h2>Ready to start your custom packaging project?</h2>
-      <p>Share your brief — structure, volume and market needs. We coordinate suppliers, sampling and production follow-up in China.</p>
-      <a href="../../contact.html">Contact ChenBridge</a>
-    </div>
-    <div class="cta-points">
-      <div class="cp">
-        <strong>Supplier alignment</strong>
-        <span>Matched to your spec, grade and volume</span>
-      </div>
-      <div class="cp">
-        <strong>Sampling &amp; artwork</strong>
-        <span>Pre-production review and sign-off</span>
-      </div>
-      <div class="cp">
-        <strong>Production follow-up</strong>
-        <span>Quality checks and delivery coordination</span>
-      </div>
-    </div>
-  </div>
-</section>
+/* ===== Main ===== */
+.main { padding: 32px 0 48px; }
+.bar {
+  display: flex; flex-wrap: wrap; justify-content: space-between;
+  align-items: baseline; gap: 10px; margin-bottom: 16px;
+}
+.bar h2 { font-size: 20px; color: var(--cr-primary); }
+.count { font-size: 13px; color: var(--cr-muted); }
 
-<footer class="ft">
-  <div class="wrap ft-in">
-    <span>&copy; 2026 ChenBridge. China packaging sourcing representative.</span>
-    <span>
-      <a href="../../packaging-custom.html">Custom overview</a> ·
-      <a href="../../contact.html">Contact</a>
-    </span>
-  </div>
-</footer>
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.fbtn {
+  border: 1px solid var(--cr-line); background: #fff; color: #374151;
+  font-size: 13px; font-weight: 600; font-family: inherit;
+  padding: 8px 14px; border-radius: 999px; cursor: pointer;
+}
+.fbtn:hover { border-color: var(--cr-primary); color: var(--cr-primary); }
+.fbtn.on { background: var(--cr-primary); border-color: var(--cr-primary); color: #fff; }
 
-<div class="bd" id="bd" hidden></div>
-<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="dt">
-  <div class="dh">
-    <h2 id="dt">Product</h2>
-    <button type="button" class="dx" id="dx" aria-label="Close">×</button>
-  </div>
-  <div class="db" id="db"></div>
-</aside>
+.grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+}
+.card {
+  background: var(--cr-card); border: 1px solid var(--cr-line);
+  border-radius: var(--cr-radius); overflow: hidden;
+  display: flex; flex-direction: column; cursor: pointer;
+  transition: transform .22s, box-shadow .22s, border-color .22s;
+}
+.card:hover {
+  transform: translateY(-4px); box-shadow: var(--cr-shadow);
+  border-color: rgba(15,61,46,.22);
+}
+.card.is-slot { opacity: .95; }
+.media {
+  position: relative; aspect-ratio: 1; background: #EEF0EC; overflow: hidden;
+}
+.media img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .45s cubic-bezier(.25,.1,.25,1);
+  will-change: transform;
+}
+.card:hover .media img { transform: scale(1.06); }
+.ph {
+  display: none;
+  flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px; padding: 16px; text-align: center;
+  background: linear-gradient(160deg, #F3F1EC, #E5EAE4);
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+.ph i { font-style: normal; font-size: 28px; opacity: .42; line-height: 1; }
+.ph b {
+  font-size: 11px; font-weight: 700; color: var(--cr-muted);
+  letter-spacing: .05em; text-transform: uppercase;
+}
+.badge {
+  position: absolute; top: 10px; left: 10px;
+  background: rgba(15,61,46,.92); color: #fff;
+  font-size: 10px; font-weight: 700; padding: 4px 9px; border-radius: 4px;
+}
+.body { padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.cat {
+  font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--cr-accent);
+}
+.body h3 { font-size: 15px; font-weight: 700; line-height: 1.35; }
+.body p { font-size: 13px; color: var(--cr-muted); flex: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+.tags span {
+  font-size: 11px; font-weight: 600; color: var(--cr-primary);
+  background: rgba(15,61,46,.06); padding: 3px 7px; border-radius: 4px;
+}
+.foot {
+  display: flex; justify-content: space-between; margin-top: 8px; padding-top: 10px;
+  border-top: 1px solid var(--cr-line); font-size: 12px; font-weight: 600; color: var(--cr-primary);
+}
+.foot em { font-style: normal; color: var(--cr-muted); font-weight: 500; }
 
-<script>
-(function () {
-  var PER_PAGE = 9;
-  var MIN_SLOTS = 9;
-  var NOTE = 'Deep customization available: size, structure, material grade, barrier coating, window and print (logo or full-bleed) can be developed to project requirements. Typical projects support artwork review, sampling and production coordination through ChenBridge.';
+.pager {
+  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+  gap: 8px; margin-top: 28px;
+}
+.pager[hidden] { display: none !important; }
+.pager button {
+  min-width: 38px; height: 38px; padding: 0 11px;
+  border: 1px solid var(--cr-line); background: #fff; border-radius: var(--cr-radius);
+  font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; color: var(--cr-text);
+}
+.pager button:hover:not(:disabled):not(.on) { border-color: var(--cr-primary); color: var(--cr-primary); }
+.pager button.on { background: var(--cr-primary); border-color: var(--cr-primary); color: #fff; }
+.pager button:disabled { opacity: .4; cursor: not-allowed; }
+.pager-meta { width: 100%; text-align: center; font-size: 12px; color: var(--cr-muted); margin-top: 4px; }
 
-  var GROUPS = [
-    { id: 'all', label: 'All' },
-    { id: 'beverage', label: 'Beverage' },
-    { id: 'food', label: 'Food containers' },
-    { id: 'tableware', label: 'Tableware & accessories' },
-    { id: 'gift', label: 'Gift & other' }
-  ];
-  var SUBS = {
-    beverage: [
-      { id: 'hot-cups', label: 'Hot cups' },
-      { id: 'cold-cups', label: 'Cold / milk-tea' },
-      { id: 'lids-sleeves', label: 'Lids & sleeves' },
-      { id: 'soup-bowls', label: 'Soup & noodle' }
-    ],
-    food: [
-      { id: 'clamshells', label: 'Clamshells' },
-      { id: 'bento', label: 'Bento' },
-      { id: 'takeout-boxes', label: 'Takeout boxes' },
-      { id: 'salad-bowls', label: 'Salad bowls' },
-      { id: 'seafood', label: 'Seafood / wet-food' }
-    ],
-    tableware: [
-      { id: 'plates-trays', label: 'Plates & trays' },
-      { id: 'portion-cups', label: 'Portion cups' }
-    ],
-    gift: [
-      { id: 'gift-boxes', label: 'Gift boxes' },
-      { id: 'other', label: 'Other / custom' }
-    ]
-  };
+.more-hint {
+  text-align: center; font-size: 13px; color: var(--cr-muted); margin-top: 20px;
+}
+.more-hint a { color: var(--cr-primary); font-weight: 600; text-decoration: none; }
+.more-hint a:hover { text-decoration: underline; }
 
-  var PRODUCTS = [
-    {id:'h1',cat:'hot-cups',catLabel:'Hot paper cups',title:'Double-wall hot paper cups',blurb:'Insulated wall for coffee and tea; strong print surface for branding.',use:'Cafés, QSR, office beverage',materials:'Food-grade paperboard; PE or PLA lining options',performance:'Hot-fill oriented; comfortable hold',structure:'Double wall; common 8–16 oz range',print:'Flexo / offset custom print',icon:'☕',keywords:'custom double wall paper coffee cup China OEM'},
-    {id:'h2',cat:'hot-cups',catLabel:'Hot paper cups',title:'Single-wall hot cups',blurb:'Efficient hot cup for high-volume programs.',use:'Takeaway coffee',materials:'Paperboard with lining',performance:'Pair with sleeve for insulation',structure:'Single wall size ladder',print:'Brand print ready',icon:'☕',keywords:'single wall paper coffee cup China'},
-    {id:'h3',cat:'hot-cups',catLabel:'Hot paper cups',title:'Ripple-wall hot cups',blurb:'Textured wall for grip and heat buffer without a separate sleeve.',use:'Premium coffee takeaway',materials:'Ripple paperboard',performance:'Grip + insulation',structure:'Ripple wall forms',print:'Custom exterior print',icon:'☕',keywords:'ripple wall paper cup custom China'},
-    {id:'c1',cat:'cold-cups',catLabel:'Cold drink cups',title:'Clear cold drink / milk-tea cups',blurb:'Transparent cups for iced drinks and bubble tea presentation.',use:'Milk tea, smoothies, iced coffee',materials:'PET or PP by project',performance:'Clarity for product show',structure:'Flat or dome lid fit',print:'Sleeve, label or direct print',icon:'🧋',keywords:'custom milk tea cup PET China'},
-    {id:'c2',cat:'cold-cups',catLabel:'Cold drink cups',title:'Paper cold cups',blurb:'Paper option for cold beverages with large print area.',use:'Branded cold programs',materials:'Coated paperboard',performance:'Short-term cold hold',structure:'Sized to lid program',print:'Full or partial wrap',icon:'🥤',keywords:'custom cold paper cup China print'},
-    {id:'c3',cat:'cold-cups',catLabel:'Cold drink cups',title:'Tall smoothie cups',blurb:'Taller profile for thick drinks and layered beverages.',use:'Smoothies, frappe-style drinks',materials:'PET / PP options',performance:'Volume + straw access',structure:'Tall cup + lid',print:'Label / sleeve branding',icon:'🥤',keywords:'smoothie cup packaging China custom'},
-    {id:'l1',cat:'lids-sleeves',catLabel:'Lids & sleeves',title:'Sip / straw / dome lids',blurb:'Lid systems matched to hot and cold cup ranges.',use:'Beverage lid programs',materials:'PS, PET, PP or fiber by line',performance:'Fit and venting by design',structure:'Sip, straw, dome',print:'Usually unprinted',icon:'🧢',keywords:'paper cup lids China sourcing'},
-    {id:'l2',cat:'lids-sleeves',catLabel:'Lids & sleeves',title:'Printed cup sleeves',blurb:'Kraft or white sleeves for insulation and secondary branding.',use:'Hot cups, seasonal campaigns',materials:'Kraft / SBS sleeve stock',performance:'Grip and heat buffer',structure:'Standard or custom die',print:'One to multi-color',icon:'📄',keywords:'custom printed coffee cup sleeve China'},
-    {id:'l3',cat:'lids-sleeves',catLabel:'Lids & sleeves',title:'Cup carriers (2 / 4 cup)',blurb:'Board carriers for multi-cup takeaway.',use:'Café multi-drink carry',materials:'Corrugated / board',performance:'Stable multi-cup hold',structure:'2-cup / 4-cup',print:'Optional brand print',icon:'⧉',keywords:'paper cup carrier tray China'},
-    {id:'s1',cat:'soup-bowls',catLabel:'Soup & noodle',title:'Paper soup cups with lids',blurb:'Round containers for soups and broths.',use:'Soup, congee, saucy sides',materials:'Lined paperboard',performance:'Leak-oriented short hold',structure:'Cup + lid size ladder',print:'Custom exterior',icon:'🍜',keywords:'custom paper soup cup lid China'},
-    {id:'s2',cat:'soup-bowls',catLabel:'Soup & noodle',title:'Kraft noodle bowls',blurb:'Deeper bowls for noodles and grain meals.',use:'Noodles, grain bowls',materials:'Kraft or SBS with lining',performance:'Hot food short-term',structure:'Bowl + lid',print:'Brand print ready',icon:'🥣',keywords:'kraft noodle bowl custom China'},
-    {id:'s3',cat:'soup-bowls',catLabel:'Soup & noodle',title:'Instant-style noodle cups',blurb:'Taller cup forms for instant and hot-fill noodle service.',use:'Instant / hot noodle service',materials:'Lined paperboard',performance:'Heat and moisture hold',structure:'Cup + lid / film options',print:'Full wrap graphics',icon:'🍜',keywords:'instant noodle paper cup packaging China'},
-    {id:'cl1',cat:'clamshells',catLabel:'Clamshells',title:'Hinged clamshell containers',blurb:'One-piece hinged boxes for burgers and set meals.',use:'Burgers, sandwiches, mixed meals',materials:'Bagasse, PP or paperboard',performance:'Optional venting for hot food',structure:'Hinged lock; multi-size',print:'Print on selected materials',icon:'📦',keywords:'custom clamshell food container China'},
-    {id:'cl2',cat:'clamshells',catLabel:'Clamshells',title:'Window clamshells',blurb:'Clear window for product visibility at counter or delivery.',use:'Salads, bakery, display meals',materials:'Board + PET window / clear PP',performance:'Visibility + closure',structure:'Hinged with window',print:'Frame brand print',icon:'📦',keywords:'window clamshell packaging China'},
-    {id:'cl3',cat:'clamshells',catLabel:'Clamshells',title:'Compartment clamshells',blurb:'Divided hinged packs for entrée plus sides.',use:'Combo meals',materials:'Bagasse or PP',performance:'Portion separation',structure:'Multi-compartment hinge',print:'Optional exterior print',icon:'📦',keywords:'compartment clamshell takeout China'},
-    {id:'b1',cat:'bento',catLabel:'Bento & multi-compartment',title:'Multi-compartment bento boxes',blurb:'Divided trays for plated presentation.',use:'Bento, meal prep, catering',materials:'PET, PP, molded fiber',performance:'Compartment separation',structure:'2–4+ compartments + lid',print:'Label or sleeve',icon:'🍱',keywords:'custom bento box multi compartment China'},
-    {id:'b2',cat:'bento',catLabel:'Bento & multi-compartment',title:'Rectangular bento with lid',blurb:'Classic rectangular meal box with secure lid.',use:'Daily lunch sets',materials:'PP / PET / fiber',performance:'Stackable options',structure:'Base + lid',print:'Sleeve branding',icon:'🍱',keywords:'rectangular bento box packaging China'},
-    {id:'b3',cat:'bento',catLabel:'Bento & multi-compartment',title:'Round compartment trays',blurb:'Round divided trays for specialty presentations.',use:'Premium sets, catering',materials:'PET / fiber',performance:'Presentation focus',structure:'Round multi-cell + lid',print:'Custom label',icon:'🍱',keywords:'round compartment food tray China'},
-    {id:'t1',cat:'takeout-boxes',catLabel:'Takeout boxes',title:'Folding kraft takeout boxes',blurb:'Classic fold structures for takeout meals.',use:'Noodles, rice, general takeout',materials:'Poly-lined kraft / SBS',performance:'Grease and moisture by grade',structure:'Tuck-top, lock-corner',print:'Custom exterior',icon:'🥡',keywords:'custom kraft takeout box China'},
-    {id:'t2',cat:'takeout-boxes',catLabel:'Takeout boxes',title:'Bio-fold takeout boxes',blurb:'Folding boxes oriented to eco-positioned programs.',use:'Green-positioned QSR',materials:'Kraft with chosen lining',performance:'Short-term hot/wet hold',structure:'Fold styles by size',print:'Natural or printed',icon:'🥡',keywords:'eco kraft takeout box China custom'},
-    {id:'t3',cat:'takeout-boxes',catLabel:'Takeout boxes',title:'Window takeout cartons',blurb:'Folding cartons with window for product show-through.',use:'Retail-ready takeout',materials:'Board + window film',performance:'Visibility + structure',structure:'Tuck carton + window',print:'Full brand panels',icon:'🥡',keywords:'window takeout carton China packaging'},
-    {id:'sa1',cat:'salad-bowls',catLabel:'Salad bowls',title:'Salad / poke bowls with lids',blurb:'Wide bowls with clear or matching lids.',use:'Salads, poke, cold bowls',materials:'PET, PP, paper composites',performance:'Visibility + lid seal',structure:'Bowl + lid sizes',print:'Sleeve or direct brand',icon:'🥗',keywords:'custom salad bowl lid packaging China'},
-    {id:'sa2',cat:'salad-bowls',catLabel:'Salad bowls',title:'Deep cold bowls',blurb:'Deeper form for grain and protein bowls.',use:'Grain bowls, cold meals',materials:'PP / PET',performance:'Volume for toppings',structure:'Deep bowl + lid',print:'Brand sleeve',icon:'🥗',keywords:'deep poke bowl packaging China'},
-    {id:'sa3',cat:'salad-bowls',catLabel:'Salad bowls',title:'Paper cold bowls',blurb:'Paper-forward bowls for cold or warm-hold programs.',use:'Cafe bowls',materials:'Lined paperboard',performance:'Short hold',structure:'Bowl + lid',print:'Custom print',icon:'🥗',keywords:'paper salad bowl custom print China'},
-    {id:'sf1',cat:'seafood',catLabel:'Seafood & wet-food',title:'PE-coated waterproof seafood boxes',blurb:'Coated / wet-strength paperboard for seafood and moist foods.',use:'Seafood takeout, sashimi, wet prepared foods',materials:'PE-coated or wet-strength paperboard; optional window',performance:'Leak- and grease-oriented short-term wet contact',structure:'Tuck-top, lock-corner, window patch',print:'Custom branding',icon:'🦐',keywords:'PE coated waterproof seafood paper box China'},
-    {id:'sf2',cat:'seafood',catLabel:'Seafood & wet-food',title:'Windowed wet-food cartons',blurb:'Window cartons for chilled wet or semi-wet foods.',use:'Retail seafood, deli wet packs',materials:'Coated board + PET window',performance:'Visibility with moisture control',structure:'Folding carton + window',print:'Full brand panels',icon:'🪟',keywords:'windowed seafood packaging carton China'},
-    {id:'sf3',cat:'seafood',catLabel:'Seafood & wet-food',title:'Grease-resistant wet food trays',blurb:'Open or lidded trays for oily or moist prepared foods.',use:'Fried seafood, wet sides',materials:'Grease-resistant coated board',performance:'Oil and moisture buffer',structure:'Tray / boat forms',print:'Optional print',icon:'🦐',keywords:'grease resistant seafood tray packaging China'},
-    {id:'p1',cat:'plates-trays',catLabel:'Plates & trays',title:'Paper and bagasse plates',blurb:'Round or compartment plates for service and events.',use:'Catering, QSR, events',materials:'Paperboard or bagasse',performance:'Cut and grease resistance by grade',structure:'Flat or compartment',print:'Print on paper grades',icon:'🍽️',keywords:'custom paper bagasse plates China'},
-    {id:'p2',cat:'plates-trays',catLabel:'Plates & trays',title:'Food trays and boats',blurb:'Open trays for snacks and sides.',use:'Snacks, concessions',materials:'Grease-resistant board',performance:'Open service hold',structure:'Boat / tray dies',print:'Brand print options',icon:'🍟',keywords:'custom paper food tray boat China'},
-    {id:'p3',cat:'plates-trays',catLabel:'Plates & trays',title:'Compartment serving plates',blurb:'Divided plates for set meals and catering lines.',use:'Institutional and catering',materials:'Bagasse / paper',performance:'Portion control',structure:'Multi-section plate',print:'Optional',icon:'🍽️',keywords:'compartment paper plate packaging China'},
-    {id:'po1',cat:'portion-cups',catLabel:'Portion cups',title:'Sauce and portion cups',blurb:'Small cups for dips, sides and sampling.',use:'Sauces, condiments, samples',materials:'PP / PET / paper',performance:'Lid fit critical',structure:'Cup + lid size ladder',print:'Label optional',icon:'🧴',keywords:'portion sauce cups lids China'},
-    {id:'po2',cat:'portion-cups',catLabel:'Portion cups',title:'Hinged portion packs',blurb:'Small hinged packs for sauces and wet sides.',use:'Delivery sauce packs',materials:'PP',performance:'Leak resistance',structure:'Mini hinge pack',print:'Usually stock',icon:'🧴',keywords:'hinged sauce portion pack China'},
-    {id:'po3',cat:'portion-cups',catLabel:'Portion cups',title:'Paper portion cups',blurb:'Paper option for dry or semi-dry portions.',use:'Dry sides, samples',materials:'Paperboard',performance:'Short dry hold',structure:'Cup forms',print:'Simple print possible',icon:'🧴',keywords:'paper portion cup packaging China'},
-    {id:'g1',cat:'gift-boxes',catLabel:'Gift & premium',title:'Rigid lid-base gift boxes',blurb:'Two-piece rigid boxes for premium retail and seasonal sets.',use:'Gifts, premium food kits',materials:'Greyboard + wrap; soft-touch / foil options',performance:'Presentation and protection',structure:'Lid + base; optional insert',print:'Wrap, foil, emboss',icon:'🎁',keywords:'custom rigid gift box packaging China'},
-    {id:'g2',cat:'gift-boxes',catLabel:'Gift & premium',title:'Drawer-style gift boxes',blurb:'Pull-out drawer structures for unboxing experience.',use:'Gifting, kits',materials:'Rigid board systems',performance:'Slide action + insert',structure:'Drawer + sleeve',print:'Full custom finish',icon:'🎁',keywords:'custom drawer gift box China'},
-    {id:'g3',cat:'gift-boxes',catLabel:'Gift & premium',title:'Sleeve + tray gift sets',blurb:'Outer sleeve with inner tray for multi-item sets.',use:'Retail gift sets',materials:'Board sleeve + tray',performance:'Set presentation',structure:'Sleeve + tray + insert',print:'Full brand',icon:'🎁',keywords:'sleeve tray gift packaging set China'},
-    {id:'o1',cat:'other',catLabel:'Other / custom',title:'Fully custom structures',blurb:'Non-standard shapes and multi-part sets developed to brief.',use:'Unique retail launches',materials:'Specified per project',performance:'Engineered to brief',structure:'Prototype-led',print:'As specified',icon:'✦',keywords:'fully custom packaging structure China OEM'},
-    {id:'o2',cat:'other',catLabel:'Other / custom',title:'Multi-pack retail sleeves',blurb:'Secondary sleeves for multi-unit retail presentation.',use:'Multipacks on shelf',materials:'Paperboard sleeves',performance:'Bundle hold',structure:'Sleeve wraps',print:'Retail graphics',icon:'✦',keywords:'retail multipack sleeve packaging China'},
-    {id:'o3',cat:'other',catLabel:'Other / custom',title:'Specialty display packaging',blurb:'Counter and display-oriented structures for campaigns.',use:'Promotions, launches',materials:'Per brief',performance:'Display stability',structure:'Custom display forms',print:'Campaign print',icon:'✦',keywords:'custom display packaging China retail'}
-  ];
+/* ===== CTA ===== */
+.cta {
+  background: var(--cr-primary); color: #fff; padding: 52px 0;
+}
+.cta-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;
+}
+.cta-main h2 {
+  font-size: clamp(22px, 3vw, 28px); font-weight: 700; line-height: 1.25; margin-bottom: 10px;
+}
+.cta-main p {
+  color: rgba(255,255,255,.72); font-size: 15px; max-width: 44ch; margin-bottom: 22px; line-height: 1.6;
+}
+.cta-main a {
+  display: inline-block; background: var(--cr-accent); color: #1a1a1a;
+  text-decoration: none; font-weight: 700; font-size: 14px;
+  padding: 13px 26px; border-radius: var(--cr-radius);
+}
+.cta-points { display: flex; flex-direction: column; gap: 16px; }
+.cp {
+  display: flex; flex-direction: column; gap: 2px;
+  padding-left: 16px; border-left: 2px solid rgba(196,165,116,.45);
+}
+.cp strong { font-size: 14px; font-weight: 700; color: #fff; }
+.cp span { font-size: 13px; color: rgba(255,255,255,.62); }
 
-  var state = { group: 'all', sub: 'all', page: 1 };
-  var grid = document.getElementById('grid');
-  var fg = document.getElementById('filters-group');
-  var fs = document.getElementById('filters-sub');
-  var pager = document.getElementById('pager');
-  var countEl = document.getElementById('count');
-  var moreHint = document.getElementById('more-hint');
-  var drawer = document.getElementById('drawer');
-  var bd = document.getElementById('bd');
-  var db = document.getElementById('db');
-  var dt = document.getElementById('dt');
+/* ===== Drawer ===== */
+.bd {
+  position: fixed; inset: 0; background: rgba(12,30,24,.45); z-index: 2000;
+  opacity: 0; visibility: hidden; transition: .25s;
+}
+.bd.open { opacity: 1; visibility: visible; }
+.drawer {
+  position: fixed; top: 0; right: 0; width: min(440px, 100%); height: 100%;
+  background: #fff; z-index: 2001; transform: translateX(100%);
+  transition: transform .3s ease; display: flex; flex-direction: column;
+  box-shadow: -8px 0 40px rgba(0,0,0,.12);
+}
+.drawer.open { transform: translateX(0); }
+.dh {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px; border-bottom: 1px solid var(--cr-line);
+}
+.dh h2 { font-size: 16px; font-weight: 700; padding-right: 10px; }
+.dx {
+  width: 40px; height: 40px; border: 0; border-radius: 50%;
+  background: var(--cr-bg); font-size: 20px; cursor: pointer; line-height: 1;
+}
+.db { padding: 18px; overflow-y: auto; flex: 1; }
+.dm {
+  display: none;
+  aspect-ratio: 1; background: #EEF0EC; border-radius: var(--cr-radius);
+  margin-bottom: 16px; align-items: center; justify-content: center;
+  text-align: center; color: var(--cr-muted); font-size: 13px; font-weight: 600; padding: 14px;
+  flex-direction: column; gap: 6px;
+}
+.db .cl { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--cr-accent); margin-bottom: 6px; font-weight: 700; }
+.db .ds { font-size: 14px; color: var(--cr-muted); margin-bottom: 14px; }
+.specs { list-style: none; margin-bottom: 16px; }
+.specs li {
+  font-size: 13px; padding: 9px 0; border-bottom: 1px solid var(--cr-line);
+  display: flex; gap: 10px;
+}
+.specs li strong { flex: 0 0 108px; font-weight: 600; }
+.specs li span { color: var(--cr-muted); }
+.note {
+  background: rgba(15,61,46,.05); border-left: 3px solid var(--cr-primary);
+  padding: 12px 14px; font-size: 13px; margin-bottom: 16px; line-height: 1.55;
+}
+.acts { display: flex; flex-direction: column; gap: 8px; }
+.bp {
+  display: inline-flex; justify-content: center; align-items: center;
+  background: var(--cr-primary); color: #fff; text-decoration: none;
+  font-size: 14px; font-weight: 600; padding: 13px 18px; border-radius: var(--cr-radius);
+}
+.bp:hover { background: var(--cr-primary-soft); }
+.bg {
+  display: inline-flex; justify-content: center; align-items: center;
+  border: 1px solid var(--cr-line); color: var(--cr-primary); text-decoration: none;
+  font-size: 14px; font-weight: 600; padding: 12px 18px; border-radius: var(--cr-radius);
+}
 
-  function catsInGroup(gid) {
-    if (gid === 'all') return null;
-    return (SUBS[gid] || []).map(function (s) { return s.id; });
+/* ===== Footer ===== */
+.ft {
+  background: #0A2B20; color: rgba(255,255,255,.55); padding: 24px 0; font-size: 13px;
+}
+.ft-in { display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: space-between; }
+.ft a { color: rgba(255,255,255,.75); text-decoration: none; }
+.ft a:hover { color: #fff; }
+
+/* ===== Filters ===== */
+.fgap { margin-bottom: 10px; }
+.fsub-label {
+  font-size: 11px; font-weight: 700; color: var(--cr-muted);
+  text-transform: uppercase; letter-spacing: .06em;
+  margin: 4px 0 8px; width: 100%;
+}
+.filters.sub { margin-bottom: 20px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-copy { max-width: none; }
+  .hero-stage {
+    height: clamp(200px, 32vw, 260px);
+    max-width: 520px; margin: 0 auto;
   }
-
-  function baseList() {
-    var list = PRODUCTS.slice();
-    if (state.group !== 'all') {
-      var allowed = catsInGroup(state.group) || [];
-      list = list.filter(function (p) { return allowed.indexOf(p.cat) !== -1; });
-    }
-    if (state.sub !== 'all') {
-      list = list.filter(function (p) { return p.cat === state.sub; });
-    }
-    return list;
+  .h-card { padding: 22px 24px; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .nav { display: none; }
+  .nav.open {
+    display: flex; flex-direction: column; align-items: stretch;
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; border-bottom: 1px solid var(--cr-line);
+    padding: 10px 4%; gap: 0; box-shadow: 0 12px 28px rgba(0,0,0,.08);
   }
-
-  function listForView() {
-    var list = baseList();
-    if (state.sub === 'all') return list;
-    var label = state.sub;
-    var subs = SUBS[state.group] || [];
-    for (var i = 0; i < subs.length; i++) if (subs[i].id === state.sub) label = subs[i].label;
-    var n = list.length;
-    while (n < MIN_SLOTS) {
-      list.push({
-        id: 'slot-' + state.sub + '-' + n,
-        cat: state.sub,
-        catLabel: label,
-        title: 'More examples available',
-        blurb: 'Additional structures and finishes can be developed for this category. Share your brief for sourcing support.',
-        use: 'Project-based', materials: 'To brief', performance: 'To brief', structure: 'To brief', print: 'To brief',
-        icon: '＋', keywords: label + ' custom packaging China', placeholder: true
-      });
-      n++;
-    }
-    return list;
-  }
-
-  function renderGroups() {
-    fg.innerHTML = GROUPS.map(function (g) {
-      return '<button type="button" class="fbtn' + (g.id === state.group ? ' on' : '') + '" data-group="' + g.id + '">' + g.label + '</button>';
-    }).join('');
-  }
-
-  function renderSubs() {
-    if (state.group === 'all') {
-      fs.innerHTML = '';
-      fs.hidden = true;
-      return;
-    }
-    fs.hidden = false;
-    var subs = SUBS[state.group] || [];
-    var html = '<span class="fsub-label">Subcategory</span>';
-    html += '<button type="button" class="fbtn' + (state.sub === 'all' ? ' on' : '') + '" data-sub="all">All in group</button>';
-    html += subs.map(function (s) {
-      return '<button type="button" class="fbtn' + (s.id === state.sub ? ' on' : '') + '" data-sub="' + s.id + '">' + s.label + '</button>';
-    }).join('');
-    fs.innerHTML = html;
-  }
-
-  function card(p) {
-    var slot = p.placeholder ? ' is-slot' : '';
-    var imgAlt = p.title + ' — ' + p.catLabel + ' sourced in China';
-    return (
-      '<article class="card' + slot + '" data-id="' + p.id + '" tabindex="0" role="button">' +
-        '<div class="media">' +
-          '<img src="images/' + p.id + '.webp" alt="' + imgAlt + '" width="400" height="400" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">' +
-          '<div class="ph" aria-label="' + imgAlt + '"><i>' + p.icon + '</i><b>' + (p.placeholder ? 'Image slot' : 'Photo: ' + p.id + '.webp') + '</b></div>' +
-          (p.placeholder ? '' : '<span class="badge">Customizable</span>') +
-        '</div>' +
-        '<div class="body">' +
-          '<div class="cat">' + p.catLabel + '</div>' +
-          '<h3>' + p.title + '</h3>' +
-          '<p>' + p.blurb + '</p>' +
-          '<div class="tags"><span>Deep customization</span></div>' +
-          '<div class="foot"><span>' + (p.placeholder ? 'On request' : 'View details') + '</span><em>Sourcing support</em></div>' +
-        '</div>' +
-      '</article>'
-    );
-  }
-
-  function render() {
-    var list = listForView();
-    var real = baseList().length;
-    var pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
-    if (state.page > pages) state.page = pages;
-    var start = (state.page - 1) * PER_PAGE;
-    var slice = list.slice(start, start + PER_PAGE);
-
-    countEl.textContent = real + ' example' + (real === 1 ? '' : 's') +
-      (state.sub !== 'all' ? ' · ' + MIN_SLOTS + ' image slots' : '');
-
-    grid.innerHTML = slice.length ? slice.map(card).join('') : '<p class="cr-empty" style="grid-column:1/-1;text-align:center;color:#6B7280;padding:40px 0;">No examples in this filter.</p>';
-
-    if (pages <= 1) {
-      pager.hidden = true;
-      pager.innerHTML = '';
-    } else {
-      pager.hidden = false;
-      var h = '<button type="button" data-p="' + (state.page - 1) + '"' + (state.page === 1 ? ' disabled' : '') + '>Prev</button>';
-      for (var i = 1; i <= pages; i++) {
-        h += '<button type="button" class="' + (i === state.page ? 'on' : '') + '" data-p="' + i + '">' + i + '</button>';
-      }
-      h += '<button type="button" data-p="' + (state.page + 1) + '"' + (state.page === pages ? ' disabled' : '') + '>Next</button>';
-      h += '<div class="pager-meta">Page ' + state.page + ' of ' + pages + '</div>';
-      pager.innerHTML = h;
-    }
-
-    moreHint.innerHTML = 'Looking for something else? <a href="../../contact.html">Contact us for custom sourcing →</a>';
-  }
-
-  function openDrawer(id) {
-    var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
-    if (!p) p = listForView().filter(function (x) { return x.id === id; })[0];
-    if (!p) return;
-    var imgAlt = p.title + ' — ' + p.catLabel + ' sourced in China';
-    dt.textContent = p.title;
-    db.innerHTML =
-      '<img src="images/' + p.id + '-lg.webp" alt="' + imgAlt + '" width="400" height="400" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:var(--cr-radius);margin-bottom:16px;display:block;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">' +
-      '<div class="dm" role="img" aria-label="' + imgAlt + '" style="display:none;"><span>▣</span>Product photo<br><small>' + p.id + '-lg.webp</small></div>' +
-      '<div class="cl">' + p.catLabel + '</div>' +
-      '<p class="ds">' + p.blurb + '</p>' +
-      '<ul class="specs">' +
-        '<li><strong>Typical use</strong><span>' + p.use + '</span></li>' +
-        '<li><strong>Materials</strong><span>' + p.materials + '</span></li>' +
-        '<li><strong>Performance</strong><span>' + p.performance + '</span></li>' +
-        '<li><strong>Structure</strong><span>' + p.structure + '</span></li>' +
-        '<li><strong>Print / finish</strong><span>' + p.print + '</span></li>' +
-      '</ul>' +
-      '<div class="note">' + NOTE + '</div>' +
-      '<div class="acts">' +
-        '<a class="bp" href="../../contact.html">Request sourcing support</a>' +
-        '<a class="bg" href="../../packaging-custom.html">Custom &amp; Retail overview</a>' +
-      '</div>';
-    drawer.classList.add('open');
-    bd.classList.add('open');
-    bd.hidden = false;
-    drawer.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeDrawer() {
-    drawer.classList.remove('open');
-    bd.classList.remove('open');
-    drawer.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    setTimeout(function () { bd.hidden = true; }, 250);
-  }
-
-  fg.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-group]');
-    if (!b) return;
-    var g = b.getAttribute('data-group');
-    if (g === state.group && g !== 'all') {
-      state.group = 'all';
-      state.sub = 'all';
-    } else {
-      state.group = g;
-      state.sub = 'all';
-    }
-    state.page = 1;
-    renderGroups();
-    renderSubs();
-    render();
-  });
-  fs.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-sub]');
-    if (!b) return;
-    state.sub = b.getAttribute('data-sub');
-    state.page = 1;
-    renderSubs();
-    render();
-  });
-  pager.addEventListener('click', function (e) {
-    var b = e.target.closest('[data-p]');
-    if (!b || b.disabled) return;
-    state.page = parseInt(b.getAttribute('data-p'), 10);
-    render();
-    window.scrollTo({ top: document.querySelector('.main').offsetTop - 70, behavior: 'smooth' });
-  });
-  grid.addEventListener('click', function (e) {
-    var c = e.target.closest('.card');
-    if (c) openDrawer(c.getAttribute('data-id'));
-  });
-  grid.addEventListener('keydown', function (e) {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    var c = e.target.closest('.card');
-    if (c) { e.preventDefault(); openDrawer(c.getAttribute('data-id')); }
-  });
-  document.getElementById('dx').addEventListener('click', closeDrawer);
-  bd.addEventListener('click', closeDrawer);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
-
-  var burger = document.getElementById('burger');
-  var nav = document.getElementById('nav');
-  burger.addEventListener('click', function () {
-    var open = nav.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-
-  /* Hero card auto-rotate */
-  (function () {
-    var cards = document.querySelectorAll('.h-card');
-    var dots = document.querySelectorAll('#hero-dots button');
-    if (!cards.length) return;
-    var i = 0;
-    var timer;
-    function show(n) {
-      i = (n + cards.length) % cards.length;
-      cards.forEach(function (c, k) {
-        c.classList.toggle('is-active', k === i);
-        c.classList.toggle('is-next', k === (i + 1) % cards.length);
-        c.classList.toggle('is-prev', k === (i - 1 + cards.length) % cards.length);
-      });
-      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
-    }
-    function next() { show(i + 1); }
-    function start() { stop(); timer = setInterval(next, 4500); }
-    function stop() { if (timer) clearInterval(timer); }
-    dots.forEach(function (d) {
-      d.addEventListener('click', function () { show(parseInt(d.getAttribute('data-i'), 10)); start(); });
-    });
-    var stage = document.getElementById('hero-stage');
-    if (stage) {
-      stage.addEventListener('mouseenter', stop);
-      stage.addEventListener('mouseleave', start);
-      stage.addEventListener('touchstart', function () { stop(); }, { passive: true });
-    }
-    show(0);
-    start();
-  })();
-
-  renderGroups();
-  renderSubs();
-  render();
-})();
-</script>
-</body>
-</html>
+  .nav.open a { padding: 13px 6px; border-bottom: 1px solid var(--cr-line); font-size: 15px; }
+  .nav.open a.on { border-bottom: 2px solid var(--cr-accent); background: rgba(15,61,46,.04); }
+  .nav.open .cta { margin: 10px 0 6px; text-align: center; border-bottom: none !important; }
+  .burger { display: flex; }
+  .hdr-in { min-height: 58px; }
+  .logo img { height: 38px; }
+  .cta-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cta-points { flex-direction: row; flex-wrap: wrap; }
+  .cp { flex: 1 1 200px; }
+}
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { padding: 36px 0 32px; }
+  .hero-stage { height: 210px; }
+  .h-card { padding: 18px 20px; border-radius: 12px; }
+  .h-card h3 { font-size: 18px; }
+  .drawer { width: 100%; }
+  .fbtn { font-size: 12px; padding: 7px 11px; }
+  .cta { padding: 40px 0; }
+  .cta-points { flex-direction: column; }
+  .cp { flex: 1 1 auto; }
+}
