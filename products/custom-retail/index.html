@@ -1,1 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom &amp; Retail Packaging Catalog | ChenBridge</title>
+<meta name="description" content="Browse custom and retail packaging examples from China: coffee cups, milk-tea cups, PE-coated seafood boxes, gift boxes, bento, clamshells. Deep customization with sourcing support.">
+<meta name="keywords" content="custom retail packaging China, PE coated seafood paper box, custom coffee cups OEM, gift packaging China, bento box packaging">
+<link rel="canonical" href="https://chenbridge.com/products/custom-retail/">
+<meta property="og:title" content="Custom &amp; Retail Packaging Catalog | ChenBridge">
+<meta property="og:description" content="Capability showcase for custom and retail packaging. Request sourcing support.">
+<meta property="og:url" content="https://chenbridge.com/products/custom-retail/">
+<link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
 
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="logo" href="../../index.html">
+      <img src="../../logo.png" alt="ChenBridge — China Packaging Sourcing Representative">
+    </a>
+    <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="nav">
+      <a href="../../index.html">Home</a>
+      <a href="../../packaging-custom.html">Custom &amp; Retail</a>
+      <a href="./" class="on">Product Catalog</a>
+      <a href="../../packaging-industrial.html">Industrial</a>
+      <a href="../../packaging-paper.html">Paper &amp; Corrugated</a>
+      <a href="../../contact.html" class="cta">Request Sourcing Support</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="bc">
+        <a href="../../index.html">Home</a> ·
+        <a href="../../packaging-custom.html">Custom &amp; Retail</a> ·
+        Catalog
+      </div>
+      <div class="hero-label">Capability Showcase</div>
+      <h1>Custom &amp; Retail Packaging Examples</h1>
+      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization.</p>
+      <div class="hero-meta">
+        <span><strong>Not a webshop</strong> — sourcing support</span>
+        <span><strong>Print · structure · material</strong> to brief</span>
+      </div>
+    </div>
+    <div class="hero-photos" aria-hidden="true">
+      <div class="hp"><span>▣</span>Featured 1<br>Replace photo</div>
+      <div class="hp"><span>▣</span>Featured 2</div>
+      <div class="hp"><span>▣</span>Featured 3</div>
+    </div>
+  </div>
+</section>
+
+<div class="ind">
+  <div class="wrap ind-in">
+    <span class="ind-label">Industries</span>
+    <a href="../../packaging-custom.html" class="cur">Custom &amp; Retail</a>
+    <a href="../../packaging-industrial.html">Industrial &amp; Protective</a>
+    <a href="../../packaging-paper.html">Paper &amp; Corrugated</a>
+    <a href="../../packaging-solutions.html">Complete Solutions</a>
+  </div>
+</div>
+
+<main class="main">
+  <div class="wrap">
+    <div class="bar">
+      <h2>Browse by category</h2>
+      <p class="count" id="count">…</p>
+    </div>
+    <div class="filters" id="filters" role="tablist" aria-label="Categories"></div>
+    <div class="grid" id="grid" aria-live="polite"></div>
+    <nav class="pager" id="pager" aria-label="Pagination" hidden></nav>
+  </div>
+</main>
+
+<section class="cta">
+  <div class="wrap">
+    <h2>Building a branded packaging project?</h2>
+    <p>Share structure, volume range and market needs. We help align suppliers, samples and production follow-up in China.</p>
+    <a href="../../contact.html">Contact ChenBridge</a>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap ft-in">
+    <span>&copy; 2026 ChenBridge. China packaging sourcing representative.</span>
+    <span>
+      <a href="../../packaging-custom.html">Custom overview</a> ·
+      <a href="../../contact.html">Contact</a>
+    </span>
+  </div>
+</footer>
+
+<div class="bd" id="bd" hidden></div>
+<aside class="drawer" id="drawer" aria-hidden="true" role="dialog" aria-labelledby="dt">
+  <div class="dh">
+    <h2 id="dt">Product</h2>
+    <button type="button" class="dx" id="dx" aria-label="Close">×</button>
+  </div>
+  <div class="db" id="db"></div>
+</aside>
+
+<script>
+(function () {
+  var PER_PAGE = 9;
+  var MIN_SLOTS = 9;
+  var NOTE = 'Deep customization available: size, structure, material grade, barrier coating, window and print (logo or full-bleed) can be developed to project requirements. Typical projects support artwork review, sampling and production coordination through ChenBridge.';
+
+  /* ===== EDIT PRODUCTS HERE ONLY =====
+     Add/remove objects. Fields: id, cat, catLabel, title, blurb, use, materials, performance, structure, print, icon, keywords
+     Optional: placeholder:true for empty image slots
+  */
+  var PRODUCTS = [
+    {id:'h1',cat:'hot-cups',catLabel:'Hot paper cups',title:'Double-wall hot paper cups',blurb:'Insulated wall for coffee and tea; strong print surface for branding.',use:'Cafés, QSR, office beverage',materials:'Food-grade paperboard; PE or PLA lining options',performance:'Hot-fill oriented; comfortable hold',structure:'Double wall; common 8–16 oz range',print:'Flexo / offset custom print',icon:'☕',keywords:'custom double wall paper coffee cup China OEM'},
+    {id:'h2',cat:'hot-cups',catLabel:'Hot paper cups',title:'Single-wall hot cups',blurb:'Efficient hot cup for high-volume programs.',use:'Takeaway coffee',materials:'Paperboard with lining',performance:'Pair with sleeve for insulation',structure:'Single wall size ladder',print:'Brand print ready',icon:'☕',keywords:'single wall paper coffee cup China'},
+    {id:'h3',cat:'hot-cups',catLabel:'Hot paper cups',title:'Ripple-wall hot cups',blurb:'Textured wall for grip and heat buffer without a separate sleeve.',use:'Premium coffee takeaway',materials:'Ripple paperboard',performance:'Grip + insulation',structure:'Ripple wall forms',print:'Custom exterior print',icon:'☕',keywords:'ripple wall paper cup custom China'},
+    {id:'c1',cat:'cold-cups',catLabel:'Cold drink cups',title:'Clear cold drink / milk-tea cups',blurb:'Transparent cups for iced drinks and bubble tea presentation.',use:'Milk tea, smoothies, iced coffee',materials:'PET or PP by project',performance:'Clarity for product show',structure:'Flat or dome lid fit',print:'Sleeve, label or direct print',icon:'🧋',keywords:'custom milk tea cup PET China'},
+    {id:'c2',cat:'cold-cups',catLabel:'Cold drink cups',title:'Paper cold cups',blurb:'Paper option for cold beverages with large print area.',use:'Branded cold programs',materials:'Coated paperboard',performance:'Short-term cold hold',structure:'Sized to lid program',print:'Full or partial wrap',icon:'🥤',keywords:'custom cold paper cup China print'},
+    {id:'c3',cat:'cold-cups',catLabel:'Cold drink cups',title:'Tall smoothie cups',blurb:'Taller profile for thick drinks and layered beverages.',use:'Smoothies, frappe-style drinks',materials:'PET / PP options',performance:'Volume + straw access',structure:'Tall cup + lid',print:'Label / sleeve branding',icon:'🥤',keywords:'smoothie cup packaging China custom'},
+    {id:'l1',cat:'lids-sleeves',catLabel:'Lids & sleeves',title:'Sip / straw / dome lids',blurb:'Lid systems matched to hot and cold cup ranges.',use:'Beverage lid programs',materials:'PS, PET, PP or fiber by line',performance:'Fit and venting by design',structure:'Sip, straw, dome',print:'Usually unprinted',icon:'🧢',keywords:'paper cup lids China sourcing'},
+    {id:'l2',cat:'lids-sleeves',catLabel:'Lids & sleeves',title:'Printed cup sleeves',blurb:'Kraft or white sleeves for insulation and secondary branding.',use:'Hot cups, seasonal campaigns',materials:'Kraft / SBS sleeve stock',performance:'Grip and heat buffer',structure:'Standard or custom die',print:'One to multi-color',icon:'📄',keywords:'custom printed coffee cup sleeve China'},
+    {id:'l3',cat:'lids-sleeves',catLabel:'Lids & sleeves',title:'Cup carriers (2 / 4 cup)',blurb:'Board carriers for multi-cup takeaway.',use:'Café multi-drink carry',materials:'Corrugated / board',performance:'Stable multi-cup hold',structure:'2-cup / 4-cup',print:'Optional brand print',icon:'⧉',keywords:'paper cup carrier tray China'},
+    {id:'s1',cat:'soup-bowls',catLabel:'Soup & noodle',title:'Paper soup cups with lids',blurb:'Round containers for soups and broths.',use:'Soup, congee, saucy sides',materials:'Lined paperboard',performance:'Leak-oriented short hold',structure:'Cup + lid size ladder',print:'Custom exterior',icon:'🍜',keywords:'custom paper soup cup lid China'},
+    {id:'s2',cat:'soup-bowls',catLabel:'Soup & noodle',title:'Kraft noodle bowls',blurb:'Deeper bowls for noodles and grain meals.',use:'Noodles, grain bowls',materials:'Kraft or SBS with lining',performance:'Hot food short-term',structure:'Bowl + lid',print:'Brand print ready',icon:'🥣',keywords:'kraft noodle bowl custom China'},
+    {id:'s3',cat:'soup-bowls',catLabel:'Soup & noodle',title:'Instant-style noodle cups',blurb:'Taller cup forms for instant and hot-fill noodle service.',use:'Instant / hot noodle service',materials:'Lined paperboard',performance:'Heat and moisture hold',structure:'Cup + lid / film options',print:'Full wrap graphics',icon:'🍜',keywords:'instant noodle paper cup packaging China'},
+    {id:'cl1',cat:'clamshells',catLabel:'Clamshells',title:'Hinged clamshell containers',blurb:'One-piece hinged boxes for burgers and set meals.',use:'Burgers, sandwiches, mixed meals',materials:'Bagasse, PP or paperboard',performance:'Optional venting for hot food',structure:'Hinged lock; multi-size',print:'Print on selected materials',icon:'📦',keywords:'custom clamshell food container China'},
+    {id:'cl2',cat:'clamshells',catLabel:'Clamshells',title:'Window clamshells',blurb:'Clear window for product visibility at counter or delivery.',use:'Salads, bakery, display meals',materials:'Board + PET window / clear PP',performance:'Visibility + closure',structure:'Hinged with window',print:'Frame brand print',icon:'📦',keywords:'window clamshell packaging China'},
+    {id:'cl3',cat:'clamshells',catLabel:'Clamshells',title:'Compartment clamshells',blurb:'Divided hinged packs for entrée plus sides.',use:'Combo meals',materials:'Bagasse or PP',performance:'Portion separation',structure:'Multi-compartment hinge',print:'Optional exterior print',icon:'📦',keywords:'compartment clamshell takeout China'},
+    {id:'b1',cat:'bento',catLabel:'Bento & multi-compartment',title:'Multi-compartment bento boxes',blurb:'Divided trays for plated presentation.',use:'Bento, meal prep, catering',materials:'PET, PP, molded fiber',performance:'Compartment separation',structure:'2–4+ compartments + lid',print:'Label or sleeve',icon:'🍱',keywords:'custom bento box multi compartment China'},
+    {id:'b2',cat:'bento',catLabel:'Bento & multi-compartment',title:'Rectangular bento with lid',blurb:'Classic rectangular meal box with secure lid.',use:'Daily lunch sets',materials:'PP / PET / fiber',performance:'Stackable options',structure:'Base + lid',print:'Sleeve branding',icon:'🍱',keywords:'rectangular bento box packaging China'},
+    {id:'b3',cat:'bento',catLabel:'Bento & multi-compartment',title:'Round compartment trays',blurb:'Round divided trays for specialty presentations.',use:'Premium sets, catering',materials:'PET / fiber',performance:'Presentation focus',structure:'Round multi-cell + lid',print:'Custom label',icon:'🍱',keywords:'round compartment food tray China'},
+    {id:'t1',cat:'takeout-boxes',catLabel:'Takeout boxes',title:'Folding kraft takeout boxes',blurb:'Classic fold structures for takeout meals.',use:'Noodles, rice, general takeout',materials:'Poly-lined kraft / SBS',performance:'Grease and moisture by grade',structure:'Tuck-top, lock-corner',print:'Custom exterior',icon:'🥡',keywords:'custom kraft takeout box China'},
+    {id:'t2',cat:'takeout-boxes',catLabel:'Takeout boxes',title:'Bio-fold takeout boxes',blurb:'Folding boxes oriented to eco-positioned programs.',use:'Green-positioned QSR',materials:'Kraft with chosen lining',performance:'Short-term hot/wet hold',structure:'Fold styles by size',print:'Natural or printed',icon:'🥡',keywords:'eco kraft takeout box China custom'},
+    {id:'t3',cat:'takeout-boxes',catLabel:'Takeout boxes',title:'Window takeout cartons',blurb:'Folding cartons with window for product show-through.',use:'Retail-ready takeout',materials:'Board + window film',performance:'Visibility + structure',structure:'Tuck carton + window',print:'Full brand panels',icon:'🥡',keywords:'window takeout carton China packaging'},
+    {id:'sa1',cat:'salad-bowls',catLabel:'Salad bowls',title:'Salad / poke bowls with lids',blurb:'Wide bowls with clear or matching lids.',use:'Salads, poke, cold bowls',materials:'PET, PP, paper composites',performance:'Visibility + lid seal',structure:'Bowl + lid sizes',print:'Sleeve or direct brand',icon:'🥗',keywords:'custom salad bowl lid packaging China'},
+    {id:'sa2',cat:'salad-bowls',catLabel:'Salad bowls',title:'Deep cold bowls',blurb:'Deeper form for grain and protein bowls.',use:'Grain bowls, cold meals',materials:'PP / PET',performance:'Volume for toppings',structure:'Deep bowl + lid',print:'Brand sleeve',icon:'🥗',keywords:'deep poke bowl packaging China'},
+    {id:'sa3',cat:'salad-bowls',catLabel:'Salad bowls',title:'Paper cold bowls',blurb:'Paper-forward bowls for cold or warm-hold programs.',use:'Cafe bowls',materials:'Lined paperboard',performance:'Short hold',structure:'Bowl + lid',print:'Custom print',icon:'🥗',keywords:'paper salad bowl custom print China'},
+    {id:'sf1',cat:'seafood',catLabel:'Seafood & wet-food',title:'PE-coated waterproof seafood boxes',blurb:'Coated / wet-strength paperboard for seafood and moist foods.',use:'Seafood takeout, sashimi, wet prepared foods',materials:'PE-coated or wet-strength paperboard; optional window',performance:'Leak- and grease-oriented short-term wet contact',structure:'Tuck-top, lock-corner, window patch',print:'Custom branding',icon:'🦐',keywords:'PE coated waterproof seafood paper box China'},
+    {id:'sf2',cat:'seafood',catLabel:'Seafood & wet-food',title:'Windowed wet-food cartons',blurb:'Window cartons for chilled wet or semi-wet foods.',use:'Retail seafood, deli wet packs',materials:'Coated board + PET window',performance:'Visibility with moisture control',structure:'Folding carton + window',print:'Full brand panels',icon:'🪟',keywords:'windowed seafood packaging carton China'},
+    {id:'sf3',cat:'seafood',catLabel:'Seafood & wet-food',title:'Grease-resistant wet food trays',blurb:'Open or lidded trays for oily or moist prepared foods.',use:'Fried seafood, wet sides',materials:'Grease-resistant coated board',performance:'Oil and moisture buffer',structure:'Tray / boat forms',print:'Optional print',icon:'🦐',keywords:'grease resistant seafood tray packaging China'},
+    {id:'p1',cat:'plates-trays',catLabel:'Plates & trays',title:'Paper and bagasse plates',blurb:'Round or compartment plates for service and events.',use:'Catering, QSR, events',materials:'Paperboard or bagasse',performance:'Cut and grease resistance by grade',structure:'Flat or compartment',print:'Print on paper grades',icon:'🍽️',keywords:'custom paper bagasse plates China'},
+    {id:'p2',cat:'plates-trays',catLabel:'Plates & trays',title:'Food trays and boats',blurb:'Open trays for snacks and sides.',use:'Snacks, concessions',materials:'Grease-resistant board',performance:'Open service hold',structure:'Boat / tray dies',print:'Brand print options',icon:'🍟',keywords:'custom paper food tray boat China'},
+    {id:'p3',cat:'plates-trays',catLabel:'Plates & trays',title:'Compartment serving plates',blurb:'Divided plates for set meals and catering lines.',use:'Institutional and catering',materials:'Bagasse / paper',performance:'Portion control',structure:'Multi-section plate',print:'Optional',icon:'🍽️',keywords:'compartment paper plate packaging China'},
+    {id:'po1',cat:'portion-cups',catLabel:'Portion cups',title:'Sauce and portion cups',blurb:'Small cups for dips, sides and sampling.',use:'Sauces, condiments, samples',materials:'PP / PET / paper',performance:'Lid fit critical',structure:'Cup + lid size ladder',print:'Label optional',icon:'🧴',keywords:'portion sauce cups lids China'},
+    {id:'po2',cat:'portion-cups',catLabel:'Portion cups',title:'Hinged portion packs',blurb:'Small hinged packs for sauces and wet sides.',use:'Delivery sauce packs',materials:'PP',performance:'Leak resistance',structure:'Mini hinge pack',print:'Usually stock',icon:'🧴',keywords:'hinged sauce portion pack China'},
+    {id:'po3',cat:'portion-cups',catLabel:'Portion cups',title:'Paper portion cups',blurb:'Paper option for dry or semi-dry portions.',use:'Dry sides, samples',materials:'Paperboard',performance:'Short dry hold',structure:'Cup forms',print:'Simple print possible',icon:'🧴',keywords:'paper portion cup packaging China'},
+    {id:'g1',cat:'gift-boxes',catLabel:'Gift & premium',title:'Rigid lid-base gift boxes',blurb:'Two-piece rigid boxes for premium retail and seasonal sets.',use:'Gifts, premium food kits',materials:'Greyboard + wrap; soft-touch / foil options',performance:'Presentation and protection',structure:'Lid + base; optional insert',print:'Wrap, foil, emboss',icon:'🎁',keywords:'custom rigid gift box packaging China'},
+    {id:'g2',cat:'gift-boxes',catLabel:'Gift & premium',title:'Drawer-style gift boxes',blurb:'Pull-out drawer structures for unboxing experience.',use:'Gifting, kits',materials:'Rigid board systems',performance:'Slide action + insert',structure:'Drawer + sleeve',print:'Full custom finish',icon:'🎁',keywords:'custom drawer gift box China'},
+    {id:'g3',cat:'gift-boxes',catLabel:'Gift & premium',title:'Sleeve + tray gift sets',blurb:'Outer sleeve with inner tray for multi-item sets.',use:'Retail gift sets',materials:'Board sleeve + tray',performance:'Set presentation',structure:'Sleeve + tray + insert',print:'Full brand',icon:'🎁',keywords:'sleeve tray gift packaging set China'},
+    {id:'o1',cat:'other',catLabel:'Other / custom',title:'Fully custom structures',blurb:'Non-standard shapes and multi-part sets developed to brief.',use:'Unique retail launches',materials:'Specified per project',performance:'Engineered to brief',structure:'Prototype-led',print:'As specified',icon:'✦',keywords:'fully custom packaging structure China OEM'},
+    {id:'o2',cat:'other',catLabel:'Other / custom',title:'Multi-pack retail sleeves',blurb:'Secondary sleeves for multi-unit retail presentation.',use:'Multipacks on shelf',materials:'Paperboard sleeves',performance:'Bundle hold',structure:'Sleeve wraps',print:'Retail graphics',icon:'✦',keywords:'retail multipack sleeve packaging China'},
+    {id:'o3',cat:'other',catLabel:'Other / custom',title:'Specialty display packaging',blurb:'Counter and display-oriented structures for campaigns.',use:'Promotions, launches',materials:'Per brief',performance:'Display stability',structure:'Custom display forms',print:'Campaign print',icon:'✦',keywords:'custom display packaging China retail'}
+  ];
+
+  var CATS = [
+    {id:'all',label:'All'},
+    {id:'hot-cups',label:'Hot cups'},
+    {id:'cold-cups',label:'Cold / milk-tea'},
+    {id:'lids-sleeves',label:'Lids & sleeves'},
+    {id:'soup-bowls',label:'Soup & noodle'},
+    {id:'clamshells',label:'Clamshells'},
+    {id:'bento',label:'Bento'},
+    {id:'takeout-boxes',label:'Takeout boxes'},
+    {id:'salad-bowls',label:'Salad bowls'},
+    {id:'seafood',label:'Seafood / wet-food'},
+    {id:'plates-trays',label:'Plates & trays'},
+    {id:'portion-cups',label:'Portion cups'},
+    {id:'gift-boxes',label:'Gift boxes'},
+    {id:'other',label:'Other / custom'}
+  ];
+
+  var state = { cat: 'all', page: 1 };
+  var grid = document.getElementById('grid');
+  var filters = document.getElementById('filters');
+  var pager = document.getElementById('pager');
+  var count = document.getElementById('count');
+  var drawer = document.getElementById('drawer');
+  var bd = document.getElementById('bd');
+  var db = document.getElementById('db');
+  var dt = document.getElementById('dt');
+
+  function baseList() {
+    if (state.cat === 'all') return PRODUCTS.slice();
+    return PRODUCTS.filter(function (p) { return p.cat === state.cat; });
+  }
+
+  /* Pad each category view to at least MIN_SLOTS image positions */
+  function listForView() {
+    var list = baseList();
+    if (state.cat === 'all') return list;
+    var catMeta = CATS.filter(function (c) { return c.id === state.cat; })[0];
+    var label = catMeta ? catMeta.label : 'Category';
+    var i = list.length;
+    while (i < MIN_SLOTS) {
+      list.push({
+        id: 'slot-' + state.cat + '-' + i,
+        cat: state.cat,
+        catLabel: label,
+        title: 'More examples available',
+        blurb: 'Additional structures and finishes can be developed for this category. Share your brief for sourcing support.',
+        use: 'Project-based',
+        materials: 'To brief',
+        performance: 'To brief',
+        structure: 'To brief',
+        print: 'To brief',
+        icon: '＋',
+        keywords: label + ' custom packaging China',
+        placeholder: true
+      });
+      i++;
+    }
+    return list;
+  }
+
+  function renderFilters() {
+    filters.innerHTML = CATS.map(function (c) {
+      return '<button type="button" class="fbtn' + (c.id === state.cat ? ' on' : '') + '" data-cat="' + c.id + '">' + c.label + '</button>';
+    }).join('');
+  }
+
+  function card(p) {
+    var slot = p.placeholder ? ' is-slot' : '';
+    return (
+      '<article class="card' + slot + '" data-id="' + p.id + '" tabindex="0" role="button">' +
+        '<div class="media">' +
+          '<div class="ph" role="img" aria-label="' + (p.keywords || p.title) + '"><i>' + p.icon + '</i><b>' + (p.placeholder ? 'Image slot' : 'Photo placeholder') + '</b></div>' +
+          (p.placeholder ? '' : '<span class="badge">Customizable</span>') +
+        '</div>' +
+        '<div class="body">' +
+          '<div class="cat">' + p.catLabel + '</div>' +
+          '<h3>' + p.title + '</h3>' +
+          '<p>' + p.blurb + '</p>' +
+          '<div class="tags"><span>Deep customization</span></div>' +
+          '<div class="foot"><span>' + (p.placeholder ? 'On request' : 'View details') + '</span><em>Sourcing support</em></div>' +
+        '</div>' +
+      '</article>'
+    );
+  }
+
+  function render() {
+    var list = listForView();
+    var real = baseList().length;
+    var pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
+    if (state.page > pages) state.page = pages;
+    var start = (state.page - 1) * PER_PAGE;
+    var slice = list.slice(start, start + PER_PAGE);
+
+    if (state.cat === 'all') {
+      count.textContent = real + ' examples across categories';
+    } else {
+      count.textContent = real + ' listed · ' + MIN_SLOTS + ' image slots in this view';
+    }
+
+    grid.innerHTML = slice.map(card).join('');
+
+    if (pages <= 1) {
+      pager.hidden = true;
+      pager.innerHTML = '';
+    } else {
+      pager.hidden = false;
+      var h = '<button type="button" data-p="' + (state.page - 1) + '"' + (state.page === 1 ? ' disabled' : '') + '>Prev</button>';
+      for (var i = 1; i <= pages; i++) {
+        h += '<button type="button" class="' + (i === state.page ? 'on' : '') + '" data-p="' + i + '">' + i + '</button>';
+      }
+      h += '<button type="button" data-p="' + (state.page + 1) + '"' + (state.page === pages ? ' disabled' : '') + '>Next</button>';
+      h += '<div class="pager-meta">Page ' + state.page + ' of ' + pages + '</div>';
+      pager.innerHTML = h;
+    }
+  }
+
+  function openDrawer(id) {
+    var p = PRODUCTS.filter(function (x) { return x.id === id; })[0];
+    if (!p) {
+      /* placeholder slot */
+      p = listForView().filter(function (x) { return x.id === id; })[0];
+    }
+    if (!p) return;
+    dt.textContent = p.title;
+    db.innerHTML =
+      '<div class="dm" role="img" aria-label="' + (p.keywords || p.title) + '">Replace with product photo<br><small>' + p.icon + ' ' + p.catLabel + '</small></div>' +
+      '<div class="cl">' + p.catLabel + '</div>' +
+      '<p class="ds">' + p.blurb + '</p>' +
+      '<ul class="specs">' +
+        '<li><strong>Typical use</strong><span>' + p.use + '</span></li>' +
+        '<li><strong>Materials</strong><span>' + p.materials + '</span></li>' +
+        '<li><strong>Performance</strong><span>' + p.performance + '</span></li>' +
+        '<li><strong>Structure</strong><span>' + p.structure + '</span></li>' +
+        '<li><strong>Print / finish</strong><span>' + p.print + '</span></li>' +
+      '</ul>' +
+      '<div class="note">' + NOTE + '</div>' +
+      '<div class="acts">' +
+        '<a class="bp" href="../../contact.html">Request sourcing support</a>' +
+        '<a class="bg" href="../../packaging-custom.html">Custom &amp; Retail overview</a>' +
+      '</div>';
+    drawer.classList.add('open');
+    bd.classList.add('open');
+    bd.hidden = false;
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    bd.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    setTimeout(function () { bd.hidden = true; }, 250);
+  }
+
+  filters.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-cat]');
+    if (!b) return;
+    state.cat = b.getAttribute('data-cat');
+    state.page = 1;
+    renderFilters();
+    render();
+  });
+  pager.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-p]');
+    if (!b || b.disabled) return;
+    state.page = parseInt(b.getAttribute('data-p'), 10);
+    render();
+    window.scrollTo({ top: document.querySelector('.main').offsetTop - 70, behavior: 'smooth' });
+  });
+  grid.addEventListener('click', function (e) {
+    var c = e.target.closest('.card');
+    if (c) openDrawer(c.getAttribute('data-id'));
+  });
+  grid.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var c = e.target.closest('.card');
+    if (c) { e.preventDefault(); openDrawer(c.getAttribute('data-id')); }
+  });
+  document.getElementById('dx').addEventListener('click', closeDrawer);
+  bd.addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrawer(); });
+
+  var burger = document.getElementById('burger');
+  var nav = document.getElementById('nav');
+  burger.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  renderFilters();
+  render();
+})();
+</script>
+</body>
+</html>
