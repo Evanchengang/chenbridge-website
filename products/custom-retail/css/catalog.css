@@ -63,8 +63,11 @@ a { color: inherit; }
   color: #fff; padding: 44px 0 40px;
 }
 .hero-grid {
-  display: block;
-  max-width: 640px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 36px;
+  align-items: center;
+  max-width: none;
 }
 .bc { font-size: 13px; color: rgba(255,255,255,.55); margin-bottom: 16px; }
 .bc a { color: rgba(255,255,255,.75); text-decoration: none; }
@@ -369,4 +372,91 @@ a { color: inherit; }
 .filters.sub { margin-bottom: 20px; }
 @media (max-width: 960px) {
   .hero-grid { max-width: none; }
+}
+
+
+/* Hero: text left + rotating image right */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 36px;
+  align-items: center;
+  max-width: none;
+}
+.hero-copy { max-width: 520px; }
+.hero-stage {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  min-height: 240px;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .7s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, rgba(255,255,255,.1), rgba(255,255,255,.03));
+}
+.hero-slide.is-active { opacity: 1; z-index: 1; }
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero-slide .hs-ph {
+  text-align: center;
+  color: rgba(255,255,255,.55);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 20px;
+}
+.hero-slide .hs-ph span {
+  display: block;
+  font-size: 28px;
+  opacity: .4;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.hero-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+.hero-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+  padding: 0;
+  background: rgba(255,255,255,.35);
+  cursor: pointer;
+}
+.hero-dots button.is-on { background: #fff; }
+@media (max-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hero-copy { max-width: none; }
+  .hero-stage {
+    aspect-ratio: 16 / 10;
+    min-height: 180px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 560px) {
+  .hero-stage { aspect-ratio: 4 / 3; min-height: 160px; }
 }

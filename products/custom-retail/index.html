@@ -34,17 +34,35 @@
 
 <section class="hero">
   <div class="wrap hero-grid">
-    <div class="bc">
-      <a href="../../index.html">Home</a> ·
-      <a href="../../packaging-custom.html">Custom &amp; Retail</a> ·
-      Catalog
+    <div class="hero-copy">
+      <div class="bc">
+        <a href="../../index.html">Home</a> ·
+        <a href="../../packaging-custom.html">Custom &amp; Retail</a> ·
+        Catalog
+      </div>
+      <div class="hero-label">Capability Showcase</div>
+      <h1>Custom &amp; Retail Packaging Examples</h1>
+      <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization for your project.</p>
+      <div class="hero-meta">
+        <span><strong>Not a webshop</strong> — sourcing support</span>
+        <span><strong>Print · structure · material</strong> to brief</span>
+      </div>
     </div>
-    <div class="hero-label">Capability Showcase</div>
-    <h1>Custom &amp; Retail Packaging Examples</h1>
-    <p class="lead">Structures we commonly coordinate in China — beverage cups, food containers, waterproof seafood boxes and gift packaging. Every line supports deep customization for your project.</p>
-    <div class="hero-meta">
-      <span><strong>Not a webshop</strong> — sourcing support</span>
-      <span><strong>Print · structure · material</strong> to brief</span>
+    <div class="hero-stage" id="hero-stage" aria-label="Featured packaging examples">
+      <div class="hero-slide is-active" data-i="0">
+        <div class="hs-ph"><span>▣</span>Image 1 — replace<br>images/hero-1.webp</div>
+      </div>
+      <div class="hero-slide" data-i="1">
+        <div class="hs-ph"><span>▣</span>Image 2 — replace<br>images/hero-2.webp</div>
+      </div>
+      <div class="hero-slide" data-i="2">
+        <div class="hs-ph"><span>▣</span>Image 3 — replace<br>images/hero-3.webp</div>
+      </div>
+      <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Hero slides">
+        <button type="button" class="is-on" data-i="0" aria-label="Slide 1"></button>
+        <button type="button" data-i="1" aria-label="Slide 2"></button>
+        <button type="button" data-i="2" aria-label="Slide 3"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -336,8 +354,15 @@
   fg.addEventListener('click', function (e) {
     var b = e.target.closest('[data-group]');
     if (!b) return;
-    state.group = b.getAttribute('data-group');
-    state.sub = 'all';
+    var g = b.getAttribute('data-group');
+    /* click active group again → collapse back to All */
+    if (g === state.group && g !== 'all') {
+      state.group = 'all';
+      state.sub = 'all';
+    } else {
+      state.group = g;
+      state.sub = 'all';
+    }
     state.page = 1;
     renderGroups();
     renderSubs();
@@ -377,6 +402,42 @@
     var open = nav.classList.toggle('open');
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
+
+
+  /* Hero auto-rotate (3 images) */
+  (function () {
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots = document.querySelectorAll('#hero-dots button');
+    if (!slides.length) return;
+    var i = 0;
+    var timer;
+    function show(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-on', k === i); });
+    }
+    function next() { show(i + 1); }
+    function start() {
+      stop();
+      timer = setInterval(next, 4500);
+    }
+    function stop() {
+      if (timer) clearInterval(timer);
+    }
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        show(parseInt(d.getAttribute('data-i'), 10));
+        start();
+      });
+    });
+    var stage = document.getElementById('hero-stage');
+    if (stage) {
+      stage.addEventListener('mouseenter', stop);
+      stage.addEventListener('mouseleave', start);
+      stage.addEventListener('touchstart', function () { stop(); }, { passive: true });
+    }
+    start();
+  })();
 
   renderGroups();
   renderSubs();
