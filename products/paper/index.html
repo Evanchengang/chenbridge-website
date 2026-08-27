@@ -143,7 +143,14 @@
 <script>
 (function () {
   var NOTE = "Board grade, flute, structure and print can be developed to project requirements. Typical programs support artwork review, sampling and production coordination through ChenBridge.";
-  var PRODUCTS = [{"id": "pc1", "icon": "📦", "title": "Heavy-Duty Corrugated Boxes", "blurb": "High-strength corrugated packaging for industrial, commercial and export applications.", "custom": "Size · Board Grade · Wall Structure · Printing", "keywords": "heavy duty corrugated boxes China export industrial"}, {"id": "pc2", "icon": "📐", "title": "Large Format & Pallet Packaging", "blurb": "Large-format corrugated containers for oversized, bulk and palletized products.", "custom": "Dimensions · Load Capacity · Structure", "keywords": "large format pallet corrugated packaging China"}, {"id": "pc3", "icon": "⊞", "title": "Corrugated Inserts & Partitions", "blurb": "Custom inserts, dividers and partitions designed to separate and protect products in transit.", "custom": "Layout · Cell Size · Board Grade", "keywords": "corrugated inserts partitions dividers China custom"}, {"id": "pc4", "icon": "📄", "title": "Industrial Paper Protection", "blurb": "Edge, corner and surface protection for products and palletized shipments.", "custom": "Size · Thickness · Format", "keywords": "industrial paper edge corner protection China"}, {"id": "pc5", "icon": "⬡", "title": "Honeycomb Paper Packaging", "blurb": "Lightweight structural protection for edges, surfaces and larger products.", "custom": "Thickness · Size · Density · Shape", "keywords": "honeycomb paper packaging protection China"}, {"id": "pc6", "icon": "🖨️", "title": "Custom Printed Corrugated Packaging", "blurb": "Branded corrugated packaging for shipping, retail and product presentation.", "custom": "Printing · Size · Structure · Finish", "keywords": "custom printed corrugated packaging China branded"}];
+  var PRODUCTS = [
+    {"id":"pc1","icon":"📦","title":"Heavy-Duty Corrugated Boxes","blurb":"High-strength corrugated packaging for industrial, commercial and export applications.","custom":"Size · Board Grade · Wall Structure · Printing","keywords":"heavy duty corrugated boxes China export industrial","img":"images/pc1.webp"},
+    {"id":"pc2","icon":"📐","title":"Large Format & Pallet Packaging","blurb":"Large-format corrugated containers for oversized, bulk and palletized products.","custom":"Dimensions · Load Capacity · Structure","keywords":"large format pallet corrugated packaging China","img":"images/pc2.webp"},
+    {"id":"pc3","icon":"⊞","title":"Corrugated Inserts & Partitions","blurb":"Custom inserts, dividers and partitions designed to separate and protect products in transit.","custom":"Layout · Cell Size · Board Grade","keywords":"corrugated inserts partitions dividers China custom","img":"images/pc3.webp"},
+    {"id":"pc4","icon":"📄","title":"Industrial Paper Protection","blurb":"Edge, corner and surface protection for products and palletized shipments.","custom":"Size · Thickness · Format","keywords":"industrial paper edge corner protection China","img":"images/pc4.webp"},
+    {"id":"pc5","icon":"⬡","title":"Honeycomb Paper Packaging","blurb":"Lightweight structural protection for edges, surfaces and larger products.","custom":"Thickness · Size · Density · Shape","keywords":"honeycomb paper packaging protection China","img":"images/pc5.webp"},
+    {"id":"pc6","icon":"🖨️","title":"Custom Printed Corrugated Packaging","blurb":"Branded corrugated packaging for shipping, retail and product presentation.","custom":"Printing · Size · Structure · Finish","keywords":"custom printed corrugated packaging China branded","img":"images/pc6.webp"}
+  ];
 
   var grid = document.getElementById('grid');
   var countEl = document.getElementById('count');
@@ -159,7 +166,7 @@
         return '<span>' + t.trim() + '</span>';
       }).join('');
       return '<article class="card" data-id="' + p.id + '" tabindex="0" role="button" aria-label="' + p.title + '">' +
-        '<div class="media"><div class="ph" role="img" aria-label="' + p.title + '"><i>' + p.icon + '</i><b>' + p.title.split(' ')[0] + '</b></div></div>' +
+        '<div class="media">' + (p.img ? '<img src="' + p.img + '" alt="' + p.title + '" loading="lazy" width="400" height="300">' : '<div class="ph" role="img" aria-label="' + p.title + '"><i>' + p.icon + '</i><b>' + p.title.split(' ')[0] + '</b></div>') + '</div>' +
         '<div class="body"><h3>' + p.title + '</h3><p>' + p.blurb + '</p><div class="tags">' + tags + '</div></div></article>';
     }).join('');
   }
