@@ -1,0 +1,57 @@
+/* ChenBridge 中文站 AI 顾问 - 拟人化 UI */
+@keyframes cb-slide-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes cb-pulse-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.6);opacity:0}}
+@keyframes cb-typing{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes cb-bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+
+#cb-chat-widget{position:fixed;bottom:24px;right:24px;z-index:9999;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+
+/* 按钮拟人化 - 呼吸灯 + 弹性 */
+#cb-chat-btn{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#0F3D2E 0%,#1a6b4f 100%);color:#fff;border:none;cursor:pointer;box-shadow:0 6px 20px rgba(15,61,46,.3);font-size:28px;display:flex;align-items:center;justify-content:center;transition:all .3s cubic-bezier(.34,1.56,.64,1);position:relative;animation:cb-bounce 3s ease-in-out infinite}
+#cb-chat-btn:hover{transform:scale(1.1) rotate(5deg);box-shadow:0 8px 25px rgba(15,61,46,.4)}
+.cb-btn-pulse{position:absolute;width:100%;height:100%;border-radius:50%;background:rgba(15,61,46,.3);animation:cb-pulse-ring 2s infinite;z-index:-1}
+
+/* 窗口拟人化 - 更柔和的弹出 */
+#cb-chat-window{position:absolute;bottom:80px;right:0;width:380px;height:520px;background:#f8f9fa;border-radius:24px;box-shadow:0 20px 60px rgba(0,0,0,.15);display:none;flex-direction:column;overflow:hidden;border:1px solid rgba(0,0,0,.05);animation:cb-slide-up .4s cubic-bezier(.34,1.56,.64,1)}
+
+/* 头部拟人化 */
+#cb-chat-header{background:linear-gradient(135deg,#0F3D2E 0%,#1a6b4f 100%);color:#fff;padding:16px 20px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.cb-header-avatar{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:20px;animation:cb-bounce 4s ease-in-out infinite}
+.cb-header-info{flex:1}
+.cb-header-name{font-weight:600;font-size:15px}
+.cb-header-status{font-size:12px;opacity:.9;display:flex;align-items:center;gap:4px}
+.cb-header-status::before{content:"";width:8px;height:8px;background:#4ade80;border-radius:50%;display:inline-block;animation:cb-pulse-ring 2s infinite}
+#cb-chat-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+#cb-chat-close:hover{background:rgba(255,255,255,.3)}
+
+/* 消息区域 */
+#cb-chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;padding-bottom:100px}
+.cb-msg-row{display:flex;align-items:flex-end;gap:8px;animation:cb-slide-up .4s cubic-bezier(.34,1.56,.64,1)}
+.cb-msg-row.user{justify-content:flex-end}
+.cb-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#e0e7ff 0%,#c7d2fe 100%);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+
+/* 消息气泡拟人化 */
+.cb-msg{max-width:75%;padding:12px 16px;border-radius:20px;font-size:14px;line-height:1.6;word-wrap:break-word;transition:transform .2s}
+.cb-msg.user{background:linear-gradient(135deg,#0F3D2E 0%,#1a6b4f 100%);color:#fff;border-bottom-right-radius:4px}
+.cb-msg.bot{background:#fff;color:#1f2937;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.cb-msg.bot ul,.cb-msg.bot ol{margin:8px 0;padding-left:18px}
+.cb-msg.bot li{margin-bottom:4px}
+.cb-msg.bot strong{font-weight:600;color:#0F3D2E}
+.cb-msg.bot p{margin:0 0 8px 0}
+.cb-msg.bot p:last-child{margin-bottom:0}
+.cb-welcome{display:flex;align-items:flex-start;gap:8px;animation:cb-slide-up .5s ease}
+
+/* 输入区域 */
+#cb-chat-input-area{display:flex;align-items:center;padding:16px;gap:12px;background:#fff;border-top:1px solid rgba(0,0,0,.05);position:absolute;bottom:0;left:0;right:0}
+#cb-chat-input{flex:1;padding:12px 18px;border:1px solid #e5e7eb;border-radius:24px;outline:none;font-size:14px;background:#f9fafb;transition:all .2s}
+#cb-chat-input:focus{border-color:#0F3D2E;background:#fff;box-shadow:0 0 0 3px rgba(15,61,46,.1)}
+#cb-chat-send{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#0F3D2E 0%,#1a6b4f 100%);color:#fff;border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+#cb-chat-send:hover{transform:scale(1.1);box-shadow:0 4px 12px rgba(15,61,46,.3)}
+#cb-chat-send:active{transform:scale(.95)}
+#cb-chat-send:disabled{opacity:.5;transform:none;cursor:not-allowed}
+
+/* 拟人化：正在输入提示 */
+.cb-typing-indicator{display:flex;align-items:center;gap:4px;padding:12px 16px;background:#fff;border-radius:20px;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.06);width:fit-content}
+.cb-typing-indicator span{width:6px;height:6px;background:#0F3D2E;border-radius:50%;display:inline-block;animation:cb-typing 1.4s infinite ease-in-out both}
+.cb-typing-indicator span:nth-child(1){animation-delay:-0.32s}
+.cb-typing-indicator span:nth-child(2){animation-delay:-0.16s}
