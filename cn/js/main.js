@@ -228,7 +228,7 @@ function initNightSky(canvasId){
       const glowR = isChina ? (11 + 3.5 * Math.sin(time * 2.6)) : 10;
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, isChina ? 4.0 : 3.2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,230,180,' + pulse + ')';
+      ctx.fillStyle = 'rgba(255,255,255,' + pulse + ')';
       ctx.fill();
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, glowR, 0, Math.PI * 2);
@@ -262,22 +262,22 @@ function initNightSky(canvasId){
   function draw(now) {
     const time = now * 0.001;
     const base = ctx.createLinearGradient(0, 0, W, H);
-    base.addColorStop(0, '#0A2B20');
-    base.addColorStop(0.48, '#0F3D2E');
-    base.addColorStop(1, '#1F5A43');
+    base.addColorStop(0, '#0A0A0A');
+    base.addColorStop(0.48, '#0A0A0A');
+    base.addColorStop(1, '#0A0A0A');
     ctx.fillStyle = base;
     ctx.fillRect(0, 0, W, H);
 
     const g1 = ctx.createRadialGradient(W * 0.72, H * 0.38, 0, W * 0.72, H * 0.38, Math.max(W, H) * 0.65);
-    g1.addColorStop(0, 'rgba(31,90,67,0.45)');
-    g1.addColorStop(0.5, 'rgba(15,61,46,0.2)');
-    g1.addColorStop(1, 'rgba(10,43,32,0)');
+    g1.addColorStop(0, 'rgba(184,115,51,0.25)');
+    g1.addColorStop(0.5, 'rgba(10,10,10,0)');
+    g1.addColorStop(1, 'rgba(10,10,10,0)');
     ctx.fillStyle = g1;
     ctx.fillRect(0, 0, W, H);
 
     const g2 = ctx.createRadialGradient(W * 0.2, H * 0.7, 0, W * 0.2, H * 0.7, W * 0.45);
-    g2.addColorStop(0, 'rgba(10,43,32,0.35)');
-    g2.addColorStop(1, 'rgba(10,43,32,0)');
+    g2.addColorStop(0, 'rgba(10,10,10,0)');
+    g2.addColorStop(1, 'rgba(10,10,10,0)');
     ctx.fillStyle = g2;
     ctx.fillRect(0, 0, W, H);
 
@@ -314,8 +314,8 @@ function initNightSky(canvasId){
       ctx.beginPath();
       ctx.arc(s.x + px, s.y + py, rr, 0, Math.PI * 2);
       ctx.fillStyle = near
-        ? 'rgba(255,230,180,' + al + ')'
-        : 'rgba(210,225,220,' + (al * 0.9) + ')';
+        ? 'rgba(255,255,255,' + al + ')'
+        : 'rgba(255,255,255,' + (al * 0.9) + ')';
       ctx.fill();
     }
 
@@ -330,7 +330,7 @@ function initNightSky(canvasId){
       const y = sa.y + (sb.y - sa.y) * pk.t + py;
       ctx.beginPath();
       ctx.arc(x, y, 1.9, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255,220,160,0.95)';
+      ctx.fillStyle = 'rgba(255,255,255,0.95)';
       ctx.fill();
       ctx.beginPath();
       ctx.arc(x, y, 5, 0, Math.PI * 2);
