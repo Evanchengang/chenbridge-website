@@ -10,7 +10,7 @@ if(splash){
   }else{
     try{sessionStorage.setItem('echenterra-splash-seen','1');}catch(error){}
     splash.style.display='flex';
-    setTimeout(function(){splash.classList.add('hide');setTimeout(function(){splash.style.display='none';},800);},4000);
+    var splashTimer=setTimeout(function(){hideSplash();},2500);function hideSplash(){clearTimeout(splashTimer);splash.classList.add('hide');setTimeout(function(){splash.style.display='none';},800);}document.addEventListener('mousemove',hideSplash,{once:true});
   }
 }
 
