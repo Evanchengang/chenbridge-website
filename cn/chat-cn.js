@@ -86,7 +86,7 @@
       hideTyping();
       // 拟人化：延迟 300ms 回复，更像真人打字
       setTimeout(function(){
-        addMsg(data.reply||'抱歉，暂时无法回答。请发邮件到 contact@chenbridge.com',false);
+        addMsg(data.reply||'抱歉，暂时无法回答。请发邮件到 contact@echenterra.com',false);
       },300);
     }catch(e){
       hideTyping();
