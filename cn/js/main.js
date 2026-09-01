@@ -88,8 +88,8 @@ function initNightSky(canvasId){
 
   function count() {
     /* 整体更密，上限提高 */
-    const dens = mobile ? 1 / 8500 : 1 / 5200;
-    return Math.max(mobile ? 55 : 100, Math.min(mobile ? 110 : 220, Math.floor(W * H * dens)));
+    const dens = mobile ? 1 / 11000 : 1 / 7000;
+    return Math.max(mobile ? 40 : 70, Math.min(mobile ? 80 : 140, Math.floor(W * H * dens)));
   }
 
   function resize() {
@@ -343,7 +343,11 @@ function initNightSky(canvasId){
   }
   requestAnimationFrame(draw);
 }
-initNightSky('hero-canvas');
+(function(){
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e) {}
+  if (!reduce) initNightSky('hero-canvas');
+})();
 
 
 
