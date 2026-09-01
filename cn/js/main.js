@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded',function(){
 const splash=document.getElementById('splash');
 if(splash){
   let splashSeen=false;
-  try{splashSeen=sessionStorage.getItem('chenbridge-splash-seen')==='1';}catch(error){splashSeen=false;}
+  try{splashSeen=sessionStorage.getItem('echenterra-splash-seen')==='1';}catch(error){splashSeen=false;}
   if(splashSeen){
     splash.style.display='none';
   }else{
-    try{sessionStorage.setItem('chenbridge-splash-seen','1');}catch(error){}
+    try{sessionStorage.setItem('echenterra-splash-seen','1');}catch(error){}
     splash.style.display='flex';
-    setTimeout(function(){splash.classList.add('hide');setTimeout(function(){splash.style.display='none';},800);},3000);
+    setTimeout(function(){splash.classList.add('hide');setTimeout(function(){splash.style.display='none';},800);},4000);
   }
 }
 
