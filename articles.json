@@ -1,6 +1,13 @@
 {
   "articles": [
     {
+      "category": "Production Quality",
+      "title": "The Gap Between Sample and Mass Production in China Packaging",
+      "url": "article-sample-mass-production-gap.html",
+      "date": "2026",
+      "excerpt": "Why approved samples often fail to match bulk production — and what buyers can do before the gap becomes expensive."
+    },
+    {
       "category": "Company News",
       "title": "Why We Built a Chinese Version of ChenBridge",
       "url": "article-why-chinese-version-chenbridge.html",
