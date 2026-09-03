@@ -240,28 +240,144 @@ function changeLanguage(lang) {
   <div class="container" style="max-width:900px;" id="articles-container">
     <!-- Articles loaded dynamically -->
   </div>
+  <div class="container" style="max-width:900px;">
+    <div id="insights-pagination" class="insights-pagination" style="display:none;"></div>
+  </div>
 </section>
 
+<style>
+.insights-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+.insights-pagination button {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #0F3D2E;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.insights-pagination button:hover:not(:disabled) {
+  border-color: #0F3D2E;
+  color: #F28C28;
+}
+.insights-pagination button.active {
+  background: #0F3D2E;
+  border-color: #0F3D2E;
+  color: #fff;
+}
+.insights-pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.insights-pagination .page-info {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 0 6px;
+}
+</style>
+
 <script>
-fetch('articles.json')
-  .then(r => r.json())
-  .then(data => {
-    const container = document.getElementById('articles-container');
-    container.innerHTML = data.articles.map(a => `
-      <article class="article-list-item">
-        <div class="article-list-meta">
-          <span class="article-category">${a.category}</span>
-          <span class="article-date">${a.date}</span>
-        </div>
-        <h2 class="article-list-title"><a href="${a.url}">${a.title}</a></h2>
-        <p class="article-list-desc">${a.excerpt}</p>
-        <a href="${a.url}" class="article-list-link">Read More →</a>
-      </article>
-    `).join('');
-  })
-  .catch(() => {
-    document.getElementById('articles-container').innerHTML = '<p style="text-align:center;">Failed to load articles. Please refresh.</p>';
-  });
+(function () {
+  var PER_PAGE = 5;
+  var allArticles = [];
+  var currentPage = 1;
+
+  function getPageFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var p = parseInt(params.get('page'), 10);
+    return (p && p > 0) ? p : 1;
+  }
+
+  function setPageInUrl(page) {
+    var url = new URL(window.location.href);
+    if (page <= 1) {
+      url.searchParams.delete('page');
+    } else {
+      url.searchParams.set('page', String(page));
+    }
+    window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+  }
+
+  function renderArticles(page) {
+    var container = document.getElementById('articles-container');
+    var total = allArticles.length;
+    var totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+    currentPage = Math.min(Math.max(1, page), totalPages);
+
+    var start = (currentPage - 1) * PER_PAGE;
+    var slice = allArticles.slice(start, start + PER_PAGE);
+
+    container.innerHTML = slice.map(function (a) {
+      return (
+        '<article class="article-list-item">' +
+          '<div class="article-list-meta">' +
+            '<span class="article-category">' + a.category + '</span>' +
+            '<span class="article-date">' + a.date + '</span>' +
+          '</div>' +
+          '<h2 class="article-list-title"><a href="' + a.url + '">' + a.title + '</a></h2>' +
+          '<p class="article-list-desc">' + a.excerpt + '</p>' +
+          '<a href="' + a.url + '" class="article-list-link">Read More →</a>' +
+        '</article>'
+      );
+    }).join('');
+
+    renderPagination(totalPages);
+    setPageInUrl(currentPage);
+  }
+
+  function renderPagination(totalPages) {
+    var nav = document.getElementById('insights-pagination');
+    if (totalPages <= 1) {
+      nav.style.display = 'none';
+      nav.innerHTML = '';
+      return;
+    }
+    nav.style.display = 'flex';
+
+    var html = '';
+    html += '<button type="button" data-page="' + (currentPage - 1) + '" ' + (currentPage <= 1 ? 'disabled' : '') + '>← Prev</button>';
+
+    for (var i = 1; i <= totalPages; i++) {
+      html += '<button type="button" data-page="' + i + '" class="' + (i === currentPage ? 'active' : '') + '">' + i + '</button>';
+    }
+
+    html += '<button type="button" data-page="' + (currentPage + 1) + '" ' + (currentPage >= totalPages ? 'disabled' : '') + '>Next →</button>';
+    html += '<span class="page-info">Page ' + currentPage + ' of ' + totalPages + '</span>';
+    nav.innerHTML = html;
+
+    nav.querySelectorAll('button[data-page]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        if (btn.disabled) return;
+        var p = parseInt(btn.getAttribute('data-page'), 10);
+        renderArticles(p);
+        var section = document.getElementById('articles-container');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
+  fetch('articles.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      allArticles = data.articles || [];
+      renderArticles(getPageFromUrl());
+    })
+    .catch(function () {
+      document.getElementById('articles-container').innerHTML =
+        '<p style="text-align:center;">Failed to load articles. Please refresh.</p>';
+    });
+})();
 </script>
 
 <!-- ================= CTA ================= -->
