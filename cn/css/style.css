@@ -191,10 +191,10 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
 .case-before h4{color:var(--accent);}
 .case-after h4{color:var(--teal);}
 .case-before ul,.case-after ul{list-style:none;}
-.case-before li,.case-after li{padding:8px 0;padding-left:22px;position:relative;font-size:14px;color:var(--text-light);line-height:1.6;white-space:nowrap;}
-.case-before li::before{content:'';position:absolute;left:0;top:13px;width:8px;height:2px;background:var(--accent);border-radius:1px;}
-.case-after li::before{content:'';position:absolute;left:0;top:10px;width:14px;height:14px;border:2px solid var(--teal);border-radius:50%;}
-.case-after li::after{content:'';position:absolute;left:4px;top:14px;width:6px;height:3px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg);}
+.case-before li,.case-after li{padding:6px 0 6px 22px;position:relative;font-size:14px;color:var(--text-light);line-height:1.5;white-space:nowrap;height:34px;display:flex;align-items:center;}
+.case-before li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:8px;height:2px;background:var(--accent);border-radius:1px;}
+.case-after li::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:14px;height:14px;border:2px solid var(--teal);border-radius:50%;}
+.case-after li::after{content:'';position:absolute;left:4px;top:50%;transform:translateY(-60%) rotate(-45deg);width:6px;height:3px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);}
 .case-result{padding:20px 32px;background:var(--bg-dark);border-top:1px solid rgba(0,0,0,0.05);}
 .case-result p{font-size:14px;color:var(--text-muted);}
 .case-result strong{color:var(--accent);}
@@ -526,7 +526,10 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
   .hero-inner h1{font-size:40px;}
   .carousel-slide h2{font-size:32px;}
   .challenges-grid,.services-grid,.cases-grid,.insights-grid,.resources-grid{grid-template-columns:1fr;}
-  .case-before li,.case-after li{white-space:normal;}
+  .case-before li,.case-after li{white-space:normal;height:auto;min-height:34px;}
+  .case-before li::before{top:14px;transform:none;}
+  .case-after li::before{top:10px;transform:none;}
+  .case-after li::after{top:14px;transform:rotate(-45deg);}
   .why-grid{grid-template-columns:1fr;}
   .industries-grid{grid-template-columns:repeat(3,1fr);}
   .timeline::before{left:20px;}
