@@ -39,8 +39,174 @@
 <link rel="icon" type="image/png" sizes="48x48" href="favicon/favicon-48.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192.png">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=20260920c">
   <link rel="stylesheet" href="chat-cn.css">
+  <style>
+    /* 案例卡片 2x2 对称布局与文字不换行严格对齐 */
+    .cases-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 32px !important;
+    }
+    .case-card {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+    }
+    .case-body {
+      flex: 1 !important;
+      padding: 28px 32px !important;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 24px !important;
+    }
+    .case-before h4, .case-after h4 {
+      margin-bottom: 14px !important;
+    }
+    .case-before ul, .case-after ul {
+      margin: 0 !important;
+      padding: 0 !important;
+      list-style: none !important;
+    }
+    .case-before li, .case-after li {
+      padding: 0 0 0 24px !important;
+      margin: 0 !important;
+      position: relative !important;
+      font-size: 14px !important;
+      line-height: 36px !important;
+      height: 36px !important;
+      display: flex !important;
+      align-items: center !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      box-sizing: border-box !important;
+    }
+    .case-before li::before {
+      content: '' !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 8px !important;
+      height: 2px !important;
+      background: var(--accent, #C4472A) !important;
+      border-radius: 1px !important;
+    }
+    .case-after li::before {
+      content: '' !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 14px !important;
+      height: 14px !important;
+      border: 2px solid var(--teal, #1B6B66) !important;
+      border-radius: 50% !important;
+      box-sizing: border-box !important;
+    }
+    .case-after li::after {
+      content: '' !important;
+      position: absolute !important;
+      left: 4px !important;
+      top: 50% !important;
+      transform: translateY(-60%) rotate(-45deg) !important;
+      width: 6px !important;
+      height: 3px !important;
+      border-left: 2px solid var(--teal, #1B6B66) !important;
+      border-bottom: 2px solid var(--teal, #1B6B66) !important;
+      box-sizing: border-box !important;
+    }
+    .case-result {
+      padding: 20px 32px !important;
+    }
+    /* 专属案例视频专区 */
+    .showcase-section {
+      padding: 50px 0 70px !important;
+      background: #FAF8F5 !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+    .video-showcase-card {
+      max-width: 980px !important;
+      margin: 0 auto !important;
+      background: #fff !important;
+      border-radius: 16px !important;
+      overflow: hidden !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+      border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    }
+    .video-responsive-wrap {
+      position: relative !important;
+      width: 100% !important;
+      padding-bottom: 56.25% !important; /* 16:9 比例 */
+      height: 0 !important;
+      background: #000 !important;
+    }
+    .video-responsive-wrap iframe {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0 !important;
+    }
+    .video-meta-bar {
+      padding: 18px 24px !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 14px !important;
+      background: #FAF8F5 !important;
+      border-top: 1px solid rgba(0,0,0,0.06) !important;
+    }
+    .video-meta-tags {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 10px !important;
+    }
+    .video-tag {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      font-size: 13px !important;
+      color: #555 !important;
+      background: #fff !important;
+      padding: 6px 14px !important;
+      border-radius: 20px !important;
+      border: 1px solid rgba(0,0,0,0.08) !important;
+      font-weight: 500 !important;
+    }
+    .video-tag .tag-dot {
+      width: 6px !important;
+      height: 6px !important;
+      border-radius: 50% !important;
+      background: #C4472A !important;
+    }
+    @media (max-width: 960px) {
+      .cases-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .case-before li, .case-after li {
+        white-space: normal !important;
+        height: auto !important;
+        line-height: 1.5 !important;
+        padding: 6px 0 6px 24px !important;
+      }
+      .case-before li::before {
+        top: 15px !important;
+        transform: none !important;
+      }
+      .case-after li::before {
+        top: 12px !important;
+        transform: none !important;
+      }
+      .case-after li::after {
+        top: 16px !important;
+        transform: rotate(-45deg) !important;
+      }
+    }
+  </style>
 </head>
 
 
