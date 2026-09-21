@@ -120,20 +120,28 @@
     .case-result {
       padding: 20px 32px !important;
     }
-    /* 专属案例视频专区 */
+    /* 专属案例视频专区（一行排列2个样本视频） */
     .showcase-section {
       padding: 50px 0 70px !important;
       background: #FAF8F5 !important;
       border-top: 1px solid rgba(0, 0, 0, 0.06);
     }
-    .video-showcase-card {
-      max-width: 980px !important;
+    .videos-grid {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 28px !important;
+      max-width: 1200px !important;
       margin: 0 auto !important;
+    }
+    .video-showcase-card {
+      width: 100% !important;
       background: #fff !important;
-      border-radius: 16px !important;
+      border-radius: 14px !important;
       overflow: hidden !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06) !important;
       border: 1px solid rgba(0, 0, 0, 0.06) !important;
+      display: flex !important;
+      flex-direction: column !important;
     }
     .video-responsive-wrap {
       position: relative !important;
@@ -150,41 +158,30 @@
       height: 100% !important;
       border: 0 !important;
     }
-    .video-meta-bar {
-      padding: 18px 24px !important;
+    .video-card-title {
+      padding: 14px 20px !important;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      color: #2c2c2c !important;
+      background: #faf8f5 !important;
+      border-top: 1px solid rgba(0, 0, 0, 0.06) !important;
       display: flex !important;
-      justify-content: space-between !important;
       align-items: center !important;
-      flex-wrap: wrap !important;
-      gap: 14px !important;
-      background: #FAF8F5 !important;
-      border-top: 1px solid rgba(0,0,0,0.06) !important;
+      gap: 8px !important;
     }
-    .video-meta-tags {
-      display: flex !important;
-      flex-wrap: wrap !important;
-      gap: 10px !important;
-    }
-    .video-tag {
-      display: inline-flex !important;
-      align-items: center !important;
-      gap: 6px !important;
-      font-size: 13px !important;
-      color: #555 !important;
-      background: #fff !important;
-      padding: 6px 14px !important;
-      border-radius: 20px !important;
-      border: 1px solid rgba(0,0,0,0.08) !important;
-      font-weight: 500 !important;
-    }
-    .video-tag .tag-dot {
+    .video-card-title::before {
+      content: '' !important;
       width: 6px !important;
       height: 6px !important;
       border-radius: 50% !important;
-      background: #C4472A !important;
+      background: var(--accent, #C4472A) !important;
+      flex-shrink: 0 !important;
     }
     @media (max-width: 960px) {
       .cases-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .videos-grid {
         grid-template-columns: 1fr !important;
       }
       .case-before li, .case-after li {
@@ -312,25 +309,38 @@
   </div>
 </section>
 
-<!-- 案例实录视频专区 -->
+<!-- 案例实录视频专区（一行排列2个样本视频） -->
 <section class="section showcase-section" id="case-video" style="padding-top:40px;">
   <div class="section-header reveal">
     <div class="section-label">真实案例成果实录</div>
-    <h2 class="section-title">工业包装企业·海外产品展示实拍视频</h2>
+    <h2 class="section-title">制造企业·海外产品展示实拍视频</h2>
     <p class="section-subtitle">通过工厂实拍与专业英文解说，帮助制造企业向海外客户直观展示产品与制造实力。</p>
   </div>
   
-  <div class="video-showcase-card reveal">
-    <div class="video-responsive-wrap">
-      <iframe src="//player.bilibili.com/player.html?bvid=BV1fXev6pENh&page=1&t=11.1&high_quality=1&danmaku=0&autoplay=0" 
-              scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy"
-              title="易辰咨询｜助力中国制造企业打造海外产品展示视频">
-      </iframe>
+  <div class="videos-grid reveal">
+    <div class="video-showcase-card">
+      <div class="video-responsive-wrap">
+        <iframe src="//player.bilibili.com/player.html?bvid=BV1fXev6pENh&page=1&t=11.1&high_quality=1&danmaku=0&autoplay=0" 
+                scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy"
+                title="易辰咨询｜助力中国制造企业打造海外产品展示视频">
+        </iframe>
+      </div>
+      <div class="video-card-title">样本一：工业包装企业·海外产品展示实拍</div>
     </div>
     
-    <div class="video-meta-bar" style="justify-content:center;">
-      <a href="contact.html" class="btn-primary btn-small">定制工厂出海视频</a>
+    <div class="video-showcase-card">
+      <div class="video-responsive-wrap">
+        <iframe src="//player.bilibili.com/player.html?bvid=BV1Tghe6pEN1&page=1&high_quality=1&danmaku=0&autoplay=0" 
+                scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" loading="lazy"
+                title="一盏灯，一生的家｜DOUBLE HAPPIESS 品牌故事">
+        </iframe>
+      </div>
+      <div class="video-card-title">样本二：灯饰制造企业·品牌故事与产品展示</div>
     </div>
+  </div>
+
+  <div style="text-align:center; margin-top:36px;" class="reveal">
+    <a href="contact.html" class="btn-primary btn-small">定制工厂出海视频</a>
   </div>
 </section>
 
