@@ -801,3 +801,5 @@ body{font-family:'Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif;color
   }
 }
 
+/* AI 聊天后端未就绪，暂时隐藏组件；后端恢复后删除本规则 */
+#cb-chat-widget{display:none!important;}
