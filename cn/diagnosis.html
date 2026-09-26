@@ -167,6 +167,7 @@
             <p>扫码加微信，免费领取完整诊断报告 + 针对性优化建议。</p>
             <img class="qr" src="images/qrcode-wechat.png" alt="易辰咨询微信二维码" width="120" height="120" loading="lazy">
             <div class="qr-cap">微信扫码 / 备注"诊断报告"</div>
+            <p style="font-size:13px;color:#8a7f70;margin-top:6px;">添加好友时请备注"诊断报告" + 您刚才诊断的网址，顾问收到后直接为您解读结果。</p>
             <div class="btn-row">
               <a href="contact.html" class="btn-primary btn-small">在线留言获取报告</a>
             </div>
@@ -282,7 +283,9 @@
 <script>
 (function(){
 "use strict";
-var VISIBLE_COUNT = 6; // 展示 40%（6/14）
+/* 内部解锁：顾问在网址后加 ?unlock=echenterra 可查看全部 14 项结果（访客正常打开不受影响） */
+var INTERNAL_UNLOCK = /(?:\?|&)unlock=echenterra(?:&|$)/.test(location.search);
+var VISIBLE_COUNT = INTERNAL_UNLOCK ? 99 : 6; // 展示 40%（6/14）
 
 /* ---------- 14 项检测定义 ---------- */
 var CHECKS = [
@@ -448,7 +451,7 @@ form.addEventListener("submit",function(e){
       +'<div style="margin-top:14px;padding-top:14px;border-top:1px dashed #e8c9c9;">'
       +'💡 <b>别灰心——加微信，我们顾问人工帮您诊断</b>（把网址发我们就行）'
       +'<div style="margin-top:10px;"><img src="images/qrcode-wechat.png" width="110" height="110" alt="易辰咨询微信二维码" style="border-radius:10px;border:1px solid #eee;" loading="lazy">'
-      +'<div style="font-size:13px;color:#8a7f70;margin-top:6px;">微信扫码 / 备注"网站诊断"</div></div></div>';
+      +'<div style="font-size:13px;color:#8a7f70;margin-top:6px;">微信扫码 / 备注"诊断报告"</div></div></div>';
     errBox.style.display="block";
   }).finally(function(){
     btn.disabled=false; btn.textContent="一键诊断"; loading.style.display="none";
@@ -462,7 +465,13 @@ function showResults(u,out){
       warns=out.filter(function(o){return o.r.status==="warn";}).length;
   var grade=score>=90?"优秀，基础很扎实":score>=75?"良好，有提升空间":score>=60?"待改进，建议优先修复": "问题较多，建议系统优化";
   document.getElementById("score-grade").textContent="综合评分 "+score+" 分 — "+grade;
-  document.getElementById("score-summary").textContent="14 项检测中，发现 "+fails+" 个严重问题、"+warns+" 个待优化项。下方先展示 6 项，剩余 8 项深度检测结果可免费解锁。";
+  document.getElementById("score-summary").textContent = INTERNAL_UNLOCK
+    ? "内部预览模式：已显示全部 14 项检测结果（含修复建议）。"
+    : "14 项检测中，发现 "+fails+" 个严重问题、"+warns+" 个待优化项。下方先展示 6 项，剩余 8 项深度检测结果可免费解锁。";
+  if(INTERNAL_UNLOCK){
+    var _ov=document.querySelector(".lock-overlay"); if(_ov) _ov.style.display="none";
+    var _lb=document.getElementById("check-locked"); if(_lb) _lb.classList.remove("lock-blur");
+  }
   var vis=document.getElementById("check-visible"); vis.innerHTML="";
   out.slice(0,VISIBLE_COUNT).forEach(function(o){ vis.appendChild(renderItem(o.c,o.r)); });
   var locked=document.getElementById("check-locked"); locked.innerHTML="";
