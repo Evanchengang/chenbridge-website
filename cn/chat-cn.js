@@ -28,9 +28,19 @@
   btn.onclick=function(){win.style.display='flex';btn.style.display='none';initAudio()};
   close.onclick=function(){win.style.display='none';btn.style.display='flex'};
   
-  // 中文站保留：5秒后自动弹出（拟人化主动打招呼）
+  // 中文站保留：5秒后自动弹出（拟人化主动打招呼）；自动弹出后 5 秒无互动则自动收起
   setTimeout(function(){
-    if(win.style.display!=='flex'){win.style.display='flex';btn.style.display='none'}
+    if(win.style.display!=='flex'){
+      win.style.display='flex';btn.style.display='none';
+      var collapseTimer=setTimeout(function(){
+        win.style.display='none';btn.style.display='flex';
+      },5000);
+      // 访客一旦互动（点击窗口内任意处），取消自动收起
+      win.addEventListener('click',function cancelAutoCollapse(){
+        clearTimeout(collapseTimer);
+        win.removeEventListener('click',cancelAutoCollapse);
+      });
+    }
   },5000);
   
   function addMsg(text,isUser){
