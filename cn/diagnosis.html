@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>免费网站诊断｜一键检测英文官网健康度 — 易辰咨询</title>
+<meta name="description" content="免费一键诊断您的英文官网：SEO基础、移动端适配、信任建设等14项指标，30秒生成问题清单，看看您的网站在海外客户眼中是否合格。">
+<meta name="keywords" content="英文网站诊断,外贸网站检测,制造企业官网诊断,网站健康度检测,免费SEO诊断">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="author" content="易辰咨询 ECHENTERRA">
+<meta name="theme-color" content="#C4472A">
+<meta name="renderer" content="webkit">
+<meta name="force-rendering" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="baidu-site-verification" content="codeva-P0fIAVWz9Y">
+<meta name="google-site-verification" content="">
+<meta name="msvalidate.01" content="">
+<meta name="360-site-verification" content="">
+<meta name="sogou_site_verification" content="">
+<meta name="shenma-site-verification" content="">
+<link rel="canonical" href="https://echenterra.com/cn/diagnosis.html">
+  <link rel="alternate" hreflang="en" href="https://echenterra.com/">
+<link rel="alternate" hreflang="zh-CN" href="https://echenterra.com/cn/diagnosis.html">
+<link rel="alternate" hreflang="x-default" href="https://echenterra.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="免费网站诊断｜一键检测英文官网健康度 — 易辰咨询">
+<meta property="og:description" content="免费一键诊断您的英文官网：SEO基础、移动端适配、信任建设等14项指标，30秒生成问题清单。">
+<meta property="og:url" content="https://echenterra.com/cn/diagnosis.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="易辰咨询 ECHENTERRA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="免费网站诊断｜一键检测英文官网健康度 — 易辰咨询">
+<meta name="twitter:description" content="免费一键诊断您的英文官网：SEO基础、移动端适配、信任建设等14项指标，30秒生成问题清单。">
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="icon" type="image/png" sizes="48x48" href="favicon/favicon-48.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon/favicon-192.png">
+<link rel="stylesheet" href="css/style.css">
+<style>
+.diag-wrap{max-width:860px;margin:0 auto;padding:10px 20px 30px;}
+.diag-form{display:flex;gap:12px;margin:28px 0 10px;flex-wrap:wrap;}
+.diag-form input{flex:1;min-width:240px;padding:15px 18px;font-size:16px;border:2px solid #e5ddd2;border-radius:12px;outline:none;transition:border-color .2s;background:#fff;}
+.diag-form input:focus{border-color:#B87333;}
+.diag-note{color:#8a7f70;font-size:14px;margin:6px 0 0;}
+.diag-loading{display:none;text-align:center;padding:50px 20px;}
+.diag-loading .spinner{width:46px;height:46px;border:4px solid #f0e8dc;border-top-color:#B87333;border-radius:50%;margin:0 auto 18px;animation:diag-spin 0.9s linear infinite;}
+@keyframes diag-spin{to{transform:rotate(360deg);}}
+.diag-error{display:none;background:#fdf2f2;border:1px solid #f0c9c9;color:#a33;border-radius:12px;padding:16px 20px;margin:20px 0;}
+.diag-results{display:none;margin-top:10px;}
+.score-card{display:flex;gap:26px;align-items:center;background:#fff;border:1px solid #eee3d3;border-radius:18px;padding:28px;margin:24px 0;box-shadow:0 6px 24px rgba(184,115,51,.08);flex-wrap:wrap;}
+.score-ring{position:relative;width:150px;height:150px;flex:none;}
+.score-ring svg{transform:rotate(-90deg);}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.score-num b{font-size:40px;color:#2b2118;line-height:1;}
+.score-num span{font-size:13px;color:#8a7f70;margin-top:4px;}
+.score-info h3{margin:0 0 8px;font-size:22px;color:#2b2118;}
+.score-info p{margin:4px 0;color:#6b5f4f;font-size:15px;}
+.score-info .diag-url{word-break:break-all;color:#B87333;}
+.check-list{display:flex;flex-direction:column;gap:12px;margin:18px 0 8px;}
+.check-item{display:flex;gap:14px;background:#fff;border:1px solid #f0e8dc;border-radius:14px;padding:16px 18px;align-items:flex-start;}
+.check-icon{flex:none;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;}
+.check-icon.pass{background:#e8f5e9;color:#2e7d32;}
+.check-icon.warn{background:#fff8e1;color:#b7791f;}
+.check-icon.fail{background:#fdecea;color:#c62828;}
+.check-body h4{margin:0 0 6px;font-size:16px;color:#2b2118;}
+.check-body p{margin:0;font-size:14px;color:#6b5f4f;line-height:1.65;}
+.check-body .advice{display:block;margin-top:8px;background:#faf6ef;border-left:3px solid #B87333;padding:8px 12px;border-radius:0 8px 8px 0;font-size:13.5px;color:#7a5c33;}
+.lock-wrap{position:relative;margin:26px 0 8px;border-radius:18px;overflow:hidden;}
+.lock-blur{filter:blur(7px);pointer-events:none;user-select:none;}
+.lock-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,253,249,.55);padding:20px;}
+.lock-card{background:#fff;border:1px solid #eee3d3;border-radius:18px;box-shadow:0 12px 40px rgba(60,40,15,.14);padding:30px 34px;max-width:440px;text-align:center;}
+.lock-card .lock-emoji{font-size:40px;}
+.lock-card h3{margin:12px 0 8px;font-size:20px;color:#2b2118;}
+.lock-card p{margin:0 0 6px;font-size:14.5px;color:#6b5f4f;line-height:1.7;}
+.lock-card .qr{margin:16px auto 8px;display:block;border-radius:12px;border:1px solid #eee;}
+.lock-card .qr-cap{font-size:13px;color:#8a7f70;}
+.lock-card .btn-row{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap;}
+.metrics-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:22px 0;}
+.metric-chip{background:#fff;border:1px solid #f0e8dc;border-radius:12px;padding:13px 16px;font-size:14.5px;color:#4a3f30;display:flex;gap:10px;align-items:center;}
+.metric-chip .n{flex:none;width:26px;height:26px;border-radius:50%;background:#faf3e8;color:#B87333;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+.diag-faq{background:#faf7f1;border-radius:16px;padding:26px 28px;margin:30px 0;}
+.diag-faq h3{margin:0 0 12px;font-size:18px;}
+.diag-faq p{font-size:14.5px;color:#6b5f4f;line-height:1.8;margin:8px 0;}
+@media(max-width:640px){.diag-form{flex-direction:column;}.score-card{flex-direction:column;text-align:center;}}
+</style>
+</head>
+<body>
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo1.echenterra.webp" alt="易辰咨询 ECHENTERRA Logo" width="320" height="148" loading="eager" decoding="async">
+      <div class="logo-text">帮助中小制造企业连接全球市场</div></a>
+    <nav class="nav" id="main-nav">
+      <a href="index.html">首页</a>
+      <a href="services.html">服务</a>
+      <a href="about.html">关于</a>
+      <a href="insights.html">洞察</a>
+      <a href="resources.html">资源</a>
+      <a href="cases.html">案例</a>
+      <a href="diagnosis.html" class="active">免费诊断</a>
+      <div class="mobile-extra">
+        <a href="contact.html" class="btn-primary btn-small">获取海外增长方案</a>
+      </div>
+    </nav>
+    <a href="contact.html" class="btn-primary btn-small" style="margin-left:20px;">获取海外增长方案</a>
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main-content">
+<section class="page-hero">
+  <div class="page-hero-content">
+    <h1>免费网站诊断 — 您的英文官网合格吗？</h1>
+    <p>输入网址，一键检测 SEO 基础、移动端适配、信任建设等 14 项指标，30 秒生成问题清单</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:20px;">
+  <div class="diag-wrap">
+    <form class="diag-form" id="diag-form">
+      <input type="text" id="diag-url" placeholder="请输入您的英文官网网址，例如 https://www.example.com" autocomplete="off" inputmode="url">
+      <button type="submit" class="btn-primary" id="diag-btn" style="white-space:nowrap;">一键诊断</button>
+    </form>
+    <p class="diag-note">诊断基于网站公开页面的静态分析，不保存您的网址数据，大约需要 20–40 秒。</p>
+
+    <div class="diag-loading" id="diag-loading">
+      <div class="spinner"></div>
+      <p style="color:#6b5f4f;">正在抓取并分析网站，请稍候…</p>
+    </div>
+
+    <div class="diag-error" id="diag-error"></div>
+
+    <div class="diag-results" id="diag-results">
+      <div class="score-card">
+        <div class="score-ring">
+          <svg width="150" height="150" viewBox="0 0 150 150">
+            <circle cx="75" cy="75" r="64" fill="none" stroke="#f0e8dc" stroke-width="13"/>
+            <circle id="score-arc" cx="75" cy="75" r="64" fill="none" stroke="#B87333" stroke-width="13" stroke-linecap="round" stroke-dasharray="402" stroke-dashoffset="402"/>
+          </svg>
+          <div class="score-num"><b id="score-num">0</b><span>健康度评分</span></div>
+        </div>
+        <div class="score-info">
+          <h3 id="score-grade">—</h3>
+          <p>诊断网站：<span class="diag-url" id="score-url"></span></p>
+          <p id="score-summary"></p>
+        </div>
+      </div>
+
+      <h3 style="margin:26px 0 6px;">发现的问题清单 <span style="font-size:14px;color:#8a7f70;font-weight:400;">（先展示 40%，完整报告见下方）</span></h3>
+      <div class="check-list" id="check-visible"></div>
+
+      <div class="lock-wrap">
+        <div class="lock-blur" id="check-locked"></div>
+        <div class="lock-overlay">
+          <div class="lock-card">
+            <div class="lock-emoji">🔒</div>
+            <h3>还有 <span id="locked-count"></span> 项深度检测结果未解锁</h3>
+            <p>包括以下维度的详细问题与修复建议：</p>
+            <p style="color:#2b2118;font-weight:600;" id="locked-names"></p>
+            <p>扫码加微信，免费领取完整诊断报告 + 针对性优化建议。</p>
+            <img class="qr" src="images/qrcode-wechat.png" alt="易辰咨询微信二维码" width="120" height="120" loading="lazy">
+            <div class="qr-cap">微信扫码 / 备注"诊断报告"</div>
+            <div class="btn-row">
+              <a href="contact.html" class="btn-primary btn-small">在线留言获取报告</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="diag-note" style="margin-top:14px;">诊断基于网站首页公开 HTML 的静态分析，仅供参考，不保存您的网址数据。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:#faf7f1;">
+  <div class="section-header reveal">
+    <div class="section-label">检测维度</div>
+    <h2 class="section-title">14 项指标，一次看清网站短板</h2>
+    <p class="section-subtitle">围绕"海外客户能不能找到你、信不信任你"设计，覆盖技术 SEO、移动体验与信任建设</p>
+  </div>
+  <div class="diag-wrap">
+    <div class="metrics-grid" id="metrics-grid"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="diag-wrap">
+    <div class="diag-faq">
+      <h3>关于本次诊断</h3>
+      <p><b>诊断的是什么？</b>我们抓取您网站首页的公开 HTML，检查搜索引擎收录、移动端适配、页面信任信号等 14 项基础指标。这些是海外买家在 Google 上找到你、并决定是否联系你的第一道门槛。</p>
+      <p><b>为什么只展示 40%？</b>完整的问题清单和每条问题的修复建议需要结合您的业务一句一句讲清楚。加微信后，我们的顾问会免费为您解读完整报告，并给出优先级排序——哪些先改、哪些可以缓。</p>
+      <p><b>我的网址会被保存吗？</b>不会。诊断在您的浏览器里实时完成，我们不存储您输入的网址。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-header reveal" style="position:relative;z-index:2;">
+    <h2 class="section-title">让您的制造能力被全球客户看见</h2>
+    <p class="section-subtitle" style="max-width:600px;margin:20px auto 40px;">从品牌形象到客户开发，我们帮您走好出海第一步。</p>
+    <a href="contact.html" class="btn-primary" style="font-size:16px;padding:16px 40px;">开始咨询</a>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+     <img src="images/logo-echenterra.webp" alt="易辰咨询 ECHENTERRA Logo" width="320" height="148" loading="eager" decoding="async">
+      <p>帮制造企业被海外客户看见。帮助制造企业建立海外品牌形象，连接全球市场。</p>
+      <div class="footer-social">
+        <a href="#" aria-label="微信"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        <a href="contact.html" aria-label="电话"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <a href="https://www.linkedin.com/company/chenbridge" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        <a href="mailto:contact@echenterra.com" aria-label="邮箱"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>服务</h4>
+      <a href="services.html">海外品牌基础建设</a>
+      <a href="services.html">数字渠道建设</a>
+      <a href="services.html">制造能力展示</a>
+      <a href="services.html">市场开发支持</a>
+    </div>
+    <div class="footer-col">
+      <h4>资源</h4>
+      <a href="insights.html">出海洞察</a>
+      <a href="cases.html">成功案例</a>
+      <a href="resources.html">下载中心</a>
+      <a href="diagnosis.html">免费诊断</a>
+      <a href="about.html">关于易辰</a>
+    </div>
+    <div class="footer-col">
+      <h4>联系</h4>
+      <a href="mailto:contact@echenterra.com">contact@echenterra.com</a>
+      <a href="contact.html">中国 江苏 苏州</a>
+      <a href="contact.html"></a>
+    </div>
+    <div class="footer-qr">
+    <img src="images/qrcode-wechat.png" alt="易辰咨询微信公众号二维码" width="96" height="96" loading="lazy" decoding="async">
+      <span>微信公众号</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 易辰咨询 ECHENTERRA.</span>
+    <span>帮制造企业被海外客户看见 · <a href="/" style="color:inherit;">English</a></span>
+  </div>
+</footer>
+
+<div id="cb-chat-widget">
+  <div id="cb-chat-window">
+    <div id="cb-chat-header">
+      <div class="cb-header-avatar">🤖</div>
+      <div class="cb-header-info">
+        <div class="cb-header-name">易辰 AI 顾问</div>
+        <div class="cb-header-status">在线</div>
+      </div>
+      <button id="cb-chat-close">✕</button>
+    </div>
+    <div id="cb-chat-messages">
+      <div class="cb-welcome">
+        <div class="cb-avatar">🤖</div>
+        <div class="cb-msg bot">你好！我是易辰咨询的 AI 商业顾问。有关海外市场开发、目标客户研究、英文客户开发的问题，随时问我 👋</div>
+      </div>
+    </div>
+    <div id="cb-chat-input-area">
+      <input id="cb-chat-input" type="text" placeholder="输入你的问题..." maxlength="500">
+      <button id="cb-chat-send">➤</button>
+    </div>
+  </div>
+  <button id="cb-chat-btn">💬<span class="cb-btn-pulse"></span></button>
+</div>
+<script src="chat-cn.js" defer></script>
+<script src="js/main.js"></script>
+<script>
+(function(){
+"use strict";
+var VISIBLE_COUNT = 6; // 展示 40%（6/14）
+
+/* ---------- 14 项检测定义 ---------- */
+var CHECKS = [
+ {id:"https", name:"HTTPS 安全连接",
+  run:function(u){ return u.protocol==="https:" ? p("网站已启用 HTTPS，浏览器会显示安全锁标识。","")
+    : f("网站仍在使用 HTTP。Chrome 等浏览器会标记为\"不安全\"，海外买家看到会直接关掉页面。","建议尽快为网站部署 SSL 证书（多数主机商免费提供）。"); }},
+ {id:"reach", name:"网站可访问性",
+  run:function(u,ms){ return ms<4000 ? p("网站可以正常访问，首字节响应约 "+(ms/1000).toFixed(1)+" 秒。","")
+    : w("网站可以打开，但响应较慢（约 "+(ms/1000).toFixed(1)+" 秒）。海外访问本就经过长距离传输，慢上加慢会让买家流失。","建议检查服务器位置与页面资源体积，考虑 CDN 加速。"); }},
+ {id:"title", name:"网页标题 Title",
+  run:function(u,ms,doc){ var t=(doc.querySelector("title")||{}).textContent||"";
+    t=t.trim();
+    if(!t) return f("首页没有设置 <title>。搜索引擎和浏览器标签页都依赖它，这是 SEO 最基础的一项。","建议设置 10–60 字符的标题，包含核心产品词，如 \"Custom Corrugated Boxes Manufacturer | XX\"。");
+    if(t.length<10) return w("标题过短（\""+t+"\"），搜索引擎难以判断页面主题。","建议扩展到 10–60 字符，包含产品关键词和公司名。");
+    if(t.length>65) return w("标题过长（"+t.length+" 字符），搜索结果中会被截断。","建议精简到 60 字符以内，把核心关键词前置。");
+    return p("标题设置合理（\""+t.slice(0,42)+(t.length>42?"…":"")+"\"）。",""); }},
+ {id:"desc", name:"Meta 描述",
+  run:function(u,ms,doc){ var m=doc.querySelector('meta[name="description"]');
+    var c=m?(m.getAttribute("content")||"").trim():"";
+    if(!c) return f("首页缺少 meta description。搜索结果里的那段简介文字将由搜索引擎随机抓取，点进来的意愿会大打折扣。","建议撰写 50–160 字符的描述，讲清\"我们是谁、提供什么、为什么选我们\"。");
+    if(c.length<50||c.length>165) return w("描述长度 "+c.length+" 字符，偏离 50–160 的最佳区间。","建议调整长度，并在前 60 字符内放核心卖点。");
+    return p("描述长度合理（"+c.length+" 字符）。",""); }},
+ {id:"viewport", name:"移动端适配",
+  run:function(u,ms,doc){ return doc.querySelector('meta[name="viewport"]')
+    ? p("已声明 viewport，页面具备移动端适配基础。","")
+    : f("没有 viewport 声明，手机打开时页面会被强制缩小，买家需要双指放大才能看。这是海外 B2B 采购的大忌——很多买家用手机初筛供应商。","建议在 <head> 中添加 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">。"); }},
+ {id:"h1", name:"H1 主标题",
+  run:function(u,ms,doc){ var h=doc.querySelectorAll("h1").length;
+    if(h===0) return f("首页没有 H1 标签。搜索引擎靠 H1 理解页面主题，缺失等于把最重要的关键词位置空着。","建议设置 1 个 H1，包含核心产品/服务关键词。");
+    if(h>1) return w("首页有 "+h+" 个 H1。多个 H1 会稀释主题权重。","建议只保留 1 个 H1，其余改为 H2。");
+    return p("H1 设置规范（仅 1 个）。",""); }},
+ {id:"alt", name:"图片 Alt 属性",
+  run:function(u,ms,doc){ var imgs=doc.querySelectorAll("img"), miss=0;
+    imgs.forEach(function(i){ if(!(i.getAttribute("alt")||"").trim()) miss++; });
+    if(!imgs.length) return p("页面未检测到图片（或图片由脚本动态加载）。","");
+    var r=Math.round(miss/imgs.length*100);
+    if(r===0) return p("全部 "+imgs.length+" 张图片都设置了 Alt 文本。","");
+    if(r<40) return w(imgs.length+" 张图片中有 "+miss+" 张缺少 Alt（"+r+"%）。产品图没有 Alt 等于放弃图片搜索流量。","建议为每张产品图添加英文 Alt，如 \"custom printed mailer box\"。");
+    return f(imgs.length+" 张图片中有 "+miss+" 张缺少 Alt（"+r+"%）。Google 图片搜索是 B2B 获客的重要入口之一。","建议逐张补上英文 Alt 描述。"); }},
+ {id:"lang", name:"语言声明",
+  run:function(u,ms,doc){ var l=(doc.documentElement.getAttribute("lang")||"").toLowerCase();
+    if(!l) return w("html 标签没有声明 lang 属性。搜索引擎据此判断页面语言。","建议英文站声明为 lang=\"en\"。");
+    if(l.indexOf("en")!==0) return w("页面语言声明为 \""+l+"\"。如果这是英文官网，建议声明为 en。","");
+    return p("语言声明为 \""+l+"\"。",""); }},
+ {id:"canonical", name:"Canonical 规范地址",
+  run:function(u,ms,doc){ return doc.querySelector('link[rel="canonical"]')
+    ? p("已设置 canonical，避免 www / 非 www 等重复收录问题。","")
+    : w("未设置 canonical。带与不带 www、http/https 会被搜索引擎视为不同页面，分散权重。","建议为每个页面指定唯一的 canonical 地址。"); }},
+ {id:"og", name:"社交分享标签",
+  run:function(u,ms,doc){ var t=doc.querySelector('meta[property="og:title"]');
+    return t ? p("已设置 Open Graph 标签，链接分享到 LinkedIn / Facebook 时会显示规范卡片。","")
+    : w("缺少 Open Graph 标签。把官网链接发到 LinkedIn 时，预览卡片可能只有光秃秃的网址，点击率低。","建议添加 og:title / og:description / og:image。"); }},
+ {id:"contact", name:"联系方式可达性",
+  run:function(u,ms,doc){ var n=doc.querySelectorAll('a[href^="mailto:"],a[href^="tel:"]').length;
+    return n>0 ? p("页面中有 "+n+" 处可直接点击的邮箱/电话入口。","")
+    : w("首页 HTML 中没有发现可点击的邮箱或电话链接。买家想联系你时多一步操作，就多一分流失。","建议在页头/页脚放置可点击的 mailto 与 tel 链接。"); }},
+ {id:"social", name:"社媒信任背书",
+  run:function(u,ms,doc){ var names=["linkedin.com","facebook.com","youtube.com","instagram.com","x.com","twitter.com"];
+    var found=[]; doc.querySelectorAll("a[href]").forEach(function(a){ var h=(a.getAttribute("href")||"").toLowerCase();
+      names.forEach(function(n){ if(h.indexOf(n)>-1&&found.indexOf(n)<0) found.push(n); }); });
+    return found.length ? p("发现 "+found.length+" 个社媒链接（"+found.join("、").replace(/\.com/g,"")+"），有助于建立信任。","")
+    : w("没有发现 LinkedIn / Facebook / YouTube 等社媒链接。海外买家习惯交叉验证供应商，社媒缺席会减分。","建议至少运营一个 LinkedIn 公司主页并在官网露出。"); }},
+ {id:"schema", name:"结构化数据",
+  run:function(u,ms,doc){ return doc.querySelector('script[type="application/ld+json"]')
+    ? p("检测到结构化数据，有助于搜索引擎理解企业信息。","")
+    : w("没有结构化数据。Organization / Product 类型的 Schema 能让公司在搜索结果中展示更丰富的信息。","建议添加 Organization 结构化数据。"); }},
+ {id:"size", name:"页面体积",
+  run:function(u,ms,doc,bytes){ var kb=Math.round(bytes/1024);
+    if(bytes<300*1024) return p("首页 HTML 约 "+kb+" KB，体积健康。","");
+    if(bytes<800*1024) return w("首页 HTML 约 "+kb+" KB，偏大，海外打开速度会受影响。","建议压缩图片、精简代码。");
+    return f("首页 HTML 约 "+kb+" KB，过大。跨国传输下每一 KB 都在消耗买家的耐心。","建议做一次性能优化：压缩图片、延迟加载非首屏资源。"); }}
+];
+function p(detail,advice){ return {status:"pass",detail:detail,advice:advice}; }
+function w(detail,advice){ return {status:"warn",detail:detail,advice:advice}; }
+function f(detail,advice){ return {status:"fail",detail:detail,advice:advice}; }
+
+/* ---------- 指标宫格 ---------- */
+var grid=document.getElementById("metrics-grid");
+CHECKS.forEach(function(c,i){
+  var d=document.createElement("div"); d.className="metric-chip";
+  d.innerHTML='<span class="n">'+(i+1)+'</span><span>'+c.name+'</span>';
+  grid.appendChild(d);
+});
+
+/* ---------- 抓取 ---------- */
+function normalizeUrl(input){
+  var s=input.trim(); if(!s) return null;
+  if(!/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(s)) s="https://"+s;
+  try{ var u=new URL(s); if(u.protocol!=="http:"&&u.protocol!=="https:") return null; return u; }
+  catch(e){ return null; }
+}
+function fetchWithTimeout(url,ms){
+  var ctl=new AbortController(); var t=setTimeout(function(){ctl.abort();},ms);
+  return fetch(url,{signal:ctl.signal}).then(function(r){clearTimeout(t);return r;})
+    .catch(function(e){clearTimeout(t);throw e;});
+}
+function fetchHtml(u){
+  var target=u.toString();
+  var t0=Date.now();
+  function via(proxy){ return fetchWithTimeout(proxy+encodeURIComponent(target),20000).then(function(r){
+    if(!r.ok) throw new Error("http"+r.status);
+    var ct=r.headers.get("content-type")||"";
+    return r.text().then(function(t){ return {html:t,ms:Date.now()-t0,ct:ct}; });
+  });}
+  return via("https://api.allorigins.win/raw?url=").catch(function(){ return via("https://corsproxy.io/?url="); });
+}
+
+/* ---------- 渲染 ---------- */
+function iconFor(s){ return s==="pass"?"✓":(s==="warn"?"!":"✕"); }
+function renderItem(c,r){
+  var d=document.createElement("div"); d.className="check-item";
+  d.innerHTML='<div class="check-icon '+r.status+'">'+iconFor(r.status)+'</div>'+
+    '<div class="check-body"><h4>'+c.name+'</h4><p>'+r.detail+'</p>'+
+    (r.advice?'<span class="advice">💡 '+r.advice+'</span>':"")+'</div>';
+  return d;
+}
+function animateScore(score){
+  var arc=document.getElementById("score-arc"), num=document.getElementById("score-num");
+  var C=402, target=C*(1-score/100), start=null;
+  function step(ts){ if(!start)start=ts; var k=Math.min((ts-start)/900,1);
+    arc.setAttribute("stroke-dashoffset", C+(target-C)*k);
+    num.textContent=Math.round(score*k); if(k<1)requestAnimationFrame(step); }
+  requestAnimationFrame(step);
+}
+
+/* ---------- 主流程 ---------- */
+var form=document.getElementById("diag-form"), input=document.getElementById("diag-url"),
+    btn=document.getElementById("diag-btn"), loading=document.getElementById("diag-loading"),
+    errBox=document.getElementById("diag-error"), results=document.getElementById("diag-results");
+
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+  var u=normalizeUrl(input.value);
+  errBox.style.display="none"; results.style.display="none";
+  if(!u){ errBox.textContent="请输入正确的网址，例如 https://www.example.com"; errBox.style.display="block"; return; }
+  btn.disabled=true; btn.textContent="诊断中…"; loading.style.display="block";
+  fetchHtml(u).then(function(res){
+    if(!/html/i.test(res.ct) && res.html.trim().indexOf("<")!==0) throw new Error("nothtml");
+    var doc=new DOMParser().parseFromString(res.html,"text/html");
+    var bytes=new Blob([res.html]).size;
+    var out=CHECKS.map(function(c){ try{ return {c:c,r:c.run(u,res.ms,doc,bytes)}; }
+      catch(ex){ return {c:c,r:w("该项检测时出现异常，未能完成。","")}; } });
+    showResults(u,out);
+  }).catch(function(){
+    errBox.innerHTML="无法抓取该网站。可能的原因：网址输入有误、网站拒绝外部抓取、或网站暂时无法访问。请检查网址后重试。";
+    errBox.style.display="block";
+  }).finally(function(){
+    btn.disabled=false; btn.textContent="一键诊断"; loading.style.display="none";
+  });
+});
+
+function showResults(u,out){
+  document.getElementById("score-url").textContent=u.hostname;
+  var score=Math.round(out.reduce(function(s,o){return s+(o.r.status==="pass"?100:o.r.status==="warn"?55:0);},0)/out.length);
+  var fails=out.filter(function(o){return o.r.status==="fail";}).length,
+      warns=out.filter(function(o){return o.r.status==="warn";}).length;
+  var grade=score>=90?"优秀，基础很扎实":score>=75?"良好，有提升空间":score>=60?"待改进，建议优先修复": "问题较多，建议系统优化";
+  document.getElementById("score-grade").textContent="综合评分 "+score+" 分 — "+grade;
+  document.getElementById("score-summary").textContent="14 项检测中，发现 "+fails+" 个严重问题、"+warns+" 个待优化项。下方先展示 6 项，剩余 8 项深度检测结果可免费解锁。";
+  var vis=document.getElementById("check-visible"); vis.innerHTML="";
+  out.slice(0,VISIBLE_COUNT).forEach(function(o){ vis.appendChild(renderItem(o.c,o.r)); });
+  var locked=document.getElementById("check-locked"); locked.innerHTML="";
+  out.slice(VISIBLE_COUNT).forEach(function(o){ locked.appendChild(renderItem(o.c,o.r)); });
+  document.getElementById("locked-count").textContent=out.length-VISIBLE_COUNT;
+  document.getElementById("locked-names").textContent=out.slice(VISIBLE_COUNT).map(function(o){return o.c.name;}).join("、");
+  results.style.display="block";
+  animateScore(score);
+  results.scrollIntoView({behavior:"smooth",block:"start"});
+}
+})();
+</script>
+</body>
+</html>
