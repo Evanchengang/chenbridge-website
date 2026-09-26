@@ -80,17 +80,22 @@
     input.value='';
     send.disabled=true;
     showTyping();
+    // 超时保护：后端冷启动可能较慢，45 秒无响应则提示重试
+    var controller=new AbortController();
+    var timer=setTimeout(function(){controller.abort()},45000);
     try{
-      var res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})});
+      var res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text}),signal:controller.signal});
+      clearTimeout(timer);
       var data=await res.json();
       hideTyping();
       // 拟人化：延迟 300ms 回复，更像真人打字
       setTimeout(function(){
-        addMsg(data.reply||'抱歉，暂时无法回答。请发邮件到 contact@echenterra.com',false);
+        addMsg(data.reply||'抱歉，暂时无法回答，请发邮件到 contact@echenterra.com 联系我们。',false);
       },300);
     }catch(e){
+      clearTimeout(timer);
       hideTyping();
-      addMsg('网络异常，请稍后重试。',false);
+      addMsg(e.name==='AbortError'?'AI 正在思考中，请再点一次发送重试。':'网络异常，请稍后重试。',false);
     }
     send.disabled=false;
   }
