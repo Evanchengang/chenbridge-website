@@ -73,6 +73,11 @@
     if(t)t.remove();
   }
   
+  // 品牌纠正：后端人设仍自称 ChenBridge，中文站统一显示为易辰咨询
+  function brandFix(text){
+    return text.replace(/ChenBridge/g,'易辰咨询').replace(/chenbridge\.com/g,'echenterra.com');
+  }
+
   async function sendMsg(){
     var text=input.value.trim();
     if(!text)return;
@@ -90,7 +95,7 @@
       hideTyping();
       // 拟人化：延迟 300ms 回复，更像真人打字
       setTimeout(function(){
-        addMsg(data.reply||'抱歉，暂时无法回答，请发邮件到 contact@echenterra.com 联系我们。',false);
+        addMsg(brandFix(data.reply||'抱歉，暂时无法回答，请发邮件到 contact@echenterra.com 联系我们。'),false);
       },300);
     }catch(e){
       clearTimeout(timer);
