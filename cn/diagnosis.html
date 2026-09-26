@@ -374,20 +374,37 @@ function normalizeUrl(input){
   try{ var u=new URL(s); if(u.protocol!=="http:"&&u.protocol!=="https:") return null; return u; }
   catch(e){ return null; }
 }
-function fetchWithTimeout(url,ms){
+function fetchWithTimeout(url,ms,opts){
   var ctl=new AbortController(); var t=setTimeout(function(){ctl.abort();},ms);
-  return fetch(url,{signal:ctl.signal}).then(function(r){clearTimeout(t);return r;})
+  var o=opts||{}; o.signal=ctl.signal;
+  return fetch(url,o).then(function(r){clearTimeout(t);return r;})
     .catch(function(e){clearTimeout(t);throw e;});
+}
+function readHtml(r,label,t0){
+  if(!r.ok) throw new Error(label+":http"+r.status);
+  var ct=r.headers.get("content-type")||"";
+  return r.text().then(function(t){ return {html:t,ms:Date.now()-t0,ct:ct}; });
 }
 function fetchHtml(u){
   var target=u.toString();
   var t0=Date.now();
-  function via(proxy){ return fetchWithTimeout(proxy+encodeURIComponent(target),20000).then(function(r){
-    if(!r.ok) throw new Error("http"+r.status);
-    var ct=r.headers.get("content-type")||"";
-    return r.text().then(function(t){ return {html:t,ms:Date.now()-t0,ct:ct}; });
-  });}
-  return via("https://api.allorigins.win/raw?url=").catch(function(){ return via("https://corsproxy.io/?url="); });
+  var proxies=[
+    "https://api.allorigins.win/raw?url=",
+    "https://api.codetabs.com/v1/proxy?quest=",
+    "https://corsproxy.io/?url="
+  ];
+  function viaProxy(i){
+    return fetchWithTimeout(proxies[i]+encodeURIComponent(target),30000)
+      .then(function(r){ return readHtml(r,"proxy"+i,t0); });
+  }
+  /* 先尝试直连：若目标站允许跨域，直接用访客本机 IP 抓取（对屏蔽海外节点的国内主机更友好） */
+  return fetchWithTimeout(target,15000).then(function(r){ return readHtml(r,"direct",t0); })
+    .catch(function(){
+      /* 直连失败后，三个代理通道并行，取最快成功的一个 */
+      var ps=proxies.map(function(_,i){ return viaProxy(i); });
+      if(typeof Promise.any==="function") return Promise.any(ps);
+      return ps[0].catch(function(){ return ps[1]; }).catch(function(){ return ps[2]; });
+    });
 }
 
 /* ---------- 渲染 ---------- */
@@ -427,7 +444,11 @@ form.addEventListener("submit",function(e){
       catch(ex){ return {c:c,r:w("该项检测时出现异常，未能完成。","")}; } });
     showResults(u,out);
   }).catch(function(){
-    errBox.innerHTML="无法抓取该网站。可能的原因：网址输入有误、网站拒绝外部抓取、或网站暂时无法访问。请检查网址后重试。";
+    errBox.innerHTML='无法自动抓取该网站。可能的原因：网址输入有误、网站屏蔽了海外抓取节点（不少国内主机有此设置）、或网站暂时无法访问。'
+      +'<div style="margin-top:14px;padding-top:14px;border-top:1px dashed #e8c9c9;">'
+      +'💡 <b>别灰心——加微信，我们顾问人工帮您诊断</b>（把网址发我们就行）'
+      +'<div style="margin-top:10px;"><img src="images/qrcode-wechat.png" width="110" height="110" alt="易辰咨询微信二维码" style="border-radius:10px;border:1px solid #eee;" loading="lazy">'
+      +'<div style="font-size:13px;color:#8a7f70;margin-top:6px;">微信扫码 / 备注"网站诊断"</div></div></div>';
     errBox.style.display="block";
   }).finally(function(){
     btn.disabled=false; btn.textContent="一键诊断"; loading.style.display="none";
