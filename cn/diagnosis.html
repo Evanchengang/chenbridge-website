@@ -407,10 +407,11 @@ var rateLimited=false; /* 本次诊断是否命中过 429，用于失败时的�
 function fetchHtml(u){
   var target=u.toString();
   var t0=Date.now();
-  /* 免费 CORS 代理：串行尝试，第一个成功的即返回。
-     注意：corsproxy.io 已改为收费（需 API key），不再可用；
-     各免费代理均有抖动/限流，串行是最省配额的策略。 */
+  /* 抓取通道：串行尝试，第一个成功的即返回。
+     自建代理优先（国内 IP、无配额、不屏蔽百度）；挂了自动落到免费代理 + Jina。
+     注意：corsproxy.io 已改为收费（需 API key），不再可用。 */
   var proxies=[
+    "https://api-cn.chenbridge.com/fetch-proxy/?url=",
     "https://api.allorigins.win/raw?url=",
     "https://api.codetabs.com/v1/proxy?quest=",
     "https://api.cors.lol/?url="
