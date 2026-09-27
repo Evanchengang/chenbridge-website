@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
       <input type="text" id="diag-url" placeholder="请输入您的英文官网网址，例如 https://www.example.com" autocomplete="off" inputmode="url">
       <button type="submit" class="btn-primary" id="diag-btn" style="white-space:nowrap;">一键诊断</button>
     </form>
-    <p class="diag-note">诊断基于网站公开页面的静态分析，不保存您的网址数据，大约需要 20–40 秒。</p>
+    <p class="diag-note">诊断基于网站公开页面的静态分析，不保存您的网址数据，大约需要 20–60 秒。</p>
 
     <div class="diag-loading" id="diag-loading">
       <div class="spinner"></div>
@@ -163,7 +163,7 @@ var _hmt = _hmt || [];
         </div>
       </div>
 
-      <h3 style="margin:26px 0 6px;">发现的问题清单 <span style="font-size:14px;color:#8a7f70;font-weight:400;">（先展示 40%，完整报告见下方）</span></h3>
+      <h3 id="result-list-title" style="margin:26px 0 6px;">发现的问题清单 <span style="font-size:14px;color:#8a7f70;font-weight:400;">（先展示 40%，完整报告见下方）</span></h3>
       <div class="check-list" id="check-visible"></div>
 
       <div class="lock-wrap">
@@ -184,7 +184,7 @@ var _hmt = _hmt || [];
           </div>
         </div>
       </div>
-      <p class="diag-note" style="margin-top:14px;">诊断基于网站首页公开 HTML 的静态分析，仅供参考，不保存您的网址数据。</p>
+      <p class="diag-note" id="result-note" style="margin-top:14px;">诊断基于网站首页公开 HTML 的静态分析，仅供参考，不保存您的网址数据。</p>
     </div>
   </div>
 </section>
@@ -423,6 +423,59 @@ function fetchHtml(u){
     });
 }
 
+/* ---------- 降级通道：Jina 基础诊断 ----------
+   完整 HTML 抓取失败时（目标站屏蔽海外代理节点等），改用 Jina Reader
+   抓取页面正文（Markdown，无 head 元信息），做 7 项可验证的基础检查。
+   实测连百度首页也能抓到，保证任何网站都不空手而归。 */
+function fetchBasic(u){
+  var t0=Date.now();
+  return fetchWithTimeout("https://r.jina.ai/"+u.toString(),30000)
+    .then(function(r){ return readHtml(r,"jina",t0); })
+    .then(function(res){
+      var t=res.html;
+      if(t.length<300 || !/^Title:/m.test(t)) throw new Error("jina:badcontent");
+      return {md:t, ms:res.ms};
+    });
+}
+function mdTitle(md){ var m=md.match(/^Title:\s*([^\n]+)/m); return m?m[1].trim():""; }
+var BASIC_CHECKS=[
+ {id:"https", name:"HTTPS 安全连接",
+  run:function(u){ return u.protocol==="https:" ? p("网站已启用 HTTPS，浏览器会显示安全锁标识。","")
+    : f("网站仍在使用 HTTP。Chrome 等浏览器会标记为\"不安全\"，海外买家看到会直接关掉页面。","建议尽快为网站部署 SSL 证书（多数主机商免费提供）。"); }},
+ {id:"reach", name:"网站可访问性",
+  run:function(u,ms){ return ms<12000 ? p("网站可以正常访问，内容抓取约 "+(ms/1000).toFixed(1)+" 秒。","")
+    : w("网站可以打开，但抓取响应较慢（约 "+(ms/1000).toFixed(1)+" 秒）。海外访问本就经过长距离传输，慢上加慢会让买家流失。","建议检查服务器位置与页面资源体积，考虑 CDN 加速。"); }},
+ {id:"title", name:"网页标题 Title",
+  run:function(u,ms,md){ var t=mdTitle(md);
+    if(!t) return f("未能识别到网页标题。搜索引擎和浏览器标签页都依赖它，这是 SEO 最基础的一项。","建议设置 10–60 字符的标题，包含核心产品词。");
+    if(t.length<10) return w("标题过短（\""+t+"\"），搜索引擎难以判断页面主题。","建议扩展到 10–60 字符，包含产品关键词和公司名。");
+    if(t.length>65) return w("标题过长（"+t.length+" 字符），搜索结果中会被截断。","建议精简到 60 字符以内，把核心关键词前置。");
+    return p("标题设置合理（\""+t.slice(0,42)+(t.length>42?"…":"")+"\"）。",""); }},
+ {id:"h1", name:"H1 主标题",
+  run:function(u,ms,md){ var h=(md.match(/^#\s+[^\n]+/gm)||[]).length;
+    if(h===0) return f("正文中没有识别到 H1 级主标题。搜索引擎靠 H1 理解页面主题，缺失等于把最重要的关键词位置空着。","建议设置 1 个 H1，包含核心产品/服务关键词。");
+    if(h>1) return w("正文中有 "+h+" 个 H1 级标题。多个 H1 会稀释主题权重。","建议只保留 1 个 H1，其余改为 H2。");
+    return p("H1 设置规范（仅 1 个）。",""); }},
+ {id:"alt", name:"图片 Alt 属性",
+  run:function(u,ms,md){ var imgs=md.match(/!\[[^\]]*\]\([^)\s]+\)/g)||[], miss=0;
+    imgs.forEach(function(s){ if(/^!\[\s*\]/.test(s)) miss++; });
+    if(!imgs.length) return p("正文中未检测到图片。","");
+    var r=Math.round(miss/imgs.length*100);
+    if(r===0) return p("全部 "+imgs.length+" 张图片都设置了 Alt 文本。","");
+    if(r<40) return w(imgs.length+" 张图片中有 "+miss+" 张缺少 Alt（"+r+"%）。产品图没有 Alt 等于放弃图片搜索流量。","建议为每张产品图添加英文 Alt，如 \"custom printed mailer box\"。");
+    return f(imgs.length+" 张图片中有 "+miss+" 张缺少 Alt（"+r+"%）。Google 图片搜索是 B2B 获客的重要入口之一。","建议逐张补上英文 Alt 描述。"); }},
+ {id:"contact", name:"联系方式可达性",
+  run:function(u,ms,md){ var n=(md.match(/mailto:|tel:|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|\+?\d[\d\s-]{7,}\d/g)||[]).length;
+    return n>0 ? p("页面正文中发现 "+n+" 处疑似电话/邮箱信息。","")
+    : w("正文中没有发现电话或邮箱。买家想联系你时多一步操作，就多一分流失。","建议在首页显眼位置放置电话与邮箱。"); }},
+ {id:"social", name:"社媒信任背书",
+  run:function(u,ms,md){ var names=["linkedin.com","facebook.com","youtube.com","instagram.com","x.com","twitter.com"];
+    var low=md.toLowerCase(), found=[];
+    names.forEach(function(n){ if(low.indexOf(n)>-1&&found.indexOf(n)<0) found.push(n); });
+    return found.length ? p("发现 "+found.length+" 个社媒链接（"+found.join("、").replace(/\.com/g,"")+"），有助于建立信任。","")
+    : w("没有发现 LinkedIn / Facebook / YouTube 等社媒链接。海外买家习惯交叉验证供应商，社媒缺席会减分。","建议至少运营一个 LinkedIn 公司主页并在官网露出。"); }}
+];
+
 /* ---------- 渲染 ---------- */
 function iconFor(s){ return s==="pass"?"✓":(s==="warn"?"!":"✕"); }
 function renderItem(c,r){
@@ -452,13 +505,26 @@ form.addEventListener("submit",function(e){
   errBox.style.display="none"; results.style.display="none";
   if(!u){ errBox.textContent="请输入正确的网址，例如 https://www.example.com"; errBox.style.display="block"; return; }
   btn.disabled=true; btn.textContent="诊断中…"; loading.style.display="block";
+  /* 若上一次是基础诊断模式，先恢复结果区默认展示状态 */
+  document.querySelector(".lock-wrap").style.display="";
+  var _lt0=document.getElementById("result-list-title");
+  if(_lt0) _lt0.innerHTML='发现的问题清单 <span style="font-size:14px;color:#8a7f70;font-weight:400;">（先展示 40%，完整报告见下方）</span>';
+  var _nt0=document.getElementById("result-note");
+  if(_nt0) _nt0.textContent="诊断基于网站首页公开 HTML 的静态分析，仅供参考，不保存您的网址数据。";
   fetchHtml(u).then(function(res){
     if(!/html/i.test(res.ct) && res.html.trim().indexOf("<")!==0) throw new Error("nothtml");
     var doc=new DOMParser().parseFromString(res.html,"text/html");
     var bytes=new Blob([res.html]).size;
     var out=CHECKS.map(function(c){ try{ return {c:c,r:c.run(u,res.ms,doc,bytes)}; }
       catch(ex){ return {c:c,r:w("该项检测时出现异常，未能完成。","")}; } });
-    showResults(u,out);
+    showResults(u,out,false);
+  }).catch(function(){
+    /* 完整 HTML 抓取失败 → 自动降级：Jina 基础诊断通道，保证不空手而归 */
+    return fetchBasic(u).then(function(b){
+      var out=BASIC_CHECKS.map(function(c){ try{ return {c:c,r:c.run(u,b.ms,b.md)}; }
+        catch(ex){ return {c:c,r:w("该项检测时出现异常，未能完成。","")}; } });
+      showResults(u,out,true);
+    });
   }).catch(function(){
     errBox.innerHTML='无法自动抓取该网站。可能的原因：网址输入有误、网站屏蔽了海外抓取节点（不少国内主机有此设置）、或网站暂时无法访问。'
       +'<div style="margin-top:14px;padding-top:14px;border-top:1px dashed #e8c9c9;">'
@@ -471,26 +537,43 @@ form.addEventListener("submit",function(e){
   });
 });
 
-function showResults(u,out){
+function showResults(u,out,basic){
   document.getElementById("score-url").textContent=u.hostname;
   var score=Math.round(out.reduce(function(s,o){return s+(o.r.status==="pass"?100:o.r.status==="warn"?55:0);},0)/out.length);
   var fails=out.filter(function(o){return o.r.status==="fail";}).length,
       warns=out.filter(function(o){return o.r.status==="warn";}).length;
   var grade=score>=90?"优秀，基础很扎实":score>=75?"良好，有提升空间":score>=60?"待改进，建议优先修复": "问题较多，建议系统优化";
   document.getElementById("score-grade").textContent="综合评分 "+score+" 分 — "+grade;
-  document.getElementById("score-summary").textContent = INTERNAL_UNLOCK
-    ? "内部预览模式：已显示全部 14 项检测结果（含修复建议）。"
-    : "14 项检测中，发现 "+fails+" 个严重问题、"+warns+" 个待优化项。下方先展示 6 项，剩余 8 项深度检测结果可免费解锁。";
-  if(INTERNAL_UNLOCK){
-    var _ov=document.querySelector(".lock-overlay"); if(_ov) _ov.style.display="none";
-    var _lb=document.getElementById("check-locked"); if(_lb) _lb.classList.remove("lock-blur");
-  }
   var vis=document.getElementById("check-visible"); vis.innerHTML="";
-  out.slice(0,VISIBLE_COUNT).forEach(function(o){ vis.appendChild(renderItem(o.c,o.r)); });
-  var locked=document.getElementById("check-locked"); locked.innerHTML="";
-  out.slice(VISIBLE_COUNT).forEach(function(o){ locked.appendChild(renderItem(o.c,o.r)); });
-  document.getElementById("locked-count").textContent=out.length-VISIBLE_COUNT;
-  document.getElementById("locked-names").textContent=out.slice(VISIBLE_COUNT).map(function(o){return o.c.name;}).join("、");
+  if(basic){
+    /* 基础诊断模式：7 项全展示，无锁定区，附人工诊断引流 */
+    document.getElementById("score-summary").textContent="该网站屏蔽了完整自动抓取，已为您切换为 7 项基础诊断（基于页面正文分析）。完整 14 项深度诊断 + 修复建议，请加微信由顾问人工为您完成。";
+    var _lt=document.getElementById("result-list-title");
+    if(_lt) _lt.innerHTML='基础诊断结果 <span style="font-size:14px;color:#8a7f70;font-weight:400;">（7 项，基于页面正文分析）</span>';
+    var _nt=document.getElementById("result-note");
+    if(_nt) _nt.textContent="基础诊断基于页面正文的简化分析，仅供参考，不保存您的网址数据。";
+    document.querySelector(".lock-wrap").style.display="none";
+    out.forEach(function(o){ vis.appendChild(renderItem(o.c,o.r)); });
+    var cta=document.createElement("div"); cta.className="check-item";
+    cta.innerHTML='<div class="check-body"><h4>💡 想要完整 14 项深度诊断？</h4>'
+      +'<p>加微信，顾问人工为您诊断并一对一解读报告。</p>'
+      +'<img src="images/qrcode-wechat.png" width="110" height="110" alt="易辰咨询微信二维码" style="border-radius:10px;border:1px solid #eee;margin-top:8px;" loading="lazy">'
+      +'<div style="font-size:13px;color:#8a7f70;margin-top:6px;">微信扫码 / 备注"诊断报告" + 您的网址</div></div>';
+    vis.appendChild(cta);
+  } else {
+    document.getElementById("score-summary").textContent = INTERNAL_UNLOCK
+      ? "内部预览模式：已显示全部 14 项检测结果（含修复建议）。"
+      : "14 项检测中，发现 "+fails+" 个严重问题、"+warns+" 个待优化项。下方先展示 6 项，剩余 8 项深度检测结果可免费解锁。";
+    if(INTERNAL_UNLOCK){
+      var _ov=document.querySelector(".lock-overlay"); if(_ov) _ov.style.display="none";
+      var _lb=document.getElementById("check-locked"); if(_lb) _lb.classList.remove("lock-blur");
+    }
+    out.slice(0,VISIBLE_COUNT).forEach(function(o){ vis.appendChild(renderItem(o.c,o.r)); });
+    var locked=document.getElementById("check-locked"); locked.innerHTML="";
+    out.slice(VISIBLE_COUNT).forEach(function(o){ locked.appendChild(renderItem(o.c,o.r)); });
+    document.getElementById("locked-count").textContent=out.length-VISIBLE_COUNT;
+    document.getElementById("locked-names").textContent=out.slice(VISIBLE_COUNT).map(function(o){return o.c.name;}).join("、");
+  }
   results.style.display="block";
   animateScore(score);
   results.scrollIntoView({behavior:"smooth",block:"start"});
