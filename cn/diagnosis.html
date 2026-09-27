@@ -138,7 +138,7 @@ var _hmt = _hmt || [];
       <input type="text" id="diag-url" placeholder="请输入您的英文官网网址，例如 https://www.example.com" autocomplete="off" inputmode="url">
       <button type="submit" class="btn-primary" id="diag-btn" style="white-space:nowrap;">一键诊断</button>
     </form>
-    <p class="diag-note">诊断基于网站公开页面的静态分析，不保存您的网址数据，大约需要 20–60 秒。</p>
+    <p class="diag-note">诊断基于网站公开页面的静态分析，不保存您的网址数据，通常 20–60 秒，个别网站需要 2 分钟左右。</p>
 
     <div class="diag-loading" id="diag-loading">
       <div class="spinner"></div>
@@ -429,13 +429,19 @@ function fetchHtml(u){
    实测连百度首页也能抓到，保证任何网站都不空手而归。 */
 function fetchBasic(u){
   var t0=Date.now();
-  return fetchWithTimeout("https://r.jina.ai/"+u.toString(),30000)
-    .then(function(r){ return readHtml(r,"jina",t0); })
-    .then(function(res){
-      var t=res.html;
-      if(t.length<300 || !/^Title:/m.test(t)) throw new Error("jina:badcontent");
-      return {md:t, ms:res.ms};
-    });
+  var url="https://r.jina.ai/"+u.toString();
+  function attempt(){
+    /* Jina 是境外服务，国内访客访问慢：超时放宽到 45 秒 */
+    return fetchWithTimeout(url,45000)
+      .then(function(r){ return readHtml(r,"jina",t0); })
+      .then(function(res){
+        var t=res.html;
+        if(t.length<300 || !/^Title:/m.test(t)) throw new Error("jina:badcontent");
+        return {md:t, ms:res.ms};
+      });
+  }
+  /* 失败自动重试一次：覆盖 Jina 偶发 429/5xx 或跨境抖动 */
+  return attempt().catch(function(){ t0=Date.now(); return attempt(); });
 }
 function mdTitle(md){ var m=md.match(/^Title:\s*([^\n]+)/m); return m?m[1].trim():""; }
 var BASIC_CHECKS=[
