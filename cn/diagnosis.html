@@ -394,33 +394,36 @@ function fetchWithTimeout(url,ms,opts){
     .catch(function(e){clearTimeout(t);throw e;});
 }
 function readHtml(r,label,t0){
-  if(!r.ok) throw new Error(label+":http"+r.status);
+  if(!r.ok){
+    if(r.status===429) rateLimited=true; /* 命中限流：失败时给诚实提示，而非"无法抓取" */
+    var e=new Error(label+":http"+r.status); e.httpStatus=r.status; throw e;
+  }
   var ct=r.headers.get("content-type")||"";
   return r.text().then(function(t){ return {html:t,ms:Date.now()-t0,ct:ct}; });
 }
+/* 首次直连失败后，代理通道改为串行尝试：一次只打一个，
+   省配额、防限流（并行一次烧 3 家配额，第二次诊断必被 429）。 */
+var rateLimited=false; /* 本次诊断是否命中过 429，用于失败时的诚实提示 */
 function fetchHtml(u){
   var target=u.toString();
   var t0=Date.now();
-  /* 免费 CORS 代理：并行竞速取最快成功的一个。
+  /* 免费 CORS 代理：串行尝试，第一个成功的即返回。
      注意：corsproxy.io 已改为收费（需 API key），不再可用；
-     各免费代理均有抖动/限流，多通道并行是唯一可靠策略。 */
+     各免费代理均有抖动/限流，串行是最省配额的策略。 */
   var proxies=[
     "https://api.allorigins.win/raw?url=",
     "https://api.codetabs.com/v1/proxy?quest=",
     "https://api.cors.lol/?url="
   ];
-  function viaProxy(i){
-    return fetchWithTimeout(proxies[i]+encodeURIComponent(target),30000)
-      .then(function(r){ return readHtml(r,"proxy"+i,t0); });
+  function tryProxy(i){
+    if(i>=proxies.length) return Promise.reject(new Error("proxies:allfailed"));
+    return fetchWithTimeout(proxies[i]+encodeURIComponent(target),25000)
+      .then(function(r){ return readHtml(r,"proxy"+i,t0); })
+      .catch(function(){ return tryProxy(i+1); });
   }
   /* 先尝试直连：若目标站允许跨域，直接用访客本机 IP 抓取（对屏蔽海外节点的国内主机更友好） */
-  return fetchWithTimeout(target,15000).then(function(r){ return readHtml(r,"direct",t0); })
-    .catch(function(){
-      /* 直连失败后，三个代理通道并行，取最快成功的一个 */
-      var ps=proxies.map(function(_,i){ return viaProxy(i); });
-      if(typeof Promise.any==="function") return Promise.any(ps);
-      return ps[0].catch(function(){ return ps[1]; }).catch(function(){ return ps[2]; });
-    });
+  return fetchWithTimeout(target,12000).then(function(r){ return readHtml(r,"direct",t0); })
+    .catch(function(){ return tryProxy(0); });
 }
 
 /* ---------- 降级通道：Jina 基础诊断 ----------
@@ -440,8 +443,12 @@ function fetchBasic(u){
         return {md:t, ms:res.ms};
       });
   }
-  /* 失败自动重试一次：覆盖 Jina 偶发 429/5xx 或跨境抖动 */
-  return attempt().catch(function(){ t0=Date.now(); return attempt(); });
+  /* 失败自动重试一次：覆盖 Jina 偶发 429/5xx 或跨境抖动；
+     但 429 是配额用完，立即重试无用，直接抛给最终的限流提示 */
+  return attempt().catch(function(e){
+    if(e && e.httpStatus===429) throw e;
+    t0=Date.now(); return attempt();
+  });
 }
 function mdTitle(md){ var m=md.match(/^Title:\s*([^\n]+)/m); return m?m[1].trim():""; }
 var BASIC_CHECKS=[
@@ -511,6 +518,7 @@ form.addEventListener("submit",function(e){
   errBox.style.display="none"; results.style.display="none";
   if(!u){ errBox.textContent="请输入正确的网址，例如 https://www.example.com"; errBox.style.display="block"; return; }
   btn.disabled=true; btn.textContent="诊断中…"; loading.style.display="block";
+  rateLimited=false; /* 每次诊断重置限流标记 */
   /* 若上一次是基础诊断模式，先恢复结果区默认展示状态 */
   document.querySelector(".lock-wrap").style.display="";
   var _lt0=document.getElementById("result-list-title");
@@ -532,7 +540,10 @@ form.addEventListener("submit",function(e){
       showResults(u,out,true);
     });
   }).catch(function(){
-    errBox.innerHTML='无法自动抓取该网站。可能的原因：网址输入有误、网站屏蔽了海外抓取节点（不少国内主机有此设置）、或网站暂时无法访问。'
+    var head = rateLimited
+      ? '免费抓取通道请求太频繁，被暂时限流了（不是您的网站有问题）。<b>请 2–3 分钟后再试一次</b>，通常就能恢复。'
+      : '无法自动抓取该网站。可能的原因：网址输入有误、网站屏蔽了海外抓取节点（不少国内主机有此设置）、或网站暂时无法访问。';
+    errBox.innerHTML= head
       +'<div style="margin-top:14px;padding-top:14px;border-top:1px dashed #e8c9c9;">'
       +'💡 <b>别灰心——加微信，我们顾问人工帮您诊断</b>（把网址发我们就行）'
       +'<div style="margin-top:10px;"><img src="images/qrcode-wechat.png" width="110" height="110" alt="易辰咨询微信二维码" style="border-radius:10px;border:1px solid #eee;" loading="lazy">'
