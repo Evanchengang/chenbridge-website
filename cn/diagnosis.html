@@ -401,10 +401,13 @@ function readHtml(r,label,t0){
 function fetchHtml(u){
   var target=u.toString();
   var t0=Date.now();
+  /* 免费 CORS 代理：并行竞速取最快成功的一个。
+     注意：corsproxy.io 已改为收费（需 API key），不再可用；
+     各免费代理均有抖动/限流，多通道并行是唯一可靠策略。 */
   var proxies=[
     "https://api.allorigins.win/raw?url=",
     "https://api.codetabs.com/v1/proxy?quest=",
-    "https://corsproxy.io/?url="
+    "https://api.cors.lol/?url="
   ];
   function viaProxy(i){
     return fetchWithTimeout(proxies[i]+encodeURIComponent(target),30000)
