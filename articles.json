@@ -1,6 +1,13 @@
 {
   "articles": [
     {
+      "category": "Packaging Teardown",
+      "title": "Packaging Teardown #1: Amazon's Paper Mailer — What a PPWR-Ready Claim Looks Like Up Close",
+      "url": "article-amazon-paper-mailer-teardown.html",
+      "date": "2026",
+      "excerpt": "A field teardown of Amazon's kraft paper mailer: the '100% recyclable' claim, the PAP 22 recycling code, and five-language instructions — what each marking teaches buyers sourcing paper mailers from China."
+    },
+    {
       "category": "Supplier Evaluation",
       "title": "EU Anti-Greenwashing Rules Are Live: The Packaging Claim Audit Buyers Should Run Before the Next Print Run",
       "url": "article-eu-greenwashing-packaging-audit.html",
