@@ -1,6 +1,13 @@
 {
   "articles": [
     {
+      "category": "Production Quality",
+      "title": "What We Test Before Your Packaging Ships: Inside the QC Lab",
+      "url": "article-packaging-qc-lab-tests.html",
+      "date": "2026",
+      "excerpt": "Bursting strength, tensile strength — the lab tests that decide whether your packaging survives the journey. A walkthrough of pre-shipment QC, and five lines to add to your next RFQ."
+    },
+    {
       "category": "Packaging Teardown",
       "title": "Packaging Teardown #1: Amazon's Paper Mailer — What a PPWR-Ready Claim Looks Like Up Close",
       "url": "article-amazon-paper-mailer-teardown.html",
