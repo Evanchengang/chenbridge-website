@@ -436,6 +436,12 @@ section h2 {
  border-radius: 10px;
  background: white;
  transition: 0.3s;
+ display: flex;
+ flex-direction: column;
+}
+.card > a:last-child {
+ margin-top: auto;
+ padding-top: 12px;
 }
 
 .card h3 {
