@@ -92,21 +92,6 @@ nav .dropdown:hover > a {
  color: #0F3D2E;
 }
 
-/* Nav CTA button (desktop) */
-nav > a.nav-cta {
- background: #F28C28;
- color: #fff;
- padding: 0 24px;
- border-radius: 8px;
- margin-left: 24px;
- line-height: 44px;
- font-weight: 700;
- white-space: nowrap;
-}
-nav > a.nav-cta:hover {
- background: #d97a1f;
- color: #fff;
-}
 
 /* ==========================================
  Navigation Dropdowns
@@ -996,17 +981,6 @@ footer {
  line-height: 1.6;
  }
 
- /* Mobile: full-width CTA pinned at menu bottom */
- nav > a.nav-cta {
- display: block;
- text-align: center;
- margin: 14px 0 6px;
- padding: 13px 16px;
- border-radius: 10px;
- font-size: 16px;
- position: sticky;
- bottom: 0;
- }
  nav.open {
  max-height: calc(100vh - 72px);
  overflow-y: auto;
@@ -1278,7 +1252,8 @@ section > .container.outcome-strip {
 .resource-card .resource-actions {
  display: flex;
  gap: 12px;
- margin-top: 18px;
+ margin-top: auto;
+ padding-top: 18px;
  flex-wrap: wrap;
 }
 
