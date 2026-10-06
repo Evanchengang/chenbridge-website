@@ -1,0 +1,40 @@
+# ChenBridge
+
+> ChenBridge is a China packaging sourcing representative based in Suzhou, China. It helps global companies source packaging from China with local coordination, supplier development, and production follow-up. Focus areas: industrial packaging, corrugated/paper packaging, and custom packaging solutions.
+
+## What ChenBridge does
+
+ChenBridge acts as a local sourcing partner in China for overseas buyers. Core services:
+
+- [Industrial Packaging](https://chenbridge.com/packaging-industrial.html): Sourcing support for industrial packaging needs.
+- [Paper & Corrugated Packaging](https://chenbridge.com/packaging-paper.html): Paper-based and corrugated packaging sourcing.
+- [Custom Packaging](https://chenbridge.com/packaging-custom.html): Custom packaging development with Chinese manufacturers.
+- [Packaging Solutions](https://chenbridge.com/packaging-solutions.html): Overview of packaging solution services.
+- [Supplier Development](https://chenbridge.com/supplier-development.html): Finding, evaluating, and developing packaging suppliers in China.
+- [Procurement Support](https://chenbridge.com/procurement-support.html): Support for purchasing and order management.
+- [Production Coordination](https://chenbridge.com/production-coordination.html): On-the-ground production follow-up and quality coordination.
+
+## About
+
+- [About ChenBridge](https://chenbridge.com/about.html): Background on the company and its Suzhou-based team.
+- [FAQ](https://chenbridge.com/faq.html): Frequently asked questions about services, supplier vetting, quality control, fees, and how to start.
+- [Contact](https://chenbridge.com/contact.html): How to reach ChenBridge for sourcing inquiries.
+
+## Articles & Insights
+
+- [Resources](https://chenbridge.com/resources.html): Guides and reference materials on packaging sourcing.
+- [Insights](https://chenbridge.com/insights.html): Industry observations and analysis.
+- [How to Evaluate a Packaging Supplier](https://chenbridge.com/article-evaluate-packaging-supplier.html)
+- [Export Packaging Challenges](https://chenbridge.com/article-export-packaging-challenges.html)
+- [Packaging Supply Chain Visibility](https://chenbridge.com/article-packaging-supply-chain-visibility.html)
+- [Data Server Crate Packaging](https://chenbridge.com/article-data-server-crate-packaging.html)
+- [EU PPWR China Sourcing Checklist](https://chenbridge.com/article-ppwr-china-sourcing-checklist.html)
+- [EU Greenwashing Packaging Audit](https://chenbridge.com/article-eu-greenwashing-packaging-audit.html)
+- [Packaging QC Lab Tests](https://chenbridge.com/article-packaging-qc-lab-tests.html)
+- [Amazon Paper Mailer Teardown](https://chenbridge.com/article-amazon-paper-mailer-teardown.html)
+- [Poly vs Paper Mailers](https://chenbridge.com/article-poly-vs-paper-mailers.html)
+
+## Contact
+
+- Website: https://chenbridge.com/
+- Contact page: https://chenbridge.com/contact.html
