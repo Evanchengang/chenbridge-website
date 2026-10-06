@@ -10,6 +10,10 @@ Allow: /
 User-agent: Baiduspider
 Allow: /
 
+# OpenAI SearchBot (ChatGPT search discovery; distinct from GPTBot training crawler)
+User-agent: OAI-SearchBot
+Allow: /
+
 # Disallow admin or system paths if any appear in future
 Disallow: /resources_README.txt
 
