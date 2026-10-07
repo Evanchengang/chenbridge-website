@@ -644,6 +644,32 @@ footer {
  padding-left: 4px;
 }
 
+.footer-contact {
+ display: flex;
+ flex-direction: column;
+ gap: 12px;
+}
+
+.footer-contact a,
+.footer-contact span {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ color: #b9c4be;
+ text-decoration: none;
+ font-size: 14px;
+ margin-bottom: 0;
+}
+
+.footer-contact a:hover {
+ color: #F28C28;
+}
+
+.footer-contact svg {
+ flex-shrink: 0;
+ opacity: 0.7;
+}
+
 .footer-contact p {
  color: #b9c4be;
  margin-bottom: 11px;
