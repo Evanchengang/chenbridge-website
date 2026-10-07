@@ -47,3 +47,8 @@
 #cb-teaser-close{position:absolute;top:-8px;left:-8px;width:22px;height:22px;border-radius:50%;background:#fff;border:1px solid #e5e5e5;color:#999;font-size:14px;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.1)}
 #cb-teaser-close:hover{color:#333}
 #cb-chat-btn .cb-badge{position:absolute;top:-4px;right:-4px;min-width:22px;height:22px;border-radius:11px;background:#e63946;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+@media (max-width: 480px){
+  #cb-chat-widget{bottom:16px;right:16px}
+  #cb-chat-window{position:fixed;bottom:86px;right:12px;left:12px;width:auto;height:min(70vh,520px);border-radius:18px}
+  #cb-teaser{right:16px;left:16px;max-width:none;bottom:86px}
+}
