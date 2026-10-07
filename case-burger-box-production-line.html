@@ -224,6 +224,25 @@ function changeLanguage(lang) {
 <meta name="theme-color" content="#0F3D2E">
 
 <style>
+/* ---- Case page polish: compact + international ---- */
+.case-hero { padding-top: 36px !important; padding-bottom: 8px !important; }
+.case-hero .breadcrumb { margin-bottom: 16px; }
+.case-title { font-size: 38px; margin: 0 0 14px 0; line-height: 1.25; letter-spacing: -0.5px; }
+.case-hero hr { border: none; border-top: 1px solid #e5e7eb; margin: 24px 0; }
+.glance-grid { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; margin: 0 0 32px 0; background: #fff; }
+.glance-item { padding: 16px 22px 18px; border-top: 3px solid #F28C28; }
+.glance-item:nth-child(even) { border-left: 1px solid #e5e7eb; }
+.glance-item:nth-child(n+3) { border-top: 1px solid #e5e7eb; }
+.glance-item:nth-child(n+3):nth-child(odd) { border-top: 1px solid #e5e7eb; }
+.glance-item:nth-child(1), .glance-item:nth-child(2) { border-top: 3px solid #F28C28; }
+.glance-item dt { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #9ca3af; font-weight: 700; margin-bottom: 6px; }
+.glance-item dd { margin: 0; font-weight: 600; color: #1f2937; font-size: 15px; line-height: 1.5; }
+.glance-item dd a { color: #0F3D2E; }
+.did-box { background: #FFF7ED; border-left: 4px solid #F28C28; border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 18px 0 22px; }
+.did-box p { margin: 0 !important; color: #4b5563; line-height: 1.7; }
+.did-box .did-label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #B85E0A; margin-bottom: 8px; }
+.article-body h2 { margin-top: 38px; }
+@media (max-width: 640px) { .glance-grid { grid-template-columns: 1fr; } .glance-item:nth-child(even) { border-left: none; } .glance-item:nth-child(n+2) { border-top: 1px solid #e5e7eb; } }
 .article-figure {
   margin: 36px 0;
   text-align: center;
@@ -351,7 +370,7 @@ var _hmt = _hmt || [];
 
 <!-- ================= ARTICLE ================= -->
 
-<section>
+<section class="case-hero">
 
 <div class="container article-body">
 
@@ -361,7 +380,7 @@ var _hmt = _hmt || [];
 
 <span class="page-label">Case Study</span>
 
-<h1 style="font-size:38px;">Burger Box Production in China: A 4-Container Case Study</h1>
+<h1 class="case-title">Burger Box Production in China: A 4-Container Case Study</h1>
 
 <div class="article-meta">
 <span>ChenBridge Cases</span>
@@ -369,17 +388,14 @@ var _hmt = _hmt || [];
 <span>4 min read</span>
 </div>
 
-<hr style="border:none; border-top:1px solid #e5e7eb; margin:30px 0;">
+<hr>
 
-<div style="border:1px solid #e5e7eb; border-radius:8px; padding:20px 24px; margin:0 0 30px 0; background:#fafafa;">
-<p style="margin:0 0 12px 0;"><strong>At a glance</strong></p>
-<ul style="margin:0; padding-left:20px; list-style:disc;">
-<li><strong>Client:</strong> Leading European food brand, name withheld</li>
-<li><strong>Product:</strong> Printed folding burger boxes for food-service use</li>
-<li><strong>Order volume:</strong> 4 containers</li>
-<li><strong>ChenBridge scope:</strong> <a href="supplier-development.html">Supplier development</a>, <a href="production-coordination.html">production coordination</a>, in-process checks, pre-shipment inspection</li>
-</ul>
-</div>
+<dl class="glance-grid">
+<div class="glance-item"><dt>Client</dt><dd>Leading European food brand, name withheld</dd></div>
+<div class="glance-item"><dt>Product</dt><dd>Printed folding burger boxes for food-service use</dd></div>
+<div class="glance-item"><dt>Order volume</dt><dd>4 containers</dd></div>
+<div class="glance-item"><dt>ChenBridge scope</dt><dd><a href="supplier-development.html">Supplier development</a>, <a href="production-coordination.html">production coordination</a>, in-process checks, pre-shipment inspection</dd></div>
+</dl>
 
 <figure class="article-figure">
 <video controls preload="metadata" poster="images/cases/case-burger-box-production-line-poster.jpg" style="width:100%; border-radius:8px;">
@@ -407,9 +423,8 @@ Your browser does not support the video tag.
 
 <p>If the barrier is under-specified, oil can soak through before the customer finishes the meal. If it is over-specified, the buyer may pay for performance the product does not need.</p>
 
-<p><strong>What ChenBridge did</strong></p>
-
-<p>We made sure the supplier understood that this was not dry-bakery packaging. The grease-resistance requirement was tied to the actual end use &mdash; burgers &mdash; and confirmed before production, so the right board and barrier system were used from the first production run.</p>
+<div class="did-box"><span class="did-label">What ChenBridge did</span>
+<p>We made sure the supplier understood that this was not dry-bakery packaging. The grease-resistance requirement was tied to the actual end use &mdash; burgers &mdash; and confirmed before production, so the right board and barrier system were used from the first production run.</p></div>
 
 <h2>2. Food-contact safety: board, inks, and coatings</h2>
 
@@ -419,9 +434,8 @@ Your browser does not support the video tag.
 
 <p>This includes avoiding unsuitable recycled stock where mineral-oil contamination may be a concern, and ensuring that ink and coating systems are appropriate for the application.</p>
 
-<p><strong>What ChenBridge did</strong></p>
-
-<p>Before the order moved into production, we reviewed the supplier&rsquo;s food-contact documentation for the board, ink, and coating systems. This helped ensure that the factory was not making material decisions based on assumptions.</p>
+<div class="did-box"><span class="did-label">What ChenBridge did</span>
+<p>Before the order moved into production, we reviewed the supplier&rsquo;s food-contact documentation for the board, ink, and coating systems. This helped ensure that the factory was not making material decisions based on assumptions.</p></div>
 
 <h2>3. Board consistency: grade, grammage, and lot control</h2>
 
@@ -429,9 +443,8 @@ Your browser does not support the video tag.
 
 <p>Just as important, the board needs to stay consistent throughout the order. A mid-run board substitution is one of the quietest ways a packaging order can go wrong.</p>
 
-<p><strong>What ChenBridge did</strong></p>
-
-<p>We wrote the board requirements clearly into the order specification and worked with the factory on incoming-material checks. Purchasing and production were aligned on the approved board, and any lot change had to be flagged instead of silently absorbed into the run.</p>
+<div class="did-box"><span class="did-label">What ChenBridge did</span>
+<p>We wrote the board requirements clearly into the order specification and worked with the factory on incoming-material checks. Purchasing and production were aligned on the approved board, and any lot change had to be flagged instead of silently absorbed into the run.</p></div>
 
 <h2>4. Print quality: color, scuff resistance, and brand consistency</h2>
 
@@ -439,9 +452,8 @@ Your browser does not support the video tag.
 
 <p>Color needs to stay consistent against the approved proof. Stacked boxes should not scuff each other in a way that damages the brand presentation. Inks also need to remain suitable for the intended food-service application.</p>
 
-<p><strong>What ChenBridge did</strong></p>
-
-<p>We translated the brand artwork into concrete production targets: color matching against the approved proof, scuff resistance expectations, and consistent print quality across the run. Print checks were carried out during production, so the standard remained active on the factory floor.</p>
+<div class="did-box"><span class="did-label">What ChenBridge did</span>
+<p>We translated the brand artwork into concrete production targets: color matching against the approved proof, scuff resistance expectations, and consistent print quality across the run. Print checks were carried out during production, so the standard remained active on the factory floor.</p></div>
 
 <h2>5. Structure: crease, fold, glue, and dimensions</h2>
 
@@ -449,9 +461,8 @@ Your browser does not support the video tag.
 
 <p>Crease quality, fold accuracy, glue adhesion, and dimensional tolerance all affect how the finished box performs in real use.</p>
 
-<p><strong>What ChenBridge did</strong></p>
-
-<p>We agreed die-cutting and dimensional tolerances with the factory before production. During the run and again before shipment, we checked construction, glue performance, folding behavior, and finished dimensions against the agreed specification.</p>
+<div class="did-box"><span class="did-label">What ChenBridge did</span>
+<p>We agreed die-cutting and dimensional tolerances with the factory before production. During the run and again before shipment, we checked construction, glue performance, folding behavior, and finished dimensions against the agreed specification.</p></div>
 
 <h2>Why this case matters</h2>
 
