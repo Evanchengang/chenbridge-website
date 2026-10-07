@@ -700,6 +700,15 @@ footer {
  color: #b9c4be;
 }
 
+.footer-bottom .footer-links a {
+ color: #93a39b;
+ text-decoration: none;
+}
+
+.footer-bottom .footer-links a:hover {
+ color: #F28C28;
+}
+
 /* ==========================================
  Google Translate
  ========================================== */
