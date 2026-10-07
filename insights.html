@@ -262,7 +262,13 @@ var _hmt = _hmt || [];
 <!-- ================= ARTICLE LISTING ================= -->
 
 <section class="light-section">
-  <div class="container" style="max-width:900px;" id="articles-container">
+  <div class="container" style="max-width:900px;">
+  <div class="insights-search">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <input type="text" id="insights-search-input" placeholder="Search articles — try &quot;PPWR&quot;, &quot;supplier&quot;, &quot;mailer&quot;..." autocomplete="off">
+    <button id="insights-search-clear" aria-label="Clear search" style="display:none;">&times;</button>
+  </div>
+  <div id="articles-container">
 <article class="article-list-item"><div class="article-list-meta"><span class="article-category">Production Quality</span><span class="article-date">2026</span></div><h2 class="article-list-title"><a href="article-packaging-qc-lab-tests.html">What We Test Before Your Packaging Ships: Inside the QC Lab</a></h2><p class="article-list-desc">Bursting strength, tensile strength — the lab tests that decide whether your packaging survives the journey. A walkthrough of pre-shipment QC, and five lines to add to your next RFQ.</p><a href="article-packaging-qc-lab-tests.html" class="article-list-link">Read More &rarr;</a></article>
 <article class="article-list-item"><div class="article-list-meta"><span class="article-category">Packaging Teardown</span><span class="article-date">2026</span></div><h2 class="article-list-title"><a href="article-amazon-paper-mailer-teardown.html">Packaging Teardown #1: Amazon&#x27;s Paper Mailer — What a PPWR-Ready Claim Looks Like Up Close</a></h2><p class="article-list-desc">A field teardown of Amazon&#x27;s kraft paper mailer: the &#x27;100% recyclable&#x27; claim, the PAP 22 recycling code, and five-language instructions — what each marking teaches buyers sourcing paper mailers from China.</p><a href="article-amazon-paper-mailer-teardown.html" class="article-list-link">Read More &rarr;</a></article>
 <article class="article-list-item"><div class="article-list-meta"><span class="article-category">Supplier Evaluation</span><span class="article-date">2026</span></div><h2 class="article-list-title"><a href="article-eu-greenwashing-packaging-audit.html">EU Anti-Greenwashing Rules Are Live: The Packaging Claim Audit Buyers Should Run Before the Next Print Run</a></h2><p class="article-list-desc">The EU&#x27;s EmpCo directive took effect on 27 September 2026. Generic green claims on packaging are now banned without verifiable evidence, with fines up to 4% of turnover — the six-step claim audit for buyers sourcing packaging from China.</p><a href="article-eu-greenwashing-packaging-audit.html" class="article-list-link">Read More &rarr;</a></article>
@@ -311,6 +317,15 @@ var _hmt = _hmt || [];
   border-color: #0F3D2E;
   color: #fff;
 }
+.insights-search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px 16px;margin-bottom:28px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.insights-search svg{color:#9ca3af;flex-shrink:0}
+.insights-search input{flex:1;border:none;outline:none;font-size:15px;color:#111}
+.insights-search input::placeholder{color:#9ca3af}
+.insights-search:focus-within{border-color:#0F3D2E;box-shadow:0 0 0 3px rgba(15,61,46,.08)}
+#insights-search-clear{background:none;border:none;font-size:20px;color:#9ca3af;cursor:pointer;line-height:1;padding:0 4px}
+#insights-search-clear:hover{color:#333}
+.insights-no-result{text-align:center;padding:40px 20px;color:#6b7280}
+.insights-no-result strong{color:#0F3D2E;display:block;font-size:17px;margin-bottom:8px}
 .insights-pagination button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
@@ -327,6 +342,7 @@ var _hmt = _hmt || [];
   var PER_PAGE = 5;
   var allArticles = [];
   var currentPage = 1;
+  var searchQuery = '';
 
   function getPageFromUrl() {
     var params = new URLSearchParams(window.location.search);
@@ -344,14 +360,30 @@ var _hmt = _hmt || [];
     window.history.replaceState({}, '', url.pathname + url.search + url.hash);
   }
 
+  function getFiltered() {
+    if (!searchQuery) return allArticles;
+    var q = searchQuery.toLowerCase();
+    return allArticles.filter(function (a) {
+      return ((a.title || '') + ' ' + (a.excerpt || '') + ' ' + (a.category || '')).toLowerCase().indexOf(q) !== -1;
+    });
+  }
+
   function renderArticles(page) {
     var container = document.getElementById('articles-container');
-    var total = allArticles.length;
+    var list = getFiltered();
+    var total = list.length;
+    if (searchQuery && total === 0) {
+      container.innerHTML = '<div class="insights-no-result"><strong>No articles found</strong>Try a different keyword, or <a href="#" id="insights-reset">browse all articles</a>.</div>';
+      document.getElementById('insights-pagination').style.display = 'none';
+      var reset = document.getElementById('insights-reset');
+      if (reset) reset.onclick = function (e) { e.preventDefault(); clearSearch(); };
+      return;
+    }
     var totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
     currentPage = Math.min(Math.max(1, page), totalPages);
 
     var start = (currentPage - 1) * PER_PAGE;
-    var slice = allArticles.slice(start, start + PER_PAGE);
+    var slice = list.slice(start, start + PER_PAGE);
 
     container.innerHTML = slice.map(function (a) {
       return (
@@ -412,6 +444,25 @@ var _hmt = _hmt || [];
       document.getElementById('articles-container').innerHTML =
         '<p style="text-align:center;">Failed to load articles. Please refresh.</p>';
     });
+
+  var searchInput = document.getElementById('insights-search-input');
+  var searchClear = document.getElementById('insights-search-clear');
+  function clearSearch() {
+    searchInput.value = '';
+    searchQuery = '';
+    searchClear.style.display = 'none';
+    renderArticles(1);
+  }
+  var searchTimer = null;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () {
+      searchQuery = searchInput.value.trim();
+      searchClear.style.display = searchQuery ? 'block' : 'none';
+      renderArticles(1);
+    }, 250);
+  });
+  searchClear.addEventListener('click', clearSearch);
 })();
 </script>
 
