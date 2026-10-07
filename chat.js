@@ -7,8 +7,37 @@
   const send=document.getElementById('cb-chat-send');
   const msgs=document.getElementById('cb-chat-messages');
   
-  btn.onclick=function(){win.style.display='flex';btn.style.display='none'};
+  var teaser=document.getElementById('cb-teaser');
+  var teaserClose=document.getElementById('cb-teaser-close');
+
+  function openChat(){
+    win.style.display='flex';btn.style.display='none';
+    if(teaser)teaser.style.display='none';
+    var badge=btn.querySelector('.cb-badge');if(badge)badge.remove();
+  }
+  btn.onclick=openChat;
   close.onclick=function(){win.style.display='none';btn.style.display='flex'};
+
+  // 主动邀请气泡：6秒后弹出，每会话一次
+  if(teaser && !sessionStorage.getItem('cb_teaser_shown')){
+    setTimeout(function(){
+      if(win.style.display!=='flex'){
+        teaser.style.display='flex';
+        var badge=document.createElement('span');
+        badge.className='cb-badge';badge.textContent='1';
+        btn.appendChild(badge);
+        sessionStorage.setItem('cb_teaser_shown','1');
+      }
+    },6000);
+    teaser.onclick=function(e){
+      if(e.target.id==='cb-teaser-close')return;
+      openChat();
+    };
+    teaserClose.onclick=function(e){
+      e.stopPropagation();
+      teaser.style.display='none';
+    };
+  }
   
   function addMsg(text,isUser){
     var div=document.createElement('div');
