@@ -30,3 +30,8 @@
 #cb-chat-send{background:linear-gradient(135deg,#F28C28,#e07b1a);color:#fff;border:none;border-radius:24px;padding:11px 22px;cursor:pointer;font-size:14px;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 8px rgba(242,140,40,.3)}
 #cb-chat-send:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(242,140,40,.4)}
 #cb-chat-send:disabled{opacity:.5;transform:none}
+.cb-typing{display:flex;gap:5px;align-items:center;padding:14px 18px!important}
+.cb-typing span{width:8px;height:8px;border-radius:50%;background:#0F3D2E;opacity:.35;animation:cb-typing 1.2s infinite}
+.cb-typing span:nth-child(2){animation-delay:.15s}
+.cb-typing span:nth-child(3){animation-delay:.3s}
+@keyframes cb-typing{0%,60%,100%{transform:translateY(0);opacity:.35}30%{transform:translateY(-6px);opacity:1}}
