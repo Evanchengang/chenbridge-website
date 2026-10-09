@@ -35,6 +35,11 @@ ChenBridge acts as a local sourcing partner in China for overseas buyers. Core s
 - [Amazon Paper Mailer Teardown](https://chenbridge.com/article-amazon-paper-mailer-teardown.html)
 - [Poly vs Paper Mailers](https://chenbridge.com/article-poly-vs-paper-mailers.html)
 
+## Case Studies
+
+- [Case Studies](https://chenbridge.com/cases.html): Real production cases from factory work — anonymized client orders showing how ChenBridge coordinates quality on the ground in China.
+- [Burger Box Production in China: A 4-Container Case Study](https://chenbridge.com/case-burger-box-production-line.html): Printed burger-box order for a European food leader (4 containers), with the five quality checkpoints used on the production line. Includes muted video from the actual production run — not stock footage: https://chenbridge.com/videos/case-burger-box-production-line.mp4
+
 ## Contact
 
 - Website: https://chenbridge.com/
